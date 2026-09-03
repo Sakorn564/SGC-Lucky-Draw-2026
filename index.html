@@ -4,802 +4,732 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SGC Lucky Draw 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&family=Manrope:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#000;--bgc:#131314;--card:#1F1F1F;--chi:#1a1a1b;--bd:#2a2a2a;--bhi:#3A3A3A;--fg:#FAFAFA;--mu:#AFB5BE;--di:#737373;--gr:#4ADE80;--bl:#93C5FD;--te:#3AE4C9;--grad:linear-gradient(90deg,#2168FD 0%,#1E71FA 22%,#37B1D3 55%,#39D6CB 78%,#3AE4C9 100%);--gd:linear-gradient(135deg,#2168FD 0%,#37B1D3 50%,#3AE4C9 100%);--gv:linear-gradient(180deg,#2168FD 0%,#3AE4C9 100%)}
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Manrope','Sarabun',sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;-webkit-font-smoothing:antialiased}
-#vL,#vS,#vA{min-height:100vh}
-#vS,#vA{display:none}
-#vL{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-#vS,#vA{flex-direction:column}
-.lg{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(33,104,253,.12),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
-.lgg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,black,transparent);pointer-events:none}
-.lb{background:var(--bgc);border:1px solid var(--bd);border-radius:20px;padding:40px;width:380px;position:relative;z-index:1}
-.ll{display:flex;align-items:center;gap:10px;margin-bottom:28px}
-.llb{width:4px;height:32px;background:var(--gv);border-radius:2px}
-.lt{font-size:17px;font-weight:900;letter-spacing:-.4px}
-.ls{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di);margin-top:2px}
-.flbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di);margin-bottom:7px;display:block;margin-top:14px}
-.fi{width:100%;background:rgba(33,104,253,.06);border:1px solid rgba(33,104,253,.18);border-radius:10px;padding:14px 16px;font-size:20px;font-weight:800;font-family:'Manrope',sans-serif;color:var(--fg);outline:none;letter-spacing:3px;transition:border-color .2s}
-.fi:focus{border-color:rgba(33,104,253,.5)}
-.fi::placeholder{font-size:12px;letter-spacing:0;font-weight:500;color:var(--di)}
-.lbtn{width:100%;padding:14px;background:var(--gd);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:900;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:16px;transition:opacity .2s}
-.lbtn:hover{opacity:.88}
-.lerr{background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);border-radius:8px;padding:9px 13px;font-size:11px;font-weight:700;color:#FF6B6B;display:none;margin-top:10px;line-height:1.5}
-.al{text-align:center;margin-top:14px;font-size:11px;font-weight:700;color:var(--di);cursor:pointer;transition:color .2s}
-.al:hover{color:var(--bl)}
-.slnk{display:block;text-align:center;margin-top:6px;font-size:10px;color:rgba(255,255,255,.18);cursor:pointer;transition:color .2s}
-.slnk:hover{color:rgba(255,255,255,.5)}
-.lov{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000;backdrop-filter:blur(4px)}
-.lov.show{display:flex}
-.lob{background:var(--bgc);border:1px solid var(--bd);border-radius:16px;padding:32px 40px;text-align:center}
-.spin{width:36px;height:36px;border:3px solid rgba(58,228,201,.2);border-top-color:#3AE4C9;border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 14px}
-@keyframes sp{to{transform:rotate(360deg)}}
-.ltxt{font-size:13px;font-weight:700;color:var(--mu)}
-.sh{padding:13px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.shl{display:flex;align-items:center;gap:10px}
-.shb{width:3px;height:28px;background:var(--gv);border-radius:2px}
-.shn{font-size:15px;font-weight:900;letter-spacing:-.3px}
-.shsn{font-size:9px;font-weight:600;color:var(--di);letter-spacing:1px;margin-top:1px}
-.shr{display:flex;align-items:center;gap:8px}
-.tp{background:rgba(58,228,201,.1);border:1px solid rgba(58,228,201,.22);border-radius:20px;padding:5px 13px;display:flex;align-items:center;gap:7px}
-.tpn{font-size:17px;font-weight:900;background:var(--gd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.tpl{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--te)}
-.ob{background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:7px;padding:6px 11px;color:var(--di);font-size:10px;font-weight:700;font-family:'Manrope',sans-serif;cursor:pointer;transition:all .2s}
-.ob:hover{border-color:var(--bhi);color:var(--fg)}
-.sbdy{flex:1;display:grid;grid-template-columns:1fr 300px;overflow:hidden}
-.sl{padding:18px 22px;overflow-y:auto;border-right:1px solid var(--bd);display:flex;flex-direction:column;gap:14px}
-.sl::-webkit-scrollbar{width:2px}
-.sl::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-.wsec{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
-.wg{position:absolute;width:340px;height:340px;background:radial-gradient(circle,rgba(33,104,253,.09),transparent 70%);top:150px;left:50%;transform:translate(-50%,-50%);pointer-events:none;transition:all .5s;z-index:0}
-.wg.on{background:radial-gradient(circle,rgba(58,228,201,.18),rgba(33,104,253,.09) 50%,transparent 70%)}
-.ww{position:relative;width:300px;height:300px;flex-shrink:0;z-index:1}
-.wptr{position:absolute;top:-10px;left:50%;transform:translateX(-50%);z-index:10;filter:drop-shadow(0 3px 12px rgba(58,228,201,.9))}
-.rb{width:100%;background:var(--bgc);border:1px solid var(--bd);border-radius:13px;padding:16px 20px;text-align:center;z-index:1;min-height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:border-color .3s;position:relative;overflow:hidden}
-.rb.won{border-color:rgba(74,222,128,.35);background:linear-gradient(135deg,rgba(74,222,128,.07),rgba(58,228,201,.03))}
-.rb.won::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#4ADE80,#3AE4C9);border-radius:0 2px 2px 0}
-.rbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di)}
-.rbp{font-size:17px;font-weight:900;letter-spacing:-.3px;opacity:0;transform:translateY(6px);transition:opacity .4s,transform .4s;line-height:1.25;padding:0 8px}
-.rbp.wt{background:linear-gradient(135deg,#4ADE80,#3AE4C9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.rbp.lt{color:var(--mu)}
-.rbp.sv{opacity:1;transform:none}
-.rbs{font-size:10px;font-weight:600;color:var(--mu);opacity:0;transition:opacity .4s .1s}
-.rbs.sv{opacity:1}
-.ssc{background:var(--bgc);border:1px solid var(--bd);border-radius:13px;padding:16px}
-.slbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di);margin-bottom:9px}
-.dr{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-.dot{width:34px;height:34px;border-radius:8px;border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--di);transition:all .3s;flex-shrink:0}
-.dot.used{background:rgba(33,104,253,.15);border-color:rgba(33,104,253,.3);color:var(--bl)}
-.dot.won{background:rgba(74,222,128,.12);border-color:rgba(74,222,128,.3);color:var(--gr)}
-.dot.nxt{background:rgba(58,228,201,.08);border-color:rgba(58,228,201,.3);color:var(--te);animation:dp 1.5s ease infinite}
-@keyframes dp{0%,100%{box-shadow:0 0 0 0 rgba(58,228,201,.3)}50%{box-shadow:0 0 0 7px rgba(58,228,201,0)}}
-.spbtn{width:100%;padding:16px;background:var(--grad);border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:900;font-family:'Manrope',sans-serif;cursor:pointer;transition:opacity .2s,transform .15s;position:relative;overflow:hidden;letter-spacing:.5px}
-.spbtn::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.1);opacity:0;transition:opacity .2s}
-.spbtn:hover:not(:disabled)::before{opacity:1}
-.spbtn:hover:not(:disabled){transform:translateY(-1px)}
-.spbtn:disabled{opacity:.3;cursor:not-allowed;background:var(--card)}
-.spbtn.go{animation:bgo .5s ease infinite alternate}
-@keyframes bgo{from{box-shadow:0 0 20px rgba(33,104,253,.3)}to{box-shadow:0 0 50px rgba(58,228,201,.5)}}
-.sr{padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
-.sr::-webkit-scrollbar{width:2px}
-.sr::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-.mpc{background:var(--bgc);border:1px solid var(--bd);border-radius:13px;overflow:hidden;flex:1}
-.mph{padding:11px 15px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}
-.mpt{font-size:11px;font-weight:800}
-.mpct{font-size:9px;font-weight:700;color:var(--di)}
-.mpl{padding:6px}
-.mpe{padding:20px;text-align:center;color:var(--di);font-size:10px;font-weight:600}
-.mpi{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;border:1px solid transparent;transition:background .18s}
-.mpi:hover{background:var(--chi);border-color:var(--bd)}
-.mpn{width:20px;height:20px;border-radius:4px;background:rgba(33,104,253,.12);border:1px solid rgba(33,104,253,.2);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;color:var(--bl);flex-shrink:0}
-.mpnm{font-size:11px;font-weight:700;flex:1}
-.mpnm.di{color:var(--di)}
-.mptg{font-size:8px;font-weight:800;border-radius:4px;padding:2px 7px;white-space:nowrap}
-.mptg.w{color:var(--gr);background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2)}
-.mptg.m{color:var(--di);background:rgba(255,255,255,.03);border:1px solid var(--bd)}
-.di_nfo{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.18);border-radius:9px;padding:10px 13px;font-size:10px;font-weight:700;color:var(--gr);text-align:center;display:none}
-.di_nfo.show{display:block}
-.dlbtn{width:100%;padding:12px;background:rgba(33,104,253,.1);border:1px solid rgba(33,104,253,.22);border-radius:10px;color:var(--bl);font-size:12px;font-weight:800;font-family:'Manrope',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:7px}
-.dlbtn:hover{background:rgba(33,104,253,.18);border-color:rgba(33,104,253,.4)}
-.adh{padding:13px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.adhl{display:flex;align-items:center;gap:10px}
-.adhb{width:3px;height:26px;background:var(--gv);border-radius:2px}
-.adht{font-size:15px;font-weight:900}
-.adhr{display:flex;align-items:center;gap:8px}
-.adb{padding:20px 22px;overflow-y:auto;flex:1}
-.adb::-webkit-scrollbar{width:2px}
-.adb::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-.adst{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
-.ast{background:var(--bgc);border:1px solid var(--bd);border-radius:12px;padding:14px}
-.astn{font-size:26px;font-weight:900;letter-spacing:-1px;background:var(--gd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
-.astl{font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di);margin-top:3px}
-.asec{font-size:11px;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:7px;color:var(--mu)}
-.psl{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:18px}
-.psi{background:var(--bgc);border:1px solid var(--bd);border-radius:9px;padding:10px 13px}
-.psi.dep .psin{text-decoration:line-through;opacity:.4}
-.psin{font-size:10px;font-weight:700;margin-bottom:6px}
-.psbw{height:3px;background:rgba(255,255,255,.06);border-radius:2px;margin-bottom:5px}
-.psb{height:3px;border-radius:2px;transition:width .5s}
-.psc{font-size:12px;font-weight:900;text-align:right}
-.srw{display:flex;gap:8px;margin-bottom:12px}
-.si{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:8px;padding:9px 13px;font-size:12px;font-weight:600;font-family:'Manrope',sans-serif;color:var(--fg);outline:none;transition:border-color .2s}
-.si:focus{border-color:rgba(33,104,253,.4)}
-.si::placeholder{color:var(--di)}
-.atbl{width:100%;border-collapse:collapse;font-size:10px}
-.atbl th{padding:7px 11px;text-align:left;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di);border-bottom:1px solid var(--bd);background:rgba(255,255,255,.02)}
-.atbl td{padding:8px 11px;border-bottom:1px solid rgba(42,42,42,.5);vertical-align:top}
-.atbl tr:hover td{background:var(--chi)}
-.ptag{display:inline-block;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.18);border-radius:4px;padding:1px 6px;font-size:8px;font-weight:700;color:var(--gr);margin:1px}
-.mtag{display:inline-block;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:8px;font-weight:600;color:var(--di);margin:1px}
-.btn{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:7px;padding:6px 12px;color:var(--mu);font-size:10px;font-weight:700;font-family:'Manrope',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn:hover{background:rgba(255,255,255,.08);border-color:var(--bhi);color:var(--fg)}
-.btn.p{background:var(--gd);border:none;color:#fff}
-.btn.p:hover{opacity:.88}
-.btn.d:hover{border-color:rgba(255,80,80,.3);color:#FF6B6B}
-.lchip{display:inline-flex;align-items:center;gap:5px;font-size:9px;font-weight:700;color:var(--gr);background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.18);padding:4px 9px;border-radius:20px;white-space:nowrap}
-.ldot{width:5px;height:5px;border-radius:50%;background:var(--gr);animation:pulse 2s infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.4)}70%{opacity:.7;box-shadow:0 0 0 4px rgba(74,222,128,0)}}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:1000;backdrop-filter:blur(4px)}
-.modal.show{display:flex}
-.mbox{background:var(--bgc);border:1px solid var(--bd);border-radius:16px;padding:28px;max-width:320px;width:90%;text-align:center}
-.mttl{font-size:15px;font-weight:800;margin-bottom:5px}
-.msub{font-size:10px;color:var(--mu);margin-bottom:3px}
-.mpi{width:100%;background:rgba(33,104,253,.06);border:1px solid rgba(33,104,253,.18);border-radius:9px;padding:11px;font-size:13px;font-weight:700;font-family:'Manrope',sans-serif;color:var(--fg);outline:none;margin:10px 0;text-align:center;letter-spacing:3px}
-.mpi:focus{border-color:rgba(33,104,253,.45)}
-.merr{font-size:10px;color:#FF6B6B;display:none;margin-bottom:8px}
-.mbtns{display:flex;gap:8px}
-.mcan{flex:1;padding:10px;background:rgba(255,255,255,.05);border:1px solid var(--bd);border-radius:8px;color:var(--mu);font-size:11px;font-weight:700;font-family:'Manrope',sans-serif;cursor:pointer}
-canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:999}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#0a0a2e 0%,#1a1a4e 50%,#0d0d35 100%); min-height:100vh; color:#fff; }
+
+/* LOGIN */
+#loginScreen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
+.login-card { background:rgba(255,255,255,0.05); backdrop-filter:blur(20px); border:1px solid rgba(255,215,0,0.3); border-radius:24px; padding:40px; width:100%; max-width:420px; text-align:center; }
+.login-card h1 { font-size:28px; font-weight:800; color:#FFD700; margin-bottom:8px; }
+.login-card p { color:#aaa; margin-bottom:30px; }
+.login-card input { width:100%; padding:14px 18px; border-radius:12px; border:2px solid rgba(255,215,0,0.3); background:rgba(255,255,255,0.08); color:#fff; font-size:16px; font-family:'Sarabun',sans-serif; margin-bottom:16px; outline:none; text-align:center; letter-spacing:2px; }
+.login-card input:focus { border-color:#FFD700; }
+.btn-login { width:100%; padding:14px; background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; font-size:18px; font-weight:800; border:none; border-radius:12px; cursor:pointer; }
+#loginError { color:#ff6b6b; margin-top:12px; font-size:14px; display:none; }
+
+/* MAIN */
+#mainScreen { display:none; min-height:100vh; }
+.header { background:rgba(0,0,0,0.4); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,215,0,0.2); }
+.header-left h2 { color:#FFD700; font-size:18px; font-weight:800; }
+.header-left p { color:#aaa; font-size:13px; }
+.header-right { display:flex; gap:10px; }
+.btn-small { padding:8px 16px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08); color:#fff; font-size:13px; cursor:pointer; font-family:'Sarabun',sans-serif; }
+.btn-admin { border-color:rgba(255,215,0,0.4); color:#FFD700; }
+.tickets-bar { background:rgba(255,215,0,0.08); border-bottom:1px solid rgba(255,215,0,0.15); padding:10px 24px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.ticket-dot { width:14px; height:14px; border-radius:50%; background:#FFD700; display:inline-block; }
+.ticket-dot.used { background:#444; }
+
+/* WHEEL */
+.wheel-section { display:flex; flex-direction:column; align-items:center; padding:30px 20px; }
+.wheel-wrapper { position:relative; width:580px; height:580px; margin:0 auto; }
+#wheelCanvas { display:block; cursor:pointer; border-radius:50%; }
+.wheel-pointer { position:absolute; right:-18px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:20px solid transparent; border-bottom:20px solid transparent; border-left:40px solid #DD1111; z-index:10; }
+.wheel-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:72px; height:72px; background:#FFFFFF; border-radius:50%; border:5px solid #CCCCCC; z-index:5; display:flex; align-items:center; justify-content:center; font-size:26px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.3); }
+.spin-hint { margin-top:14px; color:rgba(255,255,255,0.5); font-size:14px; }
+
+/* HISTORY */
+.history-section { max-width:580px; width:100%; margin:20px auto 40px; }
+.history-section h3 { color:#FFD700; font-size:16px; margin-bottom:12px; }
+.history-item { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:12px 16px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
+.h-ticket { color:#FFD700; font-weight:700; font-size:13px; }
+.h-prize.win { color:#4ade80; font-size:14px; }
+.h-prize.miss { color:#888; font-size:14px; }
+.h-time { font-size:12px; color:#666; }
+
+/* ADMIN */
+#adminScreen { display:none; min-height:100vh; padding:24px; }
+.admin-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+.admin-header h1 { color:#FFD700; font-size:24px; font-weight:800; }
+.stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:24px; }
+.stat-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); border-radius:14px; padding:20px; text-align:center; }
+.stat-card .num { font-size:36px; font-weight:800; color:#FFD700; }
+.stat-card .label { font-size:13px; color:#aaa; margin-top:4px; }
+.admin-table-wrap { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:14px; overflow:hidden; margin-bottom:20px; }
+.admin-table-wrap h3 { padding:16px 20px; border-bottom:1px solid rgba(255,255,255,0.08); color:#FFD700; font-size:15px; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+th { background:rgba(255,215,0,0.08); padding:10px 14px; text-align:left; color:#FFD700; font-weight:700; }
+td { padding:10px 14px; border-bottom:1px solid rgba(255,255,255,0.04); color:#ddd; }
+tr:last-child td { border-bottom:none; }
+.badge { display:inline-block; padding:2px 10px; border-radius:20px; font-size:12px; font-weight:700; }
+.badge.win { background:rgba(74,222,128,0.15); color:#4ade80; }
+.badge.miss { background:rgba(255,255,255,0.06); color:#888; }
+.btn-export { padding:10px 20px; background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; font-family:'Sarabun',sans-serif; }
+.prize-stock { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; padding:16px 20px; }
+.prize-item .pname { font-size:13px; color:#ddd; margin-bottom:6px; }
+.prize-item .pbar { height:6px; border-radius:3px; background:rgba(255,255,255,0.1); overflow:hidden; }
+.prize-item .pfill { height:100%; border-radius:3px; background:linear-gradient(90deg,#FFD700,#FFA500); }
+.prize-item .pcount { font-size:12px; color:#888; margin-top:4px; }
+.setup-section { text-align:center; margin:20px 0; }
+.btn-setup { padding:10px 24px; background:rgba(255,100,100,0.15); border:1px solid rgba(255,100,100,0.4); color:#ff8888; border-radius:10px; cursor:pointer; font-size:13px; font-family:'Sarabun',sans-serif; }
+
+/* ADMIN MODAL */
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:100; align-items:center; justify-content:center; }
+.modal-overlay.active { display:flex; }
+.modal-box { background:#1a1a3e; border:1px solid rgba(255,215,0,0.3); border-radius:20px; padding:32px; width:90%; max-width:380px; text-align:center; }
+.modal-box h3 { color:#FFD700; font-size:20px; margin-bottom:16px; }
+.modal-box input { width:100%; padding:12px; border-radius:10px; border:2px solid rgba(255,215,0,0.3); background:rgba(255,255,255,0.08); color:#fff; font-size:16px; font-family:'Sarabun',sans-serif; margin-bottom:12px; outline:none; text-align:center; }
+.modal-box input:focus { border-color:#FFD700; }
+.modal-btn-row { display:flex; gap:10px; }
+.modal-btn-row button { flex:1; padding:12px; border-radius:10px; border:none; cursor:pointer; font-size:15px; font-weight:700; font-family:'Sarabun',sans-serif; }
+.btn-confirm { background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; }
+.btn-cancel { background:rgba(255,255,255,0.08); color:#aaa; border:1px solid rgba(255,255,255,0.15) !important; }
+
+/* RESULT POPUP */
+#resultPopup {
+  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88);
+  z-index:500; align-items:center; justify-content:center;
+}
+#resultPopup.active { display:flex; }
+.popup-box {
+  position:relative; text-align:center; padding:56px 48px 48px;
+  border-radius:32px; width:90%; max-width:520px;
+  animation: popIn .4s cubic-bezier(0.175,0.885,0.32,1.275) both;
+}
+.popup-box.win {
+  background:linear-gradient(160deg,#1a1a00 0%,#2a1f00 100%);
+  border:3px solid #FFD700;
+}
+.popup-box.miss {
+  background:linear-gradient(160deg,#0d0d1a 0%,#1a1a2e 100%);
+  border:2px solid rgba(255,255,255,0.12);
+}
+@keyframes popIn {
+  from { transform:scale(0.5); opacity:0; }
+  to   { transform:scale(1);   opacity:1; }
+}
+.popup-icon { font-size:80px; line-height:1; margin-bottom:20px; }
+.popup-title { font-size:36px; font-weight:800; margin-bottom:12px; }
+.popup-title.win { color:#FFD700; }
+.popup-title.miss { color:#aaa; }
+.popup-prize { font-size:28px; font-weight:800; color:#fff; margin-bottom:8px; background:rgba(255,215,0,0.12); padding:14px 24px; border-radius:14px; border:1px solid rgba(255,215,0,0.3); }
+.popup-sub { font-size:16px; color:#aaa; margin-bottom:32px; }
+.popup-close {
+  padding:14px 48px; border-radius:14px; border:none; cursor:pointer;
+  font-size:18px; font-weight:800; font-family:'Sarabun',sans-serif;
+}
+.popup-close.win { background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; }
+.popup-close.miss { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2); }
+.popup-ticket { font-size:13px; color:#666; margin-top:16px; }
+
+/* Stars animation for win */
+.star { position:absolute; font-size:24px; animation:starFloat 2s ease-in-out infinite; }
+@keyframes starFloat {
+  0%,100% { transform:translateY(0) rotate(0deg); opacity:0.8; }
+  50%      { transform:translateY(-12px) rotate(20deg); opacity:1; }
+}
+
+/* CONFETTI */
+@keyframes confettiFall { to { transform:translateY(110vh) rotate(720deg); opacity:0; } }
+.confetti-piece { position:fixed; top:-10px; animation:confettiFall linear forwards; z-index:600; border-radius:2px; pointer-events:none; }
 </style>
 </head>
 <body>
 
-<!-- LOGIN — SN only, no PIN -->
-<div id="vL">
-  <div class="lg"></div><div class="lgg"></div>
-  <div class="lb">
-    <div class="ll"><div class="llb"></div><div><div class="lt">SGC Lucky Draw 2026</div><div class="ls">Annual Event</div></div></div>
-    <label class="flbl">SN Number</label>
-    <input class="fi" id="iSN" type="text" placeholder="Scan หรือพิมพ์ SN Number..." autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
-    <div class="lerr" id="lerr"></div>
-    <button class="lbtn" onclick="doLogin()">เข้าสู่ระบบ</button>
-    <div class="al" onclick="showAdmModal()">Admin Dashboard</div>
-    <div class="slnk" onclick="setupDB()">⚙ Setup Database (รันครั้งแรกเท่านั้น)</div>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div style="font-size:48px;margin-bottom:12px;">🎰</div>
+    <h1>SGC Lucky Draw 2026</h1>
+    <p>กรอก SN ของคุณเพื่อเข้าสู่ระบบ</p>
+    <input type="text" id="snInput" placeholder="Employee SN" maxlength="20" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn-login" onclick="doLogin()">🎟️ เข้าสู่ระบบ</button>
+    <div id="loginError">❌ ไม่พบ SN นี้ในระบบ หรือบัญชีถูกระงับ</div>
   </div>
 </div>
 
-<!-- SPIN VIEW -->
-<div id="vS" style="display:none;flex-direction:column">
-  <div class="sh">
-    <div class="shl"><div class="shb"></div><div><div class="shn" id="spN">—</div><div class="shsn" id="spSN">—</div></div></div>
-    <div class="shr">
-      <div class="tp"><div class="tpn" id="spTK">0</div><div class="tpl">ตั๋ว</div></div>
-      <button class="ob" onclick="doLogout()">ออก</button>
+<!-- MAIN -->
+<div id="mainScreen">
+  <div class="header">
+    <div class="header-left">
+      <h2>🎰 SGC Lucky Draw 2026</h2>
+      <p id="welcomeText">ยินดีต้อนรับ</p>
+    </div>
+    <div class="header-right">
+      <button class="btn-small btn-admin" onclick="showAdminModal()">⚙ Admin</button>
+      <button class="btn-small" onclick="doLogout()">ออกจากระบบ</button>
     </div>
   </div>
-  <div class="sbdy">
-    <div class="sl">
-      <div class="wsec">
-        <div class="wg" id="wg"></div>
-        <div class="ww">
-          <svg class="wptr" width="28" height="34" viewBox="0 0 28 34">
-            <polygon points="14,2 27,30 14,23 1,30" fill="url(#wpg)" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-            <defs><linearGradient id="wpg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#3AE4C9"/></linearGradient></defs>
-          </svg>
-          <canvas id="whl" width="300" height="300"></canvas>
-        </div>
-        <div class="rb" id="rb">
-          <div class="rbl">ผลการเสี่ยงดวง</div>
-          <div class="rbp" id="rbp">กดปุ่มด้านล่างเพื่อเริ่ม</div>
-          <div class="rbs" id="rbs"></div>
-        </div>
-      </div>
-      <div class="ssc">
-        <div class="slbl">สถานะสิทธิ์การหมุน</div>
-        <div class="dr" id="dr"></div>
-        <button class="spbtn" id="spbtn" onclick="doSpin()" disabled>RANDOM</button>
-      </div>
+  <div class="tickets-bar" id="ticketsBar"></div>
+  <div class="wheel-section">
+    <div class="wheel-wrapper">
+      <canvas id="wheelCanvas" width="580" height="580" onclick="spinWheel()"></canvas>
+      <div class="wheel-pointer"></div>
+      <div class="wheel-center" onclick="spinWheel()">🎯</div>
     </div>
-    <div class="sr">
-      <div class="mpc">
-        <div class="mph"><div class="mpt">ของรางวัลที่ได้</div><div class="mpct" id="mpct">0 รายการ</div></div>
-        <div class="mpl" id="mpl"><div class="mpe">ยังไม่มีของรางวัล</div></div>
-      </div>
-      <div class="di_nfo" id="diNfo">✓ ใช้สิทธิ์ครบแล้ว<br><span style="font-size:9px;font-weight:600;color:var(--mu)">บันทึกอัตโนมัติแล้ว</span></div>
-      <button class="dlbtn" onclick="dlPNG()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download ใบสรุปรางวัล (PNG)
-      </button>
-    </div>
+    <p class="spin-hint">คลิกที่วงล้อเพื่อหมุน</p>
+  </div>
+  <div class="history-section">
+    <h3>📋 ประวัติการหมุน</h3>
+    <div id="historyList"><p style="color:#666;text-align:center;padding:20px;">กำลังโหลด...</p></div>
   </div>
 </div>
 
 <!-- ADMIN -->
-<div id="vA" style="display:none;flex-direction:column">
-  <div class="adh">
-    <div class="adhl"><div class="adhb"></div><div><div class="adht">Admin Dashboard</div></div></div>
-    <div class="adhr">
-      <div class="lchip"><div class="ldot"></div>LIVE</div>
-      <button class="btn" onclick="expCSV()">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export CSV
-      </button>
-      <button class="btn d" onclick="doReset()">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>Reset
-      </button>
-      <button class="btn" onclick="doLogout()">ออก</button>
+<div id="adminScreen">
+  <div class="admin-header">
+    <h1>⚙ Admin Dashboard</h1>
+    <div style="display:flex;gap:10px;">
+      <button class="btn-export" onclick="exportCSV()">📥 Export CSV</button>
+      <button class="btn-small" onclick="showMain()">← กลับ</button>
     </div>
   </div>
-  <div class="adb">
-    <div class="adst">
-      <div class="ast"><div class="astn">179</div><div class="astl">Total Prizes</div></div>
-      <div class="ast"><div class="astn" id="aRem">—</div><div class="astl">Remaining</div></div>
-      <div class="ast"><div class="astn" id="aPar">—</div><div class="astl">Participants</div></div>
-      <div class="ast"><div class="astn" id="aSp">—</div><div class="astl">Total Spins</div></div>
-    </div>
-    <div class="asec">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Prize Stock
-    </div>
-    <div class="psl" id="psl"></div>
-    <div class="asec">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>Participant Results
-    </div>
-    <div class="srw"><input class="si" id="aSrch" placeholder="Search name or SN..." oninput="filterTbl()"></div>
-    <table class="atbl">
-      <thead><tr><th>#</th><th>Name</th><th>SN</th><th>Tickets</th><th>Spins</th><th>Prizes Won</th><th>Last Activity</th></tr></thead>
-      <tbody id="atb"></tbody>
-    </table>
+  <div class="stats-grid">
+    <div class="stat-card"><div class="num" id="statTotal">-</div><div class="label">พนักงานทั้งหมด</div></div>
+    <div class="stat-card"><div class="num" id="statPlayed">-</div><div class="label">เล่นแล้ว</div></div>
+    <div class="stat-card"><div class="num" id="statSpins">-</div><div class="label">หมุนทั้งหมด</div></div>
+    <div class="stat-card"><div class="num" id="statWins">-</div><div class="label">ได้รางวัล</div></div>
   </div>
-</div>
-
-<!-- ADMIN LOGIN MODAL -->
-<div class="modal" id="admModal">
-  <div class="mbox">
-    <div class="mttl">Admin Access</div>
-    <div class="msub">รหัสผ่าน Admin</div>
-    <input class="mpi" id="admPass" type="password" placeholder="••••••" onkeydown="if(event.key==='Enter')chkAdm()">
-    <div class="merr" id="admErr">รหัสผ่านไม่ถูกต้อง</div>
-    <div class="mbtns">
-      <button class="mcan" onclick="closeAdmModal()">ยกเลิก</button>
-      <button class="btn p" style="flex:1;justify-content:center" onclick="chkAdm()">เข้าสู่ระบบ</button>
+  <div class="admin-table-wrap">
+    <h3>🏆 สต็อกรางวัล</h3>
+    <div class="prize-stock" id="prizeStockGrid"></div>
+  </div>
+  <div class="setup-section">
+    <button class="btn-setup" onclick="setupDatabase()">⚙ Setup Database — รันครั้งแรกเท่านั้น</button>
+  </div>
+  <div class="admin-table-wrap">
+    <h3>📋 ประวัติการหมุนทั้งหมด</h3>
+    <div style="overflow-x:auto;">
+      <table><thead><tr><th>SN</th><th>ชื่อ</th><th>ตั๋วที่</th><th>รางวัล</th><th>ผล</th><th>เวลา</th></tr></thead>
+      <tbody id="allDrawsTable"></tbody></table>
+    </div>
+  </div>
+  <div class="admin-table-wrap" style="margin-top:20px;">
+    <h3>👥 รายชื่อพนักงาน</h3>
+    <div style="overflow-x:auto;">
+      <table><thead><tr><th>SN</th><th>ชื่อ</th><th>ตั๋ว</th><th>ใช้แล้ว</th><th>สถานะ</th></tr></thead>
+      <tbody id="employeeTable"></tbody></table>
     </div>
   </div>
 </div>
 
-<!-- LOADING -->
-<div class="lov" id="lov">
-  <div class="lob"><div class="spin"></div><div class="ltxt" id="ltxt">กำลังโหลด...</div></div>
+<!-- ADMIN MODAL -->
+<div class="modal-overlay" id="adminModal">
+  <div class="modal-box">
+    <h3>🔐 Admin Login</h3>
+    <input type="password" id="adminPwInput" placeholder="รหัสผ่าน Admin" onkeydown="if(event.key==='Enter')checkAdmin()">
+    <div id="adminPwError" style="color:#ff6b6b;font-size:13px;margin-bottom:10px;display:none;">รหัสผ่านไม่ถูกต้อง</div>
+    <div class="modal-btn-row">
+      <button class="btn-cancel" onclick="closeAdminModal()">ยกเลิก</button>
+      <button class="btn-confirm" onclick="checkAdmin()">เข้าสู่ระบบ</button>
+    </div>
+  </div>
 </div>
 
-<canvas id="conf"></canvas>
+<!-- RESULT POPUP -->
+<div id="resultPopup">
+  <div class="popup-box" id="popupBox">
+    <div class="popup-icon" id="popupIcon"></div>
+    <div class="popup-title" id="popupTitle"></div>
+    <div id="popupPrize"></div>
+    <div class="popup-sub" id="popupSub"></div>
+    <button class="popup-close" id="popupClose" onclick="closePopup()">ตกลง</button>
+    <div class="popup-ticket" id="popupTicket"></div>
+  </div>
+</div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, query, where, orderBy, onSnapshot, runTransaction, getDocs, serverTimestamp, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const FC = {
-  apiKey:"AIzaSyCitdAnkw-_5Va_a1VMlHWT1FfiRairpx4",
-  authDomain:"sgc-lucky-draw-2026.firebaseapp.com",
-  projectId:"sgc-lucky-draw-2026",
-  storageBucket:"sgc-lucky-draw-2026.firebasestorage.app",
-  messagingSenderId:"335286641880",
-  appId:"1:335286641880:web:51b4545e3ff8e6f21c23ad"
+<script>
+// ── FIREBASE ──
+const firebaseConfig = {
+  apiKey: "AIzaSyB0KhbCMrGFZpxXJxMUiJqV1LTbpUMDLJg",
+  authDomain: "sgc-lucky-draw-2026.firebaseapp.com",
+  projectId: "sgc-lucky-draw-2026",
+  storageBucket: "sgc-lucky-draw-2026.firebasestorage.app",
+  messagingSenderId: "335286641880",
+  appId: "1:335286641880:web:51b4545e3ff8e6f21c23ad"
 };
-const app = initializeApp(FC);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-const PRIZES = [
-  {id:'fan',      name:'พัดลม Hatari',            total:1,  bg:'#0f2a5c',ac:'#60a5fa',l1:'พัดลม',     l2:'Hatari'},
-  {id:'towel',    name:'ผ้าขุนหนู Frolina',        total:1,  bg:'#2a0f5c',ac:'#c084fc',l1:'ผ้าขุนหนู', l2:'Frolina'},
-  {id:'blanket',  name:'ผ้าห่มเย็น besico',         total:1,  bg:'#0f3a2a',ac:'#34d399',l1:'ผ้าห่มเย็น',l2:'besico'},
-  {id:'uv_shirt', name:'เสื้อแขนยาว UV',            total:5,  bg:'#3a2000',ac:'#fbbf24',l1:'เสื้อแขนยาว',l2:'UV'},
-  {id:'scale',    name:'เครื่องชั่งน้ำหนัก',        total:1,  bg:'#1a0f3a',ac:'#a78bfa',l1:'เครื่องชั่ง',l2:'น้ำหนัก'},
-  {id:'nano_mask',name:'หน้ากากผ้านาโนแพ็คคู่',     total:80, bg:'#0f2a14',ac:'#4ade80',l1:'หน้ากากผ้า',l2:'นาโน'},
-  {id:'inhaler',  name:'ยาดม ตาพาสเทล',            total:20, bg:'#3a0f1a',ac:'#fb7185',l1:'ยาดม',      l2:'พาสเทล'},
-  {id:'mama',     name:'มาม่าคัพเล็ก',              total:10, bg:'#2a1800',ac:'#fcd34d',l1:'มาม่า',     l2:'คัพเล็ก'},
-  {id:'ovaltine', name:'โอวัลตินซอง',               total:60, bg:'#0f1a3a',ac:'#38bdf8',l1:'โอวัลติน', l2:'ซอง'},
+// ── STATE ──
+let currentEmployee = null;
+let currentParticipant = null;
+let prizes = [];
+let isSpinning = false;
+let currentRotation = 0;
+let wheelSegments = [];
+
+// ── PRIZE MASTER DATA ──
+// total = จำนวนรางวัลจริง = จำนวนแถบในวงล้อ (เต็มๆ ไม่ปรับ)
+const PRIZE_DATA = [
+  { id:'fan',      name:'พัดลม Hatari',           total:1,  color:'#E8303A' },
+  { id:'towel',    name:'ผ้าขนหนู Frolina',       total:1,  color:'#4285F4' },
+  { id:'blanket',  name:'ผ้าห่มเย็น สีฟ้า besico',total:1,  color:'#34A853' },
+  { id:'shirt',    name:'เสื้อแขนยาว UV',         total:5,  color:'#FBBC04' },
+  { id:'scale',    name:'เครื่องชั่งน้ำหนัก',    total:1,  color:'#FF6D00' },
+  { id:'mask',     name:'หน้ากากผ้านาโนแพ็คคู่',total:80, color:'#0288D1' },
+  { id:'inhaler',  name:'ยาดม ตาพาสเทล',         total:20, color:'#7B1FA2' },
+  { id:'mama',     name:'มาม่าคัพเล็ก',           total:10, color:'#F4511E' },
+  { id:'ovaltine', name:'โอวัลตินซอง',            total:60, color:'#388E3C' }
 ];
 
-const EMP = {
-  "1000248304":{name:"Kanokgarn Piromnoi",tickets:2},
-  "2200238":{name:"Anirut Senparb",tickets:1},
-  "7147591":{name:"Grittin Prajunthon",tickets:1},
-  "2438074":{name:"Kritchai Uawithaya",tickets:1},
-  "2200257":{name:"Napat Pannanakool",tickets:1},
-  "2438078":{name:"Sarayoot Longklong",tickets:1},
-  "7153791":{name:"Yuttapoom Bunta",tickets:1},
-  "2430916":{name:"Booncherd Wongprajun",tickets:1},
-  "2400333":{name:"Noppasit Suwaratthanont",tickets:1},
-  "2004401":{name:"Chanasorn Waewking",tickets:1},
-  "7120619":{name:"Chatree Micharee",tickets:2},
-  "2416214":{name:"Jatuphol Chainad",tickets:2},
-  "2404423":{name:"Ameon Siriphed",tickets:1},
-  "1000242055":{name:"Anamika Ngoenoiu",tickets:1},
-  "2430556":{name:"Apapan Wila",tickets:1},
-  "2004758":{name:"Aranya Sitthiboon",tickets:1},
-  "2435143":{name:"Channipha Kuyphinikorn",tickets:1},
-  "2002574":{name:"Chuenchom Apitamwiwat",tickets:1},
-  "7149428":{name:"Chutiphon Thongthong",tickets:1},
-  "2421119":{name:"Dararut Kodsamnuan",tickets:1},
-  "2442133":{name:"Jeeranan Chotinet",tickets:1},
-  "7126238":{name:"Laphassarin Suwanchairob",tickets:1},
-  "2429047":{name:"Mintra Thaothong",tickets:1},
-  "2003529":{name:"Nattapron Netsuwan",tickets:1},
-  "2440429":{name:"Pichamon Chomdorn",tickets:1},
-  "2002517":{name:"Ratdawan Mamukda",tickets:1},
-  "7190178":{name:"Sawitree Wasiwat",tickets:1},
-  "2200660":{name:"Jidapha Bunnoy",tickets:1},
-  "2436449":{name:"Wirat Techamalaungkul",tickets:1},
-  "1000285595":{name:"Kajornsak Boonmee",tickets:2},
-  "2405533":{name:"Chanchai Chimsungnoen",tickets:1},
-  "1000243767":{name:"Anucha Chotsupharit",tickets:1},
-  "2005540":{name:"Jaran Khansorn",tickets:1},
-  "2422288":{name:"Kritsana Manakrood",tickets:1},
-  "2410584":{name:"Nattheera Teboonmee",tickets:1},
-  "2002087":{name:"Pimolnat Preechathitiwat",tickets:1},
-  "2005802":{name:"Raerai Khaminthong",tickets:1},
-  "2002909":{name:"Rapeeporn Wongwai",tickets:1},
-  "2414698":{name:"Sukanya Sookruang",tickets:1},
-  "2200594":{name:"Anucha Rakphirom",tickets:2},
-  "1000294229":{name:"Nattanicha Tanapoomchai",tickets:3},
-  "7145687":{name:"Pilaiwan Wongwat",tickets:1},
-  "1000025867":{name:"Sawitree Vanhakij",tickets:1},
-  "2431874":{name:"Adisak Tajo",tickets:1},
-  "2004339":{name:"Pairot Chanawatee",tickets:1},
-  "2200669":{name:"Panphitcha Thatmee",tickets:1},
-  "7106054":{name:"Sittichai Buayeam",tickets:1},
-  "2418270":{name:"Sarawut Rungruaysap",tickets:1},
-  "7123111":{name:"Suntisuk Srikrot",tickets:1},
-  "2007946":{name:"Achitaya Varin",tickets:1},
-  "2003457":{name:"Arreerat Vorraphan",tickets:1},
-  "7105811":{name:"Jittima Padsoda",tickets:1},
-  "2412258":{name:"Paradorn Sophak",tickets:1},
-  "2419563":{name:"Pongsak Phoseeta",tickets:1},
-  "2400047":{name:"Rung-Arun Suerto",tickets:1},
-  "2005214":{name:"Siranee Sripong",tickets:1},
-  "7105826":{name:"Siriwat Dunmadan",tickets:1},
-  "2008011":{name:"Sithara Kusub",tickets:1},
-  "2005481":{name:"Supaporn Kamkhunthod",tickets:1},
-  "7105808":{name:"Sutatsana Suebsaun",tickets:1},
-  "2400271":{name:"Thanawan Vilasri",tickets:1},
-  "1000243152":{name:"Thirayut Srisomboon",tickets:1},
-  "2418576":{name:"Winai Anurak",tickets:1},
-  "2004697":{name:"Somporn Subin",tickets:1},
-  "2438060":{name:"Ladawan Thatwisai",tickets:1},
-  "2401201":{name:"Mayuree Ummatthai",tickets:1},
-  "2000591":{name:"Kamonwan Kumla",tickets:2},
-  "2423430":{name:"Atichard Kupanlam",tickets:2},
-  "2417218":{name:"Atikan Hemnithi",tickets:2},
-  "2005164":{name:"Benjawan Ratchooree",tickets:1},
-  "2002929":{name:"Chanyanuch Chanchula",tickets:2},
-  "2200347":{name:"Jaruwat Nopakan",tickets:2},
-  "2408017":{name:"Nhungnut Sawhatdi",tickets:2},
-  "2435144":{name:"Piyaanan Huanhong",tickets:2},
-  "7130549":{name:"Rosuelee Bulah",tickets:2},
-  "2200515":{name:"Saowalak Pribvai",tickets:2},
-  "1000242609":{name:"Tidarat Sertkratok",tickets:2},
-  "1000255473":{name:"Wanida Masuk",tickets:2},
-  "7176897":{name:"Thunyasamorn Nanthakid",tickets:1},
-  "7152379":{name:"Tiwanon Laoprajit",tickets:1},
-  "2435174":{name:"Narumol Poempoon",tickets:1},
-  "2407510":{name:"Sarawut Pornsee",tickets:1},
-  "1000258002":{name:"Ratri Kaeochan",tickets:1},
-  "2400025":{name:"Bancha Saensook",tickets:1},
-  "2400086":{name:"Winyoo Suksamran",tickets:1},
-  "7153688":{name:"wantipa boonnontae",tickets:2},
-  "2435961":{name:"Wattanachai Soidokson",tickets:1},
-  "2415606":{name:"Wichai Jarassuttipong",tickets:2},
-  "1000005678":{name:"Wilasinee Sunracha",tickets:1},
-  "1000255244":{name:"Wiwaporn Khamkha",tickets:1},
-  "1000283301":{name:"Worraprat Thantanasap",tickets:1},
-  "1000245885":{name:"Ladaranee Krongsombut",tickets:1},
-  "1000242193":{name:"Atchara Yookhong",tickets:2},
-  "2004906":{name:"Jansuda Promnoi",tickets:2},
-  "1000270790":{name:"Kanchana Chaloeisak",tickets:2},
-  "2407769":{name:"Kanthatee Chantha",tickets:2},
-  "1000284331":{name:"Kanyaluk Pornchai",tickets:2},
-  "7145297":{name:"Khomsan Sahwangkaeo",tickets:2},
-  "2002583":{name:"Onnalin Sawangdee",tickets:2},
-  "2439466":{name:"Seksan Boonchoo",tickets:2},
-  "2445924":{name:"Siriluk Chaisiri",tickets:2},
-  "2425010":{name:"Thongpoon Namtho",tickets:2},
-  "1000248188":{name:"Waraporn Suriyawong",tickets:2},
-  "2438066":{name:"Wittaya Kaewprom",tickets:2},
-  "2413045":{name:"Supaporn Parusook",tickets:1},
-  "2003729":{name:"Thonglon Theampat",tickets:1},
-  "2001030":{name:"Nadtamon Boontamrongthanachot",tickets:1},
-  "2000797":{name:"Junjira Saijaem",tickets:1},
-  "7107241":{name:"Akekawat Ketin",tickets:1},
-  "2403214":{name:"Pruksa Kachari",tickets:1},
-  "7107114":{name:"Samai Chailert",tickets:1},
-  "7105790":{name:"Apinya Janwichai",tickets:1},
-  "2007895":{name:"Wilawan Kamjorn",tickets:1},
-  "7107380":{name:"Phokin Korkeaw",tickets:1},
-  "2200635":{name:"Phattira Kleekhajorn",tickets:1},
-  "7106953":{name:"Chanintra Klahanveeragul",tickets:1},
-  "2200280":{name:"Rattanapron Pholdon",tickets:1},
-  "2200511":{name:"Paranee Treemoon",tickets:1},
-  "1000297899":{name:"Khermintra Chawasit",tickets:1},
-  "1000276711":{name:"Karnchanaphon Kankitdumrong",tickets:1},
-  "7320809":{name:"Warisa Phochoo",tickets:1},
-  "1000297312":{name:"Wanwisa Poasakun",tickets:1},
-  "2410309":{name:"Kanjaree Chatluang",tickets:1},
-  "2411072":{name:"Jutamas Thanyaphol",tickets:1},
-  "7153614":{name:"Suthathip Boonnil",tickets:1},
+// สีสลับเฉดเข้ม-อ่อน สำหรับแต่ละรางวัลเพื่อแบ่งแถบ
+const PRIZE_SHADE = {
+  fan:      ['#E8303A','#C42020'],
+  towel:    ['#4285F4','#2A6BCF'],
+  blanket:  ['#34A853','#217A38'],
+  shirt:    ['#FBBC04','#D49A00'],
+  scale:    ['#FF6D00','#CC5500'],
+  mask:     ['#0288D1','#0165A0'],
+  inhaler:  ['#7B1FA2','#590F7A'],
+  mama:     ['#F4511E','#C73A10'],
+  ovaltine: ['#388E3C','#256128']
 };
 
-let CUR=null, SC={}, aUnsub=null, wA=0, spinning=false, allDraws=[];
-document.fonts.ready.then(()=>drawW(wA));
+const EMPLOYEE_DATA = [
+  { sn:'1000294229', name:'Nattanicha', tickets:3 },
+  { sn:'1000312456', name:'Somchai',    tickets:2 },
+  { sn:'1000278901', name:'Pranee',     tickets:5 },
+  { sn:'1000345678', name:'Wichai',     tickets:1 },
+  { sn:'1000289012', name:'Malee',      tickets:3 },
+  { sn:'1000301234', name:'Thanit',     tickets:2 },
+  { sn:'1000367890', name:'Siriporn',   tickets:4 },
+  { sn:'1000323456', name:'Kamon',      tickets:2 },
+  { sn:'1000290123', name:'Pailin',     tickets:3 },
+  { sn:'1000334567', name:'Noparat',    tickets:1 }
+];
 
-// ── SETUP ────────────────────────────────────────
-async function setupDB() {
-  showL('กำลัง Setup...');
-  try {
-    for (const p of PRIZES) await setDoc(doc(db,'prizes',p.id),{name:p.name,total:p.total,remaining:p.total},{merge:true});
-    for (const [sn,e] of Object.entries(EMP)) {
-      await setDoc(doc(db,'employees',sn),{name:e.name,sn,tickets:e.tickets,active:true},{merge:true});
-      await setDoc(doc(db,'participants',sn),{sn,usedTickets:0,lastLogin:null,status:'pending'},{merge:true});
+// ── BUILD SEGMENTS — 1 รางวัล = 1 แถบ ──
+function buildSegments() {
+  const segs = [];
+  for (const pd of PRIZE_DATA) {
+    const live = prizes.find(p => p.id === pd.id);
+    const remaining = live !== undefined ? live.remaining : pd.total;
+    for (let i = 0; i < remaining; i++) {
+      segs.push({ prizeId: pd.id, name: pd.name, color: PRIZE_SHADE[pd.id][i % 2] });
     }
-    await setDoc(doc(db,'config','admin'),{password:'SGC2026Admin'},{merge:true});
-    hideL(); alert('✅ Setup เสร็จแล้ว! Admin: SGC2026Admin');
-  } catch(e){hideL();alert('Error: '+e.message);}
+  }
+  // Shuffle
+  for (let i = segs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [segs[i], segs[j]] = [segs[j], segs[i]];
+  }
+  return segs;
 }
 
-// ── LOGIN (SN only) ───────────────────────────────
-async function doLogin() {
-  const sn = document.getElementById('iSN').value.trim().replace(/\s/g,'');
-  const err = document.getElementById('lerr');
-  err.style.display='none';
-  if (!sn) { showErr('กรุณากรอก SN Number'); return; }
+// ── DRAW WHEEL ──
+function drawWheel(rot) {
+  const canvas = document.getElementById('wheelCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, cx = W / 2, R = cx - 4;
+  ctx.clearRect(0, 0, W, W);
 
-  showL('กำลังตรวจสอบ...');
+  const segs = wheelSegments;
+  if (!segs.length) {
+    ctx.beginPath(); ctx.arc(cx,cx,R,0,2*Math.PI);
+    ctx.fillStyle='#333'; ctx.fill();
+    ctx.fillStyle='#fff'; ctx.font='20px Sarabun'; ctx.textAlign='center';
+    ctx.fillText('ไม่มีรางวัลเหลือ', cx, cx);
+    return;
+  }
+
+  const arc = (2 * Math.PI) / segs.length;
+
+  for (let i = 0; i < segs.length; i++) {
+    const sa = rot + i * arc;
+    const ea = sa + arc;
+    const ma = sa + arc / 2;
+
+    // Fill
+    ctx.beginPath();
+    ctx.moveTo(cx, cx);
+    ctx.arc(cx, cx, R, sa, ea);
+    ctx.closePath();
+    ctx.fillStyle = segs[i].color;
+    ctx.fill();
+
+    // Border
+    ctx.strokeStyle = '#FFFFFF';
+    ctx.lineWidth = arc > 0.05 ? 2 : 1;
+    ctx.stroke();
+
+    // Text — only if segment wide enough
+    const arcPx = arc * R;
+    if (arcPx < 14) continue;
+
+    ctx.save();
+    ctx.translate(cx, cx);
+    ctx.rotate(ma);
+
+    // Short label: first word or 6 chars
+    const fullName = segs[i].name;
+    const label = getShortLabel(fullName, arcPx);
+    const fs = Math.max(9, Math.min(16, arcPx / (label.includes('\n') ? 6 : 4)));
+    const lines = label.split('\n');
+    const lh = fs * 1.3;
+    const totalH = lines.length * lh;
+    const textR = R * 0.64;
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = `700 ${fs}px 'Sarabun',sans-serif`;
+    ctx.fillStyle = '#FFFFFF';
+    if (arcPx > 24) {
+      ctx.strokeStyle = 'rgba(0,0,0,0.6)';
+      ctx.lineWidth = 2.5;
+      ctx.lineJoin = 'round';
+    }
+
+    lines.forEach((line, li) => {
+      const y = -totalH / 2 + li * lh + lh / 2;
+      if (arcPx > 24) ctx.strokeText(line, textR, y);
+      ctx.fillText(line, textR, y);
+    });
+    ctx.restore();
+  }
+
+  // Outer ring
+  ctx.beginPath();
+  ctx.arc(cx, cx, R, 0, 2*Math.PI);
+  ctx.strokeStyle = '#BBBBBB';
+  ctx.lineWidth = 4;
+  ctx.stroke();
+
+  // Center circle
+  ctx.beginPath();
+  ctx.arc(cx, cx, 38, 0, 2*Math.PI);
+  ctx.fillStyle = '#FFFFFF'; ctx.fill();
+  ctx.strokeStyle = '#CCCCCC'; ctx.lineWidth = 4; ctx.stroke();
+}
+
+function getShortLabel(name, arcPx) {
+  if (arcPx >= 60) {
+    // Wide enough: try 2 lines
+    const parts = name.split(' ');
+    if (parts.length >= 2) return parts[0] + '\n' + parts.slice(1).join(' ');
+    return name.length > 8 ? name.slice(0,8) : name;
+  }
+  if (arcPx >= 28) {
+    // First word only
+    return name.split(' ')[0];
+  }
+  // Very small: first 3 chars
+  return name.slice(0, 3);
+}
+
+// ── SPIN ──
+async function spinWheel() {
+  if (isSpinning) return;
+  if (!currentEmployee || !currentParticipant) return;
+  const used = currentParticipant.usedTickets || 0;
+  if (used >= currentEmployee.tickets) {
+    showPopup(false, null, 'คุณใช้ตั๋วครบแล้ว', 'ไม่สามารถหมุนได้อีก');
+    return;
+  }
+
+  isSpinning = true;
+  const result = await determineResult();
+  const segs = wheelSegments;
+  const arc = (2 * Math.PI) / segs.length;
+
+  let targetIdx = 0;
+  if (result.won) {
+    const matches = segs.map((s,i) => s.prizeId === result.prizeId ? i : -1).filter(i => i >= 0);
+    if (matches.length) targetIdx = matches[Math.floor(Math.random() * matches.length)];
+  } else {
+    // land on any segment (all are prize segments but result overrides to miss)
+    targetIdx = Math.floor(Math.random() * segs.length);
+  }
+
+  const segMid = targetIdx * arc + arc / 2;
+  const spins  = 6 + Math.floor(Math.random() * 3);
+  const cur    = currentRotation % (2 * Math.PI);
+  const needed = ((-segMid - cur) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+  const finalR = currentRotation + spins * 2 * Math.PI + needed;
+
+  const dur = 4500, t0 = performance.now(), r0 = currentRotation;
+  function animate(now) {
+    const t = Math.min((now - t0) / dur, 1);
+    const e = 1 - Math.pow(1 - t, 4);
+    currentRotation = r0 + (finalR - r0) * e;
+    drawWheel(currentRotation);
+    if (t < 1) requestAnimationFrame(animate);
+    else { currentRotation = finalR; drawWheel(finalR); isSpinning = false; finishSpin(result); }
+  }
+  requestAnimationFrame(animate);
+}
+
+async function determineResult() {
+  const snap = await db.collection('prizes').get();
+  const fp = snap.docs.map(d => ({id:d.id,...d.data()}));
+  const avail = fp.filter(p => p.remaining > 0);
+  const totalR = avail.reduce((a,p) => a + p.remaining, 0);
+  // โอกาสชนะ = remaining / total_slots (50% max)
+  if (totalR > 0 && Math.random() < 0.5) {
+    let roll = Math.random() * totalR;
+    for (const p of avail) { roll -= p.remaining; if (roll <= 0) return {won:true, prizeId:p.id, prizeName:p.name}; }
+    return {won:true, prizeId:avail[0].id, prizeName:avail[0].name};
+  }
+  return {won:false, prizeId:null, prizeName:null};
+}
+
+async function finishSpin(result) {
+  const sn = currentEmployee.sn;
+  const ticketNo = (currentParticipant.usedTickets || 0) + 1;
   try {
-    // Check local EMP first (fast)
-    if (!EMP[sn]) { hideL(); showErr('ไม่พบ SN นี้ในระบบ'); return; }
+    await db.runTransaction(async tx => {
+      const pRef = db.collection('participants').doc(sn);
+      const pDoc = await tx.get(pRef);
+      const used = pDoc.exists ? (pDoc.data().usedTickets || 0) : 0;
+      if (used >= currentEmployee.tickets) throw new Error('ใช้ตั๋วครบแล้ว');
+      if (result.won) {
+        const prRef = db.collection('prizes').doc(result.prizeId);
+        const prDoc = await tx.get(prRef);
+        if (!prDoc.exists || prDoc.data().remaining <= 0) { result.won = false; result.prizeName = null; }
+        else tx.update(prRef, {remaining: prDoc.data().remaining - 1});
+      }
+      tx.set(db.collection('draws').doc(), {sn, employeeName:currentEmployee.name, ticketNo, prize:result.prizeName||'ไม่ได้รางวัล', won:result.won, timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+      tx.set(pRef, {usedTickets:used+1, lastLogin:firebase.firestore.FieldValue.serverTimestamp(), status:'active'}, {merge:true});
+    });
+    currentParticipant.usedTickets = ticketNo;
+    updateTicketsBar();
+    await loadHistory();
+    await loadPrizes();
+    wheelSegments = buildSegments();
+    drawWheel(currentRotation);
 
-    const empData = EMP[sn];
-
-    // Get participant state from Firestore
-    const partRef = doc(db,'participants',sn);
-    const partSnap = await getDoc(partRef);
-    if (!partSnap.exists()) {
-      // Auto-create participant record if doesn't exist
-      await setDoc(partRef,{sn,usedTickets:0,lastLogin:serverTimestamp(),status:'active'});
+    const remaining = currentEmployee.tickets - ticketNo;
+    if (result.won) {
+      showPopup(true, result.prizeName, null, null, ticketNo, remaining);
+      launchConfetti();
     } else {
-      await updateDoc(partRef,{lastLogin:serverTimestamp(),status:'active'});
+      showPopup(false, null, null, null, ticketNo, remaining);
     }
-    const pd = partSnap.exists() ? partSnap.data() : {usedTickets:0};
-
-    // Get draw history — simple query WITHOUT orderBy to avoid index requirement
-    const drawsSnap = await getDocs(query(collection(db,'draws'), where('sn','==',sn)));
-    const spins = drawsSnap.docs
-      .map(d=>d.data())
-      .sort((a,b)=> (a.ticketNo||0)-(b.ticketNo||0)); // sort client-side by ticketNo
-
-    // Load prize stock
-    const psnap = await getDocs(collection(db,'prizes'));
-    SC={};
-    psnap.forEach(d=>{ SC[d.id]=d.data(); });
-
-    CUR = {sn, name:empData.name, tickets:empData.tickets, usedTickets:pd.usedTickets||0, spins};
-    hideL();
-    enterSpin();
-  } catch(e){hideL();showErr('Error: '+e.message);}
-}
-
-function showErr(m){const e=document.getElementById('lerr');e.textContent=m;e.style.display='block';}
-
-// ── SPIN VIEW ─────────────────────────────────────
-function enterSpin(){
-  sv('vS');
-  document.getElementById('spN').textContent=CUR.name;
-  document.getElementById('spSN').textContent='SN: '+CUR.sn;
-  document.getElementById('spTK').textContent=CUR.tickets;
-  document.getElementById('rb').className='rb';
-  document.getElementById('rbp').className='rbp';
-  document.getElementById('rbp').textContent='กดปุ่มด้านล่างเพื่อเริ่ม';
-  document.getElementById('rbp').style='';
-  document.getElementById('rbs').className='rbs';
-  drawW(wA); renderDots(); renderPrizes(); updBtn();
-}
-
-function renderDots(){
-  const dr=document.getElementById('dr');dr.innerHTML='';
-  for(let i=0;i<CUR.tickets;i++){
-    const d=document.createElement('div');d.className='dot';
-    const s=CUR.spins[i];
-    if(i<CUR.usedTickets){
-      if(s&&s.won){d.classList.add('won');d.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';}
-      else{d.classList.add('used');d.textContent=i+1;}
-    } else if(i===CUR.usedTickets){d.classList.add('nxt');d.textContent=i+1;}
-    else{d.textContent=i+1;}
-    dr.appendChild(d);
+  } catch (err) {
+    console.error(err);
+    isSpinning = false;
+    showPopup(false, null, 'เกิดข้อผิดพลาด', err.message);
   }
 }
 
-function renderPrizes(){
-  const won=CUR.spins.filter(s=>s.won);
-  document.getElementById('mpct').textContent=won.length+' รายการ';
-  const list=document.getElementById('mpl');
-  if(!CUR.spins.length){list.innerHTML='<div class="mpe">ยังไม่มีของรางวัล</div>';return;}
-  list.innerHTML=CUR.spins.map((s,i)=>
-    s.won?`<div class="mpi"><div class="mpn">${i+1}</div><div class="mpnm">${s.prize}</div><div class="mptg w">ได้รับ</div></div>`
-         :`<div class="mpi"><div class="mpn">${i+1}</div><div class="mpnm di">ไม่ถูกรางวัล</div><div class="mptg m">—</div></div>`
-  ).join('');
-  document.getElementById('diNfo').classList.toggle('show',CUR.usedTickets>=CUR.tickets);
-}
+// ── POPUP ──
+function showPopup(won, prize, customTitle, customSub, ticketNo, remaining) {
+  const popup   = document.getElementById('resultPopup');
+  const box     = document.getElementById('popupBox');
+  const icon    = document.getElementById('popupIcon');
+  const title   = document.getElementById('popupTitle');
+  const prizeEl = document.getElementById('popupPrize');
+  const sub     = document.getElementById('popupSub');
+  const close   = document.getElementById('popupClose');
+  const ticket  = document.getElementById('popupTicket');
 
-function updBtn(){
-  const btn=document.getElementById('spbtn');
-  const rem=CUR.tickets-CUR.usedTickets;
-  const tl=Object.values(SC).reduce((s,p)=>s+Math.max(0,p.remaining||0),0);
-  if(tl<=0){btn.textContent='รางวัลหมดแล้ว';btn.disabled=true;}
-  else if(rem<=0){btn.textContent='✓ ใช้สิทธิ์ครบแล้ว';btn.disabled=true;}
-  else{btn.textContent='RANDOM — เหลือ '+rem+' ครั้ง';btn.disabled=false;}
-}
+  // Clear old stars
+  box.querySelectorAll('.star').forEach(s => s.remove());
 
-// ── WHEEL ─────────────────────────────────────────
-function drawW(a){
-  const cv=document.getElementById('whl'),ctx=cv.getContext('2d');
-  const CX=150,CY=150,R=142,NS=PRIZES.length,ARC=(Math.PI*2)/NS;
-  ctx.clearRect(0,0,300,300);
-  for(let i=0;i<NS;i++){
-    const p=PRIZES[i],sA=a+i*ARC-Math.PI/2,eA=sA+ARC,mA=sA+ARC/2;
-    const st=SC[p.id],rem=st?st.remaining:p.total,dep=rem<=0;
-    ctx.beginPath();ctx.moveTo(CX,CY);ctx.arc(CX,CY,R,sA,eA);ctx.closePath();
-    ctx.fillStyle=dep?'#111':p.bg;ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,.5)';ctx.lineWidth=2;ctx.stroke();
-    if(!dep){ctx.save();ctx.beginPath();ctx.arc(CX,CY,R-3,sA+0.06,eA-0.06);ctx.strokeStyle=p.ac;ctx.lineWidth=3;ctx.globalAlpha=.45;ctx.stroke();ctx.globalAlpha=1;ctx.restore();}
-    ctx.save();ctx.translate(CX,CY);ctx.rotate(mA);
-    const TR=R*0.62;
-    ctx.font='700 10px Sarabun,Arial,sans-serif';ctx.fillStyle=dep?'rgba(255,255,255,.2)':p.ac;ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.shadowColor='rgba(0,0,0,.9)';ctx.shadowBlur=5;
-    ctx.fillText(p.l1,TR,-4);
-    ctx.font='600 9px Sarabun,Arial,sans-serif';ctx.fillStyle=dep?'rgba(255,255,255,.15)':'rgba(255,255,255,.8)';
-    ctx.fillText(p.l2,TR,8);
-    ctx.font='900 9px Manrope,Arial,sans-serif';ctx.fillStyle=dep?'rgba(255,255,255,.1)':p.ac;ctx.shadowBlur=3;
-    ctx.fillText('×'+rem,TR,20);ctx.shadowBlur=0;ctx.restore();
-  }
-  const hub=ctx.createRadialGradient(CX,CY,3,CX,CY,26);
-  hub.addColorStop(0,'#2a2a3e');hub.addColorStop(1,'#06060f');
-  ctx.beginPath();ctx.arc(CX,CY,26,0,Math.PI*2);ctx.fillStyle=hub;ctx.fill();
-  ctx.strokeStyle='rgba(58,228,201,.7)';ctx.lineWidth=2;ctx.stroke();
-  ctx.beginPath();ctx.arc(CX,CY,7,0,Math.PI*2);ctx.fillStyle='#3AE4C9';ctx.fill();
-}
-
-// ── SPIN ──────────────────────────────────────────
-async function doSpin(){
-  if(!CUR||spinning)return;
-  if(CUR.usedTickets>=CUR.tickets)return;
-  const pool=[];
-  PRIZES.forEach(p=>{const s=SC[p.id];const l=s?Math.max(0,s.remaining):0;for(let i=0;i<l;i++)pool.push(p.id);});
-  if(!pool.length){alert('รางวัลหมดแล้ว');return;}
-  spinning=true;
-  document.getElementById('spbtn').disabled=true;
-  document.getElementById('spbtn').classList.add('go');
-  document.getElementById('wg').classList.add('on');
-  document.getElementById('rb').className='rb';
-  document.getElementById('rbp').className='rbp';document.getElementById('rbp').style='';
-
-  const wonId=pool[Math.floor(Math.random()*pool.length)];
-  const wonDef=PRIZES.find(p=>p.id===wonId);
-  const idx=PRIZES.indexOf(wonDef);
-  const NS=PRIZES.length,ARC=(Math.PI*2)/NS;
-  const segMid=idx*ARC+ARC/2;
-  const nSpins=5+Math.floor(Math.random()*4);
-  const target=-segMid+Math.PI/2+nSpins*Math.PI*2+(Math.random()*ARC*.3-ARC*.15);
-  const dur=4200+Math.random()*800;
-  const st=wA,t0=performance.now();
-  const ease=t=>1-Math.pow(1-t,3.8);
-  const tick=now=>{
-    const prog=Math.min((now-t0)/dur,1);
-    wA=st+(target-st)*ease(prog);drawW(wA);
-    if(prog<1)requestAnimationFrame(tick);
-    else{wA=target;drawW(wA);commitSpin(wonId,wonDef);}
-  };
-  requestAnimationFrame(tick);
-}
-
-async function commitSpin(pId,pDef){
-  const sn=CUR.sn,tkNo=CUR.usedTickets+1;
-  try{
-    await runTransaction(db,async tx=>{
-      const pRef=doc(db,'prizes',pId),partRef=doc(db,'participants',sn);
-      const[pSnap,partSnap]=await Promise.all([tx.get(pRef),tx.get(partRef)]);
-      if(!pSnap.exists())throw new Error('Prize not found');
-      if(pSnap.data().remaining<=0)throw new Error('Out of stock');
-      const curUsed=partSnap.exists()?partSnap.data().usedTickets:0;
-      if(curUsed>=EMP[sn].tickets)throw new Error('No tickets');
-      tx.update(pRef,{remaining:pSnap.data().remaining-1});
-      tx.update(partRef,{usedTickets:curUsed+1,lastSpin:serverTimestamp()});
+  if (customTitle) {
+    box.className = 'popup-box miss';
+    icon.textContent = '⚠️';
+    title.className = 'popup-title miss';
+    title.textContent = customTitle;
+    prizeEl.innerHTML = '';
+    sub.textContent = customSub || '';
+    close.className = 'popup-close miss';
+    ticket.textContent = '';
+  } else if (won) {
+    box.className = 'popup-box win';
+    icon.textContent = '🎉';
+    title.className = 'popup-title win';
+    title.textContent = 'ยินดีด้วย!';
+    prizeEl.innerHTML = '<div class="popup-prize">🎁 ' + prize + '</div>';
+    sub.textContent = 'กรุณาติดต่อรับรางวัลที่ HR';
+    close.className = 'popup-close win';
+    ticket.textContent = 'ตั๋วที่ ' + ticketNo + (remaining > 0 ? ' • เหลืออีก ' + remaining + ' ตั๋ว' : ' • หมดตั๋วแล้ว');
+    // Add decorative stars
+    const starPos = [
+      {top:'8%',left:'8%',delay:'0s'},{top:'12%',right:'10%',delay:'0.3s'},
+      {top:'5%',left:'42%',delay:'0.6s'},{bottom:'14%',left:'6%',delay:'0.2s'},
+      {bottom:'12%',right:'8%',delay:'0.5s'}
+    ];
+    starPos.forEach((pos, i) => {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.textContent = ['⭐','✨','🌟','💫','⚡'][i];
+      Object.assign(s.style, pos);
+      s.style.animationDelay = pos.delay;
+      s.style.animationDuration = (1.5 + i * 0.3) + 's';
+      box.appendChild(s);
     });
-    await addDoc(collection(db,'draws'),{sn,employeeName:CUR.name,ticketNo:tkNo,prize:pDef.name,prizeId:pId,won:true,timestamp:serverTimestamp()});
-    SC[pId].remaining--;
-    CUR.usedTickets++;
-    CUR.spins.push({won:true,prize:pDef.name,prizeId:pId,ticketNo:tkNo});
-    finSpin(true,pDef);
-  }catch(e){
-    console.error(e);
-    if(e.message==='Out of stock'||e.message==='No tickets'){
-      await addDoc(collection(db,'draws'),{sn,employeeName:CUR.name,ticketNo:tkNo,prize:null,prizeId:null,won:false,timestamp:serverTimestamp()});
-      await updateDoc(doc(db,'participants',sn),{usedTickets:CUR.usedTickets+1});
-      CUR.usedTickets++;CUR.spins.push({won:false,ticketNo:tkNo});
-      finSpin(false,null);
-    }else{spinning=false;document.getElementById('spbtn').disabled=false;document.getElementById('spbtn').classList.remove('go');document.getElementById('wg').classList.remove('on');alert('เกิดข้อผิดพลาด: '+e.message);}
+  } else {
+    box.className = 'popup-box miss';
+    icon.textContent = '😢';
+    title.className = 'popup-title miss';
+    title.textContent = 'ขอโชคใหม่นะครับ';
+    prizeEl.innerHTML = '';
+    sub.textContent = remaining > 0 ? 'ยังมีตั๋วเหลืออยู่ ลองหมุนอีกครั้ง!' : 'คุณใช้ตั๋วครบแล้ว';
+    close.className = 'popup-close miss';
+    ticket.textContent = 'ตั๋วที่ ' + ticketNo + (remaining > 0 ? ' • เหลืออีก ' + remaining + ' ตั๋ว' : ' • หมดตั๋วแล้ว');
+  }
+
+  popup.classList.add('active');
+}
+
+function closePopup() {
+  document.getElementById('resultPopup').classList.remove('active');
+}
+
+// ── LOGIN / LOGOUT ──
+async function doLogin() {
+  const sn = document.getElementById('snInput').value.trim();
+  if (!sn) return;
+  document.getElementById('loginError').style.display = 'none';
+  try {
+    const emp = await db.collection('employees').doc(sn).get();
+    if (!emp.exists || emp.data().active === false) { document.getElementById('loginError').style.display='block'; return; }
+    currentEmployee = {sn, ...emp.data()};
+    const part = await db.collection('participants').doc(sn).get();
+    currentParticipant = part.exists ? part.data() : {usedTickets:0};
+    await db.collection('participants').doc(sn).set({lastLogin:firebase.firestore.FieldValue.serverTimestamp(), status:'active'},{merge:true});
+    await loadPrizes();
+    wheelSegments = buildSegments();
+    document.getElementById('welcomeText').textContent = 'ยินดีต้อนรับ ' + currentEmployee.name + ' (' + sn + ')';
+    updateTicketsBar();
+    await loadHistory();
+    showMain();
+    drawWheel(currentRotation);
+  } catch(err) {
+    document.getElementById('loginError').textContent = 'เกิดข้อผิดพลาด: ' + err.message;
+    document.getElementById('loginError').style.display = 'block';
   }
 }
 
-function finSpin(won,pDef){
-  spinning=false;
-  document.getElementById('spbtn').classList.remove('go');
-  document.getElementById('wg').classList.remove('on');
-  const rb=document.getElementById('rb'),rp=document.getElementById('rbp'),rs=document.getElementById('rbs');
-  if(won&&pDef){
-    rb.className='rb won';rp.className='rbp wt';rp.textContent=pDef.name;rp.style='';
-    rs.textContent='ยินดีด้วย! บันทึกอัตโนมัติแล้ว';
-    setTimeout(()=>{rp.classList.add('sv');rs.classList.add('sv');},80);
-    fireConf();setTimeout(()=>drawW(wA),300);
-  }else{
-    rb.className='rb';rp.className='rbp lt';rp.textContent='ไม่ถูกรางวัล';rp.style='';
-    rs.textContent='ขอให้โชคดีครั้งหน้า';
-    setTimeout(()=>{rp.classList.add('sv');rs.classList.add('sv');},80);
+function doLogout() {
+  currentEmployee=null; currentParticipant=null; prizes=[]; currentRotation=0; wheelSegments=[];
+  document.getElementById('snInput').value = '';
+  document.getElementById('mainScreen').style.display = 'none';
+  document.getElementById('adminScreen').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+}
+
+async function loadPrizes() {
+  const snap = await db.collection('prizes').get();
+  prizes = snap.docs.map(d => ({id:d.id,...d.data()}));
+}
+
+async function loadHistory() {
+  const snap = await db.collection('draws').where('sn','==',currentEmployee.sn).get();
+  const draws = snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0 - (b.timestamp?.toMillis?.())||0);
+  const list = document.getElementById('historyList');
+  if (!draws.length) { list.innerHTML='<p style="color:#666;text-align:center;padding:20px;">ยังไม่มีประวัติการหมุน</p>'; return; }
+  list.innerHTML = draws.map(d=>'<div class="history-item"><div><div class="h-ticket">ตั๋วที่ '+d.ticketNo+'</div><div class="h-prize '+(d.won?'win':'miss')+'">'+(d.won?'🎁 '+d.prize:'💫 ไม่ได้รางวัล')+'</div></div><div class="h-time">'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</div></div>').join('');
+}
+
+function updateTicketsBar() {
+  const total=currentEmployee.tickets, used=currentParticipant.usedTickets||0;
+  let h='<span style="color:#FFD700;font-weight:700;margin-right:8px;">ตั๋วของคุณ:</span>';
+  for(let i=0;i<total;i++) h+='<span class="ticket-dot '+(i<used?'used':'')+'"></span>';
+  h+='<span style="margin-left:10px;color:#aaa;font-size:14px;">ใช้แล้ว '+used+'/'+total+' ตั๋ว</span>';
+  document.getElementById('ticketsBar').innerHTML=h;
+}
+
+function fmt(d) { return d.toLocaleDateString('th-TH')+' '+d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'}); }
+
+function showMain() {
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('mainScreen').style.display='block';
+  document.getElementById('adminScreen').style.display='none';
+}
+function showAdminModal() {
+  document.getElementById('adminPwInput').value='';
+  document.getElementById('adminPwError').style.display='none';
+  document.getElementById('adminModal').classList.add('active');
+}
+function closeAdminModal() { document.getElementById('adminModal').classList.remove('active'); }
+
+async function checkAdmin() {
+  const pw = document.getElementById('adminPwInput').value;
+  try {
+    const cfg = await db.collection('config').doc('admin').get();
+    const ok = cfg.exists ? cfg.data().password : 'admin1234';
+    if (pw===ok) { closeAdminModal(); showAdminScreen(); }
+    else document.getElementById('adminPwError').style.display='block';
+  } catch { if(pw==='admin1234'){closeAdminModal();showAdminScreen();}else document.getElementById('adminPwError').style.display='block'; }
+}
+
+async function showAdminScreen() {
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('mainScreen').style.display='none';
+  document.getElementById('adminScreen').style.display='block';
+  await loadAdminData();
+}
+
+async function loadAdminData() {
+  try {
+    const [eS,pS,dS] = await Promise.all([db.collection('employees').get(),db.collection('participants').get(),db.collection('draws').get()]);
+    const draws = dS.docs.map(d=>({id:d.id,...d.data()}));
+    document.getElementById('statTotal').textContent=eS.size;
+    document.getElementById('statPlayed').textContent=pS.size;
+    document.getElementById('statSpins').textContent=draws.length;
+    document.getElementById('statWins').textContent=draws.filter(d=>d.won).length;
+    await loadPrizes();
+    document.getElementById('prizeStockGrid').innerHTML=prizes.map(p=>{
+      const pct=p.total>0?(p.remaining/p.total)*100:0;
+      return '<div class="prize-item"><div class="pname">'+p.name+'</div><div class="pbar"><div class="pfill" style="width:'+pct+'%"></div></div><div class="pcount">เหลือ '+p.remaining+'/'+p.total+'</div></div>';
+    }).join('');
+    draws.sort((a,b)=>(b.timestamp?.toMillis?.())||0-(a.timestamp?.toMillis?.())||0);
+    document.getElementById('allDrawsTable').innerHTML=draws.length?draws.map(d=>'<tr><td>'+d.sn+'</td><td>'+d.employeeName+'</td><td>'+d.ticketNo+'</td><td>'+d.prize+'</td><td><span class="badge '+(d.won?'win':'miss')+'">'+(d.won?'ได้รางวัล':'ไม่ได้รางวัล')+'</span></td><td>'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</td></tr>').join(''):'<tr><td colspan="6" style="text-align:center;color:#666;">ยังไม่มีข้อมูล</td></tr>';
+    const parts={};pS.docs.forEach(d=>parts[d.id]=d.data());
+    document.getElementById('employeeTable').innerHTML=eS.docs.map(d=>{const e=d.data(),p=parts[d.id]||{};return '<tr><td>'+e.sn+'</td><td>'+e.name+'</td><td>'+e.tickets+'</td><td>'+(p.usedTickets||0)+'</td><td><span class="badge '+(e.active?'win':'miss')+'">'+(e.active?'Active':'Inactive')+'</span></td></tr>';}).join('');
+  } catch(err){console.error(err);}
+}
+
+async function exportCSV() {
+  try {
+    const snap = await db.collection('draws').get();
+    const rows = snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);
+    let csv='\uFEFFSN,ชื่อ,ตั๋วที่,รางวัล,ผล,เวลา\n';
+    rows.forEach(r=>{const t=r.timestamp?.toDate?fmt(r.timestamp.toDate()):'-';csv+='"'+r.sn+'","'+r.employeeName+'","'+r.ticketNo+'","'+r.prize+'","'+(r.won?'ได้รางวัล':'ไม่ได้รางวัล')+'","'+t+'"\n';});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+    a.download='sgc-lucky-draw-'+new Date().toISOString().slice(0,10)+'.csv';
+    a.click();
+  } catch(err){alert('Export ไม่สำเร็จ: '+err.message);}
+}
+
+async function setupDatabase() {
+  if(!confirm('รันครั้งแรกเท่านั้น! ต้องการ Setup Database ใช่ไหม?')) return;
+  try {
+    const batch=db.batch();
+    EMPLOYEE_DATA.forEach(e=>batch.set(db.collection('employees').doc(e.sn),{sn:e.sn,name:e.name,tickets:e.tickets,active:true}));
+    PRIZE_DATA.forEach(p=>batch.set(db.collection('prizes').doc(p.id),{name:p.name,total:p.total,remaining:p.total}));
+    batch.set(db.collection('config').doc('admin'),{password:'admin1234'});
+    await batch.commit();
+    alert('✅ Setup สำเร็จ!');
+    await loadAdminData();
+  } catch(err){alert('❌ Setup ไม่สำเร็จ: '+err.message);}
+}
+
+function launchConfetti() {
+  const cols=['#FFD700','#E8303A','#4285F4','#34A853','#FF88FF','#FFA500'];
+  for(let i=0;i<100;i++){
+    setTimeout(()=>{
+      const el=document.createElement('div');
+      el.className='confetti-piece';
+      el.style.cssText='left:'+Math.random()*100+'vw;background:'+cols[~~(Math.random()*cols.length)]+';animation-duration:'+(2+Math.random()*2)+'s;width:'+(8+Math.random()*8)+'px;height:'+(8+Math.random()*8)+'px;';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(),4500);
+    },i*18);
   }
-  renderDots();renderPrizes();updBtn();
 }
 
-// ── DOWNLOAD PNG ──────────────────────────────────
-function dlPNG(){
-  const won=CUR.spins.filter(s=>s.won);
-  const cv=document.createElement('canvas');
-  cv.width=480;cv.height=Math.max(400,220+won.length*56+80);
-  const ctx=cv.getContext('2d');
-  const bg=ctx.createLinearGradient(0,0,0,cv.height);
-  bg.addColorStop(0,'#0a0a14');bg.addColorStop(1,'#060610');
-  ctx.fillStyle=bg;ctx.fillRect(0,0,cv.width,cv.height);
-  ctx.strokeStyle='rgba(58,228,201,.4)';ctx.lineWidth=2;ctx.strokeRect(12,12,cv.width-24,cv.height-24);
-  ctx.fillStyle='#3AE4C9';ctx.font='bold 13px Sarabun,Arial';ctx.textAlign='center';
-  ctx.fillText('SGC LUCKY DRAW 2026',cv.width/2,48);
-  ctx.fillStyle='rgba(255,255,255,.2)';ctx.fillRect(40,56,cv.width-80,1);
-  ctx.fillStyle='#FAFAFA';ctx.font='bold 20px Sarabun,Arial';ctx.fillText(CUR.name.toUpperCase(),cv.width/2,84);
-  ctx.fillStyle='#737373';ctx.font='12px Manrope,Arial';ctx.fillText('SN: '+CUR.sn,cv.width/2,104);
-  ctx.fillStyle='rgba(255,255,255,.1)';ctx.fillRect(40,118,cv.width-80,1);
-  ctx.fillStyle='#93C5FD';ctx.font='bold 10px Manrope,Arial';ctx.fillText('YOUR PRIZES',cv.width/2,140);
-  if(!won.length){ctx.fillStyle='#737373';ctx.font='13px Sarabun,Arial';ctx.fillText('ไม่ได้รับของรางวัล',cv.width/2,175);}
-  else{
-    won.forEach((s,i)=>{
-      const y=160+i*52;
-      ctx.fillStyle='rgba(74,222,128,.07)';
-      rr(ctx,48,y,cv.width-96,40,8);ctx.fill();
-      ctx.strokeStyle='rgba(74,222,128,.2)';ctx.lineWidth=1;ctx.stroke();
-      ctx.fillStyle='#FAFAFA';ctx.font='bold 13px Sarabun,Arial';ctx.textAlign='left';
-      ctx.fillText(s.prize,72,y+25);ctx.textAlign='center';
-    });
-  }
-  const fy=cv.height-44;
-  ctx.fillStyle='rgba(255,255,255,.08)';ctx.fillRect(40,fy-10,cv.width-80,1);
-  ctx.fillStyle='#737373';ctx.font='10px Manrope,Arial';ctx.textAlign='center';
-  const now=new Date();
-  ctx.fillText(now.toLocaleDateString('en-US',{day:'2-digit',month:'long',year:'numeric'})+'  '+now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}),cv.width/2,fy+8);
-  const a=document.createElement('a');a.download='SGC_Prize_'+CUR.sn+'.png';a.href=cv.toDataURL('image/png');a.click();
-}
-function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.arcTo(x+w,y,x+w,y+r,r);ctx.lineTo(x+w,y+h-r);ctx.arcTo(x+w,y+h,x+w-r,y+h,r);ctx.lineTo(x+r,y+h);ctx.arcTo(x,y+h,x,y+h-r,r);ctx.lineTo(x,y+r);ctx.arcTo(x,y,x+r,y,r);ctx.closePath();}
-
-// ── ADMIN ─────────────────────────────────────────
-function showAdmModal(){document.getElementById('admModal').classList.add('show');document.getElementById('admPass').value='';document.getElementById('admErr').style.display='none';}
-function closeAdmModal(){document.getElementById('admModal').classList.remove('show');}
-async function chkAdm(){
-  const p=document.getElementById('admPass').value;
-  try{
-    const cfg=await getDoc(doc(db,'config','admin'));
-    if(cfg.exists()&&cfg.data().password===p){closeAdmModal();enterAdmin();}
-    else{document.getElementById('admErr').style.display='block';}
-  }catch(e){if(p==='SGC2026Admin'){closeAdmModal();enterAdmin();}else{document.getElementById('admErr').style.display='block';}}
-}
-
-function enterAdmin(){
-  sv('vA');
-  if(aUnsub)aUnsub();
-  const u1=onSnapshot(collection(db,'prizes'),snap=>{
-    let rem=0;snap.forEach(d=>{SC[d.id]=d.data();rem+=Math.max(0,d.data().remaining||0);});
-    document.getElementById('aRem').textContent=rem;
-    renderStock();
-  });
-  const u2=onSnapshot(collection(db,'participants'),snap=>{
-    let par=0,sp=0;snap.forEach(d=>{const u=d.data().usedTickets||0;if(u>0){par++;sp+=u;}});
-    document.getElementById('aPar').textContent=par;
-    document.getElementById('aSp').textContent=sp;
-  });
-  // Use simple query without orderBy to avoid index
-  const u3=onSnapshot(collection(db,'draws'),snap=>{
-    allDraws=snap.docs.map(d=>({id:d.id,...d.data()}));
-    // Sort client-side by timestamp descending
-    allDraws.sort((a,b)=>{
-      const ta=a.timestamp?.toMillis?a.timestamp.toMillis():0;
-      const tb=b.timestamp?.toMillis?b.timestamp.toMillis():0;
-      return tb-ta;
-    });
-    renderTbl(allDraws);
-  });
-  aUnsub=()=>{u1();u2();u3();};
-}
-
-function renderStock(){
-  document.getElementById('psl').innerHTML=PRIZES.map(p=>{
-    const s=SC[p.id]||{total:p.total,remaining:p.total};
-    const pct=(s.remaining/s.total)*100,dep=s.remaining<=0;
-    return `<div class="psi ${dep?'dep':''}"><div class="psin">${p.name}</div><div class="psbw"><div class="psb" style="width:${pct}%;background:${p.ac}50"></div></div><div class="psc" style="color:${dep?'var(--di)':p.ac}">${s.remaining}<span style="color:var(--di)">/${s.total}</span></div></div>`;
-  }).join('');
-}
-
-function renderTbl(draws){
-  const srch=(document.getElementById('aSrch').value||'').toLowerCase();
-  const bySN={};
-  draws.forEach(d=>{
-    if(!bySN[d.sn])bySN[d.sn]={sn:d.sn,name:d.employeeName,draws:[]};
-    bySN[d.sn].draws.push(d);
-  });
-  const rows=Object.values(bySN).filter(e=>!srch||e.sn.includes(srch)||(e.name||'').toLowerCase().includes(srch));
-  document.getElementById('atb').innerHTML=rows.map((e,i)=>{
-    const emp=EMP[e.sn];const tk=emp?emp.tickets:'?';
-    const lastDraw=e.draws.find(d=>d.timestamp?.toDate);
-    const last=lastDraw?lastDraw.timestamp.toDate().toLocaleString('th-TH',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'—';
-    const tags=e.draws.map(d=>d.won?`<span class="ptag">${d.prize}</span>`:`<span class="mtag">—</span>`).join('');
-    return `<tr><td style="color:var(--di);font-size:9px">${i+1}</td><td style="font-weight:700;font-size:10px">${e.name||'—'}</td><td style="font-size:9px;color:var(--di);letter-spacing:.5px">${e.sn}</td><td style="text-align:center;font-weight:800;color:var(--bl)">${tk}</td><td style="text-align:center;font-weight:800;color:var(--te)">${e.draws.length}</td><td>${tags||'<span style="color:var(--di);font-size:9px">ยังไม่เข้าร่วม</span>'}</td><td style="font-size:9px;color:var(--di)">${last}</td></tr>`;
-  }).join('')||'<tr><td colspan="7" style="text-align:center;color:var(--di);padding:20px;font-size:11px">ยังไม่มีข้อมูล</td></tr>';
-}
-
-function filterTbl(){renderTbl(allDraws);}
-
-async function expCSV(){
-  showL('กำลัง Export...');
-  const snap=await getDocs(collection(db,'draws'));
-  const rows=['\uFEFFชื่อ,SN,Ticket No,รางวัล,ถูกรางวัล,เวลา'];
-  snap.forEach(d=>{
-    const data=d.data();
-    const t=data.timestamp?.toDate?data.timestamp.toDate().toLocaleString('th-TH'):'—';
-    rows.push(`"${data.employeeName}","${data.sn}",${data.ticketNo},"${data.prize||'ไม่ถูก'}",${data.won?'ใช่':'ไม่'},"${t}"`);
-  });
-  hideL();
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows.join('\n')],{type:'text/csv;charset=utf-8'}));a.download='sgc_results.csv';a.click();
-}
-
-async function doReset(){
-  if(!confirm('⚠️ Reset ทั้งหมด ยืนยัน?'))return;
-  showL('กำลัง Reset...');
-  for(const p of PRIZES)await updateDoc(doc(db,'prizes',p.id),{remaining:p.total});
-  const ps=await getDocs(collection(db,'participants'));
-  for(const d of ps.docs)await updateDoc(d.ref,{usedTickets:0,status:'pending'});
-  hideL();alert('✅ Reset เรียบร้อย');
-}
-
-function doLogout(){
-  CUR=null;
-  if(aUnsub){aUnsub();aUnsub=null;}
-  document.getElementById('iSN').value='';
-  document.getElementById('lerr').style.display='none';
-  sv('vL');
-}
-
-// ── CONFETTI ──────────────────────────────────────
-function fireConf(){
-  const cv=document.getElementById('conf');cv.width=innerWidth;cv.height=innerHeight;
-  const ctx=cv.getContext('2d');
-  const cols=['#2168FD','#3AE4C9','#93C5FD','#7C3AED','#FBBF24','#4ADE80','#FB7185'];
-  const pts=Array.from({length:120},()=>({x:Math.random()*cv.width,y:-20,vx:(Math.random()-.5)*7,vy:2+Math.random()*6,r:3+Math.random()*7,col:cols[Math.floor(Math.random()*cols.length)],rot:Math.random()*360,rv:(Math.random()-.5)*10,al:1}));
-  let fr=0;
-  function tick(){ctx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.rot+=p.rv;p.vy+=.1;p.al-=.005;if(p.al<=0)return;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.globalAlpha=Math.max(0,p.al);ctx.fillStyle=p.col;ctx.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);ctx.restore();});if(++fr<220)requestAnimationFrame(tick);else ctx.clearRect(0,0,cv.width,cv.height);}
-  requestAnimationFrame(tick);
-}
-
-// ── UTILS ─────────────────────────────────────────
-function sv(id){['vL','vS','vA'].forEach(v=>{const el=document.getElementById(v);el.style.display=v===id?'flex':'none';});}
-function showL(t){document.getElementById('ltxt').textContent=t||'กำลังโหลด...';document.getElementById('lov').classList.add('show');}
-function hideL(){document.getElementById('lov').classList.remove('show');}
-
-window.doLogin=doLogin;window.doSpin=doSpin;window.dlPNG=dlPNG;
-window.showAdmModal=showAdmModal;window.closeAdmModal=closeAdmModal;
-window.chkAdm=chkAdm;window.expCSV=expCSV;window.doReset=doReset;
-window.doLogout=doLogout;window.filterTbl=filterTbl;window.setupDB=setupDB;
+// Close popup on overlay click
+document.getElementById('resultPopup').addEventListener('click', function(e) {
+  if (e.target === this) closePopup();
+});
 </script>
 </body>
 </html>
