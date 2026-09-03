@@ -9,7 +9,6 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#0a0a2e 0%,#1a1a4e 50%,#0d0d35 100%); min-height:100vh; color:#fff; }
 
-/* LOGIN */
 #loginScreen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
 .login-card { background:rgba(255,255,255,0.05); backdrop-filter:blur(20px); border:1px solid rgba(255,215,0,0.3); border-radius:24px; padding:40px; width:100%; max-width:420px; text-align:center; }
 .login-card h1 { font-size:28px; font-weight:800; color:#FFD700; margin-bottom:8px; }
@@ -17,29 +16,42 @@ body { font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#0a0a
 .login-card input { width:100%; padding:14px 18px; border-radius:12px; border:2px solid rgba(255,215,0,0.3); background:rgba(255,255,255,0.08); color:#fff; font-size:16px; font-family:'Sarabun',sans-serif; margin-bottom:16px; outline:none; text-align:center; letter-spacing:2px; }
 .login-card input:focus { border-color:#FFD700; }
 .btn-login { width:100%; padding:14px; background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; font-size:18px; font-weight:800; border:none; border-radius:12px; cursor:pointer; }
+.btn-login:hover { transform:translateY(-2px); }
 #loginError { color:#ff6b6b; margin-top:12px; font-size:14px; display:none; }
 
-/* MAIN */
 #mainScreen { display:none; min-height:100vh; }
 .header { background:rgba(0,0,0,0.4); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,215,0,0.2); }
 .header-left h2 { color:#FFD700; font-size:18px; font-weight:800; }
 .header-left p { color:#aaa; font-size:13px; }
 .header-right { display:flex; gap:10px; }
 .btn-small { padding:8px 16px; border-radius:8px; border:1px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.08); color:#fff; font-size:13px; cursor:pointer; font-family:'Sarabun',sans-serif; }
+.btn-small:hover { background:rgba(255,255,255,0.15); }
 .btn-admin { border-color:rgba(255,215,0,0.4); color:#FFD700; }
 .tickets-bar { background:rgba(255,215,0,0.08); border-bottom:1px solid rgba(255,215,0,0.15); padding:10px 24px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .ticket-dot { width:14px; height:14px; border-radius:50%; background:#FFD700; display:inline-block; }
 .ticket-dot.used { background:#444; }
 
-/* WHEEL */
 .wheel-section { display:flex; flex-direction:column; align-items:center; padding:30px 20px; }
 .wheel-wrapper { position:relative; width:580px; height:580px; margin:0 auto; }
 #wheelCanvas { display:block; cursor:pointer; border-radius:50%; }
 .wheel-pointer { position:absolute; right:-18px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:20px solid transparent; border-bottom:20px solid transparent; border-left:40px solid #DD1111; z-index:10; }
-.wheel-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:72px; height:72px; background:#FFFFFF; border-radius:50%; border:5px solid #CCCCCC; z-index:5; display:flex; align-items:center; justify-content:center; font-size:26px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.3); }
+
+.wheel-center {
+  position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  width:82px; height:82px; border-radius:50%;
+  background:linear-gradient(145deg,#FFB3C6,#FFC8A2,#FFFACD);
+  border:4px solid #fff;
+  box-shadow:0 4px 16px rgba(0,0,0,0.28), inset 0 2px 4px rgba(255,255,255,0.65);
+  z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  cursor:pointer; transition:transform 0.15s, box-shadow 0.15s; user-select:none;
+}
+.wheel-center:hover { transform:translate(-50%,-50%) scale(1.08); }
+.wheel-center:active { transform:translate(-50%,-50%) scale(0.94); }
+.wheel-center .spin-icon { font-size:28px; line-height:1; pointer-events:none; }
+.wheel-center .spin-label { font-size:11px; font-weight:800; color:#333; font-family:'Sarabun',sans-serif; line-height:1.2; pointer-events:none; }
 .spin-hint { margin-top:14px; color:rgba(255,255,255,0.5); font-size:14px; }
 
-/* HISTORY */
 .history-section { max-width:580px; width:100%; margin:20px auto 40px; }
 .history-section h3 { color:#FFD700; font-size:16px; margin-bottom:12px; }
 .history-item { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:10px; padding:12px 16px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
@@ -48,7 +60,6 @@ body { font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#0a0a
 .h-prize.miss { color:#888; font-size:14px; }
 .h-time { font-size:12px; color:#666; }
 
-/* ADMIN */
 #adminScreen { display:none; min-height:100vh; padding:24px; }
 .admin-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
 .admin-header h1 { color:#FFD700; font-size:24px; font-weight:800; }
@@ -74,8 +85,7 @@ tr:last-child td { border-bottom:none; }
 .setup-section { text-align:center; margin:20px 0; }
 .btn-setup { padding:10px 24px; background:rgba(255,100,100,0.15); border:1px solid rgba(255,100,100,0.4); color:#ff8888; border-radius:10px; cursor:pointer; font-size:13px; font-family:'Sarabun',sans-serif; }
 
-/* ADMIN MODAL */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:100; align-items:center; justify-content:center; }
+.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:100; align-items:center; justify-content:center; }
 .modal-overlay.active { display:flex; }
 .modal-box { background:#1a1a3e; border:1px solid rgba(255,215,0,0.3); border-radius:20px; padding:32px; width:90%; max-width:380px; text-align:center; }
 .modal-box h3 { color:#FFD700; font-size:20px; margin-bottom:16px; }
@@ -86,52 +96,27 @@ tr:last-child td { border-bottom:none; }
 .btn-confirm { background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; }
 .btn-cancel { background:rgba(255,255,255,0.08); color:#aaa; border:1px solid rgba(255,255,255,0.15) !important; }
 
-/* RESULT POPUP */
-#resultPopup {
-  display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88);
-  z-index:500; align-items:center; justify-content:center;
-}
+#resultPopup { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:500; align-items:center; justify-content:center; }
 #resultPopup.active { display:flex; }
-.popup-box {
-  position:relative; text-align:center; padding:56px 48px 48px;
-  border-radius:32px; width:90%; max-width:520px;
-  animation: popIn .4s cubic-bezier(0.175,0.885,0.32,1.275) both;
-}
-.popup-box.win {
-  background:linear-gradient(160deg,#1a1a00 0%,#2a1f00 100%);
-  border:3px solid #FFD700;
-}
-.popup-box.miss {
-  background:linear-gradient(160deg,#0d0d1a 0%,#1a1a2e 100%);
-  border:2px solid rgba(255,255,255,0.12);
-}
-@keyframes popIn {
-  from { transform:scale(0.5); opacity:0; }
-  to   { transform:scale(1);   opacity:1; }
-}
-.popup-icon { font-size:80px; line-height:1; margin-bottom:20px; }
-.popup-title { font-size:36px; font-weight:800; margin-bottom:12px; }
+.popup-box { position:relative; text-align:center; padding:52px 44px 44px; border-radius:32px; width:92%; max-width:500px; animation:popIn .4s cubic-bezier(0.175,0.885,0.32,1.275) both; }
+.popup-box.win { background:linear-gradient(160deg,#1c1a00,#2e2100); border:3px solid #FFD700; }
+.popup-box.miss { background:linear-gradient(160deg,#0d0d1a,#1a1a2e); border:2px solid rgba(255,255,255,0.12); }
+@keyframes popIn { from{transform:scale(0.5);opacity:0;} to{transform:scale(1);opacity:1;} }
+.popup-icon { font-size:72px; line-height:1; margin-bottom:16px; }
+.popup-title { font-size:34px; font-weight:800; margin-bottom:14px; }
 .popup-title.win { color:#FFD700; }
 .popup-title.miss { color:#aaa; }
-.popup-prize { font-size:28px; font-weight:800; color:#fff; margin-bottom:8px; background:rgba(255,215,0,0.12); padding:14px 24px; border-radius:14px; border:1px solid rgba(255,215,0,0.3); }
-.popup-sub { font-size:16px; color:#aaa; margin-bottom:32px; }
-.popup-close {
-  padding:14px 48px; border-radius:14px; border:none; cursor:pointer;
-  font-size:18px; font-weight:800; font-family:'Sarabun',sans-serif;
-}
+.popup-prize-box { font-size:24px; font-weight:800; color:#fff; margin-bottom:10px; background:rgba(255,215,0,0.1); padding:16px 24px; border-radius:14px; border:1px solid rgba(255,215,0,0.3); }
+.popup-sub { font-size:15px; color:#aaa; margin-bottom:28px; }
+.popup-close { padding:14px 52px; border-radius:14px; border:none; cursor:pointer; font-size:18px; font-weight:800; font-family:'Sarabun',sans-serif; transition:transform 0.15s; }
+.popup-close:hover { transform:scale(1.04); }
 .popup-close.win { background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; }
-.popup-close.miss { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2); }
-.popup-ticket { font-size:13px; color:#666; margin-top:16px; }
+.popup-close.miss { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2) !important; }
+.popup-ticket-info { font-size:13px; color:#555; margin-top:14px; }
+.star-deco { position:absolute; font-size:22px; pointer-events:none; animation:starBob 2s ease-in-out infinite; }
+@keyframes starBob { 0%,100%{transform:translateY(0);opacity:.85;} 50%{transform:translateY(-10px);opacity:1;} }
 
-/* Stars animation for win */
-.star { position:absolute; font-size:24px; animation:starFloat 2s ease-in-out infinite; }
-@keyframes starFloat {
-  0%,100% { transform:translateY(0) rotate(0deg); opacity:0.8; }
-  50%      { transform:translateY(-12px) rotate(20deg); opacity:1; }
-}
-
-/* CONFETTI */
-@keyframes confettiFall { to { transform:translateY(110vh) rotate(720deg); opacity:0; } }
+@keyframes confettiFall { to{transform:translateY(110vh) rotate(720deg);opacity:0;} }
 .confetti-piece { position:fixed; top:-10px; animation:confettiFall linear forwards; z-index:600; border-radius:2px; pointer-events:none; }
 </style>
 </head>
@@ -140,7 +125,6 @@ tr:last-child td { border-bottom:none; }
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
-<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-card">
     <div style="font-size:48px;margin-bottom:12px;">🎰</div>
@@ -152,7 +136,6 @@ tr:last-child td { border-bottom:none; }
   </div>
 </div>
 
-<!-- MAIN -->
 <div id="mainScreen">
   <div class="header">
     <div class="header-left">
@@ -169,9 +152,12 @@ tr:last-child td { border-bottom:none; }
     <div class="wheel-wrapper">
       <canvas id="wheelCanvas" width="580" height="580" onclick="spinWheel()"></canvas>
       <div class="wheel-pointer"></div>
-      <div class="wheel-center" onclick="spinWheel()">🎯</div>
+      <div class="wheel-center" onclick="spinWheel()" id="spinBtn">
+        <div class="spin-icon">🎯</div>
+        <div class="spin-label">SPIN!</div>
+      </div>
     </div>
-    <p class="spin-hint">คลิกที่วงล้อเพื่อหมุน</p>
+    <p class="spin-hint">คลิกที่วงล้อหรือปุ่มตรงกลางเพื่อหมุน</p>
   </div>
   <div class="history-section">
     <h3>📋 ประวัติการหมุน</h3>
@@ -179,7 +165,6 @@ tr:last-child td { border-bottom:none; }
   </div>
 </div>
 
-<!-- ADMIN -->
 <div id="adminScreen">
   <div class="admin-header">
     <h1>⚙ Admin Dashboard</h1>
@@ -217,7 +202,6 @@ tr:last-child td { border-bottom:none; }
   </div>
 </div>
 
-<!-- ADMIN MODAL -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal-box">
     <h3>🔐 Admin Login</h3>
@@ -230,20 +214,18 @@ tr:last-child td { border-bottom:none; }
   </div>
 </div>
 
-<!-- RESULT POPUP -->
 <div id="resultPopup">
   <div class="popup-box" id="popupBox">
     <div class="popup-icon" id="popupIcon"></div>
     <div class="popup-title" id="popupTitle"></div>
-    <div id="popupPrize"></div>
+    <div id="popupPrizeArea"></div>
     <div class="popup-sub" id="popupSub"></div>
-    <button class="popup-close" id="popupClose" onclick="closePopup()">ตกลง</button>
-    <div class="popup-ticket" id="popupTicket"></div>
+    <button class="popup-close" id="popupCloseBtn" onclick="closePopup()">ตกลง</button>
+    <div class="popup-ticket-info" id="popupTicketInfo"></div>
   </div>
 </div>
 
 <script>
-// ── FIREBASE ──
 const firebaseConfig = {
   apiKey: "AIzaSyB0KhbCMrGFZpxXJxMUiJqV1LTbpUMDLJg",
   authDomain: "sgc-lucky-draw-2026.firebaseapp.com",
@@ -255,481 +237,350 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// ── STATE ──
 let currentEmployee = null;
 let currentParticipant = null;
 let prizes = [];
 let isSpinning = false;
 let currentRotation = 0;
-let wheelSegments = [];
+let cachedSegments = [];
 
-// ── PRIZE MASTER DATA ──
-// total = จำนวนรางวัลจริง = จำนวนแถบในวงล้อ (เต็มๆ ไม่ปรับ)
+// ── PRIZE DATA — slotCount ตามตาราง √n ──
 const PRIZE_DATA = [
-  { id:'fan',      name:'พัดลม Hatari',           total:1,  color:'#E8303A' },
-  { id:'towel',    name:'ผ้าขนหนู Frolina',       total:1,  color:'#4285F4' },
-  { id:'blanket',  name:'ผ้าห่มเย็น สีฟ้า besico',total:1,  color:'#34A853' },
-  { id:'shirt',    name:'เสื้อแขนยาว UV',         total:5,  color:'#FBBC04' },
-  { id:'scale',    name:'เครื่องชั่งน้ำหนัก',    total:1,  color:'#FF6D00' },
-  { id:'mask',     name:'หน้ากากผ้านาโนแพ็คคู่',total:80, color:'#0288D1' },
-  { id:'inhaler',  name:'ยาดม ตาพาสเทล',         total:20, color:'#7B1FA2' },
-  { id:'mama',     name:'มาม่าคัพเล็ก',           total:10, color:'#F4511E' },
-  { id:'ovaltine', name:'โอวัลตินซอง',            total:60, color:'#388E3C' }
+  { id:'fan',      name:'พัดลม Hatari',             slotCount:1, total:1,  color:['#E8303A','#C42828'] },
+  { id:'towel',    name:'ผ้าขนหนู Frolina',         slotCount:1, total:1,  color:['#4285F4','#2D6FD4'] },
+  { id:'blanket',  name:'ผ้าห่มเย็น สีฟ้า besico',  slotCount:1, total:1,  color:['#34A853','#228B3B'] },
+  { id:'shirt',    name:'เสื้อแขนยาว UV',           slotCount:2, total:5,  color:['#FBBC04','#D9A003'] },
+  { id:'scale',    name:'เครื่องชั่งน้ำหนัก',       slotCount:1, total:1,  color:['#FF6D00','#CC5500'] },
+  { id:'mask',     name:'หน้ากากผ้านาโนแพ็คคู่',   slotCount:9, total:80, color:['#0288D1','#0165A0'] },
+  { id:'inhaler',  name:'ยาดม ตาพาสเทล',           slotCount:4, total:20, color:['#7B1FA2','#590F7A'] },
+  { id:'mama',     name:'มาม่าคัพเล็ก',             slotCount:3, total:10, color:['#F4511E','#C73A10'] },
+  { id:'ovaltine', name:'โอวัลตินซอง',              slotCount:8, total:60, color:['#388E3C','#256128'] }
 ];
 
-// สีสลับเฉดเข้ม-อ่อน สำหรับแต่ละรางวัลเพื่อแบ่งแถบ
-const PRIZE_SHADE = {
-  fan:      ['#E8303A','#C42020'],
-  towel:    ['#4285F4','#2A6BCF'],
-  blanket:  ['#34A853','#217A38'],
-  shirt:    ['#FBBC04','#D49A00'],
-  scale:    ['#FF6D00','#CC5500'],
-  mask:     ['#0288D1','#0165A0'],
-  inhaler:  ['#7B1FA2','#590F7A'],
-  mama:     ['#F4511E','#C73A10'],
-  ovaltine: ['#388E3C','#256128']
-};
-
+// ── EMPLOYEE DATA — เพิ่ม Pilaiwan Wongwat 7145687 tickets:2 ──
 const EMPLOYEE_DATA = [
-  { sn:'1000294229', name:'Nattanicha', tickets:3 },
-  { sn:'1000312456', name:'Somchai',    tickets:2 },
-  { sn:'1000278901', name:'Pranee',     tickets:5 },
-  { sn:'1000345678', name:'Wichai',     tickets:1 },
-  { sn:'1000289012', name:'Malee',      tickets:3 },
-  { sn:'1000301234', name:'Thanit',     tickets:2 },
-  { sn:'1000367890', name:'Siriporn',   tickets:4 },
-  { sn:'1000323456', name:'Kamon',      tickets:2 },
-  { sn:'1000290123', name:'Pailin',     tickets:3 },
-  { sn:'1000334567', name:'Noparat',    tickets:1 }
+  { sn:'1000294229', name:'Nattanicha',      tickets:3 },
+  { sn:'1000312456', name:'Somchai',         tickets:2 },
+  { sn:'1000278901', name:'Pranee',          tickets:5 },
+  { sn:'1000345678', name:'Wichai',          tickets:1 },
+  { sn:'1000289012', name:'Malee',           tickets:3 },
+  { sn:'1000301234', name:'Thanit',          tickets:2 },
+  { sn:'1000367890', name:'Siriporn',        tickets:4 },
+  { sn:'1000323456', name:'Kamon',           tickets:2 },
+  { sn:'1000290123', name:'Pailin',          tickets:3 },
+  { sn:'1000334567', name:'Noparat',         tickets:1 },
+  { sn:'7145687',    name:'Pilaiwan Wongwat',tickets:2 }
 ];
 
-// ── BUILD SEGMENTS — 1 รางวัล = 1 แถบ ──
 function buildSegments() {
   const segs = [];
   for (const pd of PRIZE_DATA) {
     const live = prizes.find(p => p.id === pd.id);
     const remaining = live !== undefined ? live.remaining : pd.total;
-    for (let i = 0; i < remaining; i++) {
-      segs.push({ prizeId: pd.id, name: pd.name, color: PRIZE_SHADE[pd.id][i % 2] });
+    if (remaining <= 0) continue;
+    for (let i = 0; i < pd.slotCount; i++) {
+      segs.push({ prizeId:pd.id, name:pd.name, color:pd.color[i % 2] });
     }
   }
-  // Shuffle
   for (let i = segs.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [segs[i], segs[j]] = [segs[j], segs[i]];
   }
   return segs;
 }
+function getSegments() { if (!cachedSegments.length) cachedSegments = buildSegments(); return cachedSegments; }
+function rebuildSegments() { cachedSegments = buildSegments(); }
 
-// ── DRAW WHEEL ──
 function drawWheel(rot) {
   const canvas = document.getElementById('wheelCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  const W = canvas.width, cx = W / 2, R = cx - 4;
-  ctx.clearRect(0, 0, W, W);
-
-  const segs = wheelSegments;
+  const W = canvas.width, cx = W/2, R = cx-4;
+  ctx.clearRect(0,0,W,W);
+  const segs = getSegments();
   if (!segs.length) {
-    ctx.beginPath(); ctx.arc(cx,cx,R,0,2*Math.PI);
-    ctx.fillStyle='#333'; ctx.fill();
-    ctx.fillStyle='#fff'; ctx.font='20px Sarabun'; ctx.textAlign='center';
-    ctx.fillText('ไม่มีรางวัลเหลือ', cx, cx);
-    return;
+    ctx.beginPath(); ctx.arc(cx,cx,R,0,2*Math.PI); ctx.fillStyle='#333'; ctx.fill();
+    ctx.fillStyle='#fff'; ctx.font='20px Sarabun'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('รางวัลหมดแล้ว',cx,cx); return;
   }
-
-  const arc = (2 * Math.PI) / segs.length;
-
-  for (let i = 0; i < segs.length; i++) {
-    const sa = rot + i * arc;
-    const ea = sa + arc;
-    const ma = sa + arc / 2;
-
-    // Fill
-    ctx.beginPath();
-    ctx.moveTo(cx, cx);
-    ctx.arc(cx, cx, R, sa, ea);
-    ctx.closePath();
-    ctx.fillStyle = segs[i].color;
-    ctx.fill();
-
-    // Border
-    ctx.strokeStyle = '#FFFFFF';
-    ctx.lineWidth = arc > 0.05 ? 2 : 1;
-    ctx.stroke();
-
-    // Text — only if segment wide enough
-    const arcPx = arc * R;
-    if (arcPx < 14) continue;
-
-    ctx.save();
-    ctx.translate(cx, cx);
-    ctx.rotate(ma);
-
-    // Short label: first word or 6 chars
-    const fullName = segs[i].name;
-    const label = getShortLabel(fullName, arcPx);
-    const fs = Math.max(9, Math.min(16, arcPx / (label.includes('\n') ? 6 : 4)));
-    const lines = label.split('\n');
-    const lh = fs * 1.3;
-    const totalH = lines.length * lh;
-    const textR = R * 0.64;
-
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.font = `700 ${fs}px 'Sarabun',sans-serif`;
-    ctx.fillStyle = '#FFFFFF';
-    if (arcPx > 24) {
-      ctx.strokeStyle = 'rgba(0,0,0,0.6)';
-      ctx.lineWidth = 2.5;
-      ctx.lineJoin = 'round';
-    }
-
-    lines.forEach((line, li) => {
-      const y = -totalH / 2 + li * lh + lh / 2;
-      if (arcPx > 24) ctx.strokeText(line, textR, y);
-      ctx.fillText(line, textR, y);
+  const arc = (2*Math.PI)/segs.length;
+  for (let i=0; i<segs.length; i++) {
+    const sa=rot+i*arc, ea=sa+arc, ma=sa+arc/2;
+    ctx.beginPath(); ctx.moveTo(cx,cx); ctx.arc(cx,cx,R,sa,ea); ctx.closePath();
+    ctx.fillStyle=segs[i].color; ctx.fill();
+    ctx.strokeStyle='#FFFFFF'; ctx.lineWidth=2.5; ctx.stroke();
+    const arcPx=arc*R;
+    if (arcPx<14) continue;
+    ctx.save(); ctx.translate(cx,cx); ctx.rotate(ma);
+    const label=getLabel(segs[i].name,arcPx);
+    const lines=label.split('\n');
+    const fs=Math.max(11,Math.min(18,arcPx/(lines.length*4.2)));
+    const lh=fs*1.3, totalH=lines.length*lh, textR=R*0.63;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.font='700 '+fs+'px Sarabun,sans-serif';
+    ctx.strokeStyle='rgba(0,0,0,0.7)'; ctx.lineWidth=3; ctx.lineJoin='round';
+    ctx.fillStyle='#FFFFFF';
+    lines.forEach((line,li)=>{
+      const y=-totalH/2+li*lh+lh/2;
+      ctx.strokeText(line,textR,y); ctx.fillText(line,textR,y);
     });
     ctx.restore();
   }
-
-  // Outer ring
-  ctx.beginPath();
-  ctx.arc(cx, cx, R, 0, 2*Math.PI);
-  ctx.strokeStyle = '#BBBBBB';
-  ctx.lineWidth = 4;
-  ctx.stroke();
-
-  // Center circle
-  ctx.beginPath();
-  ctx.arc(cx, cx, 38, 0, 2*Math.PI);
-  ctx.fillStyle = '#FFFFFF'; ctx.fill();
-  ctx.strokeStyle = '#CCCCCC'; ctx.lineWidth = 4; ctx.stroke();
+  ctx.beginPath(); ctx.arc(cx,cx,R,0,2*Math.PI); ctx.strokeStyle='#BBBBBB'; ctx.lineWidth=4; ctx.stroke();
 }
 
-function getShortLabel(name, arcPx) {
-  if (arcPx >= 60) {
-    // Wide enough: try 2 lines
-    const parts = name.split(' ');
-    if (parts.length >= 2) return parts[0] + '\n' + parts.slice(1).join(' ');
-    return name.length > 8 ? name.slice(0,8) : name;
-  }
-  if (arcPx >= 28) {
-    // First word only
-    return name.split(' ')[0];
-  }
-  // Very small: first 3 chars
-  return name.slice(0, 3);
+function getLabel(name,arcPx) {
+  if (arcPx>=72) { const p=name.split(' '); return p.length>=2?p[0]+'\n'+p.slice(1).join(' '):name; }
+  if (arcPx>=36) return name.split(' ')[0];
+  if (arcPx>=20) return name.slice(0,4);
+  return name.slice(0,2);
 }
 
-// ── SPIN ──
 async function spinWheel() {
   if (isSpinning) return;
-  if (!currentEmployee || !currentParticipant) return;
-  const used = currentParticipant.usedTickets || 0;
-  if (used >= currentEmployee.tickets) {
-    showPopup(false, null, 'คุณใช้ตั๋วครบแล้ว', 'ไม่สามารถหมุนได้อีก');
-    return;
+  if (!currentEmployee||!currentParticipant) return;
+  const used=currentParticipant.usedTickets||0;
+  if (used>=currentEmployee.tickets) {
+    showPopup({type:'error',title:'ตั๋วหมดแล้ว',sub:'ไม่สามารถหมุนได้อีก'}); return;
   }
+  isSpinning=true;
+  const btn=document.getElementById('spinBtn');
+  btn.style.transform='translate(-50%,-50%) scale(0.9)';
+  setTimeout(()=>{ btn.style.transform='translate(-50%,-50%) scale(1)'; },150);
 
-  isSpinning = true;
-  const result = await determineResult();
-  const segs = wheelSegments;
-  const arc = (2 * Math.PI) / segs.length;
-
-  let targetIdx = 0;
+  const result=await determineResult();
+  const segs=getSegments();
+  const arc=(2*Math.PI)/segs.length;
+  let targetIdx=Math.floor(Math.random()*segs.length);
   if (result.won) {
-    const matches = segs.map((s,i) => s.prizeId === result.prizeId ? i : -1).filter(i => i >= 0);
-    if (matches.length) targetIdx = matches[Math.floor(Math.random() * matches.length)];
-  } else {
-    // land on any segment (all are prize segments but result overrides to miss)
-    targetIdx = Math.floor(Math.random() * segs.length);
+    const matches=segs.map((s,i)=>s.prizeId===result.prizeId?i:-1).filter(i=>i>=0);
+    if (matches.length) targetIdx=matches[Math.floor(Math.random()*matches.length)];
   }
-
-  const segMid = targetIdx * arc + arc / 2;
-  const spins  = 6 + Math.floor(Math.random() * 3);
-  const cur    = currentRotation % (2 * Math.PI);
-  const needed = ((-segMid - cur) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
-  const finalR = currentRotation + spins * 2 * Math.PI + needed;
-
-  const dur = 4500, t0 = performance.now(), r0 = currentRotation;
+  const segMid=targetIdx*arc+arc/2;
+  const spins=6+Math.floor(Math.random()*3);
+  const cur=currentRotation%(2*Math.PI);
+  const needed=((-segMid-cur)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);
+  const finalR=currentRotation+spins*2*Math.PI+needed;
+  const dur=4500, t0=performance.now(), r0=currentRotation;
   function animate(now) {
-    const t = Math.min((now - t0) / dur, 1);
-    const e = 1 - Math.pow(1 - t, 4);
-    currentRotation = r0 + (finalR - r0) * e;
+    const t=Math.min((now-t0)/dur,1);
+    const e=1-Math.pow(1-t,4);
+    currentRotation=r0+(finalR-r0)*e;
     drawWheel(currentRotation);
-    if (t < 1) requestAnimationFrame(animate);
-    else { currentRotation = finalR; drawWheel(finalR); isSpinning = false; finishSpin(result); }
+    if (t<1) requestAnimationFrame(animate);
+    else { currentRotation=finalR; drawWheel(finalR); isSpinning=false; finishSpin(result); }
   }
   requestAnimationFrame(animate);
 }
 
 async function determineResult() {
-  const snap = await db.collection('prizes').get();
-  const fp = snap.docs.map(d => ({id:d.id,...d.data()}));
-  const avail = fp.filter(p => p.remaining > 0);
-  const totalR = avail.reduce((a,p) => a + p.remaining, 0);
-  // โอกาสชนะ = remaining / total_slots (50% max)
-  if (totalR > 0 && Math.random() < 0.5) {
-    let roll = Math.random() * totalR;
-    for (const p of avail) { roll -= p.remaining; if (roll <= 0) return {won:true, prizeId:p.id, prizeName:p.name}; }
-    return {won:true, prizeId:avail[0].id, prizeName:avail[0].name};
+  const snap=await db.collection('prizes').get();
+  const fp=snap.docs.map(d=>({id:d.id,...d.data()}));
+  const avail=PRIZE_DATA.filter(pd=>{ const live=fp.find(p=>p.id===pd.id); return live?live.remaining>0:pd.total>0; });
+  if (!avail.length) return {won:false,prizeId:null,prizeName:null};
+  const totalSlots=avail.reduce((a,pd)=>a+pd.slotCount,0);
+  const roll=Math.floor(Math.random()*(totalSlots*2));
+  if (roll<totalSlots) {
+    let r=Math.random()*totalSlots;
+    for (const pd of avail) { r-=pd.slotCount; if(r<=0) return {won:true,prizeId:pd.id,prizeName:pd.name}; }
+    return {won:true,prizeId:avail[0].id,prizeName:avail[0].name};
   }
-  return {won:false, prizeId:null, prizeName:null};
+  return {won:false,prizeId:null,prizeName:null};
 }
 
 async function finishSpin(result) {
-  const sn = currentEmployee.sn;
-  const ticketNo = (currentParticipant.usedTickets || 0) + 1;
+  const sn=currentEmployee.sn;
+  const ticketNo=(currentParticipant.usedTickets||0)+1;
   try {
-    await db.runTransaction(async tx => {
-      const pRef = db.collection('participants').doc(sn);
-      const pDoc = await tx.get(pRef);
-      const used = pDoc.exists ? (pDoc.data().usedTickets || 0) : 0;
-      if (used >= currentEmployee.tickets) throw new Error('ใช้ตั๋วครบแล้ว');
+    await db.runTransaction(async tx=>{
+      const pRef=db.collection('participants').doc(sn);
+      const pDoc=await tx.get(pRef);
+      const used=pDoc.exists?(pDoc.data().usedTickets||0):0;
+      if (used>=currentEmployee.tickets) throw new Error('ใช้ตั๋วครบแล้ว');
       if (result.won) {
-        const prRef = db.collection('prizes').doc(result.prizeId);
-        const prDoc = await tx.get(prRef);
-        if (!prDoc.exists || prDoc.data().remaining <= 0) { result.won = false; result.prizeName = null; }
-        else tx.update(prRef, {remaining: prDoc.data().remaining - 1});
+        const prRef=db.collection('prizes').doc(result.prizeId);
+        const prDoc=await tx.get(prRef);
+        if (!prDoc.exists||prDoc.data().remaining<=0) { result.won=false; result.prizeName=null; }
+        else tx.update(prRef,{remaining:prDoc.data().remaining-1});
       }
-      tx.set(db.collection('draws').doc(), {sn, employeeName:currentEmployee.name, ticketNo, prize:result.prizeName||'ไม่ได้รางวัล', won:result.won, timestamp:firebase.firestore.FieldValue.serverTimestamp()});
-      tx.set(pRef, {usedTickets:used+1, lastLogin:firebase.firestore.FieldValue.serverTimestamp(), status:'active'}, {merge:true});
+      tx.set(db.collection('draws').doc(),{sn,employeeName:currentEmployee.name,ticketNo,prize:result.prizeName||'ไม่ได้รางวัล',won:result.won,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
+      tx.set(pRef,{usedTickets:used+1,lastLogin:firebase.firestore.FieldValue.serverTimestamp(),status:'active'},{merge:true});
     });
-    currentParticipant.usedTickets = ticketNo;
-    updateTicketsBar();
-    await loadHistory();
-    await loadPrizes();
-    wheelSegments = buildSegments();
-    drawWheel(currentRotation);
-
-    const remaining = currentEmployee.tickets - ticketNo;
-    if (result.won) {
-      showPopup(true, result.prizeName, null, null, ticketNo, remaining);
-      launchConfetti();
-    } else {
-      showPopup(false, null, null, null, ticketNo, remaining);
-    }
-  } catch (err) {
-    console.error(err);
-    isSpinning = false;
-    showPopup(false, null, 'เกิดข้อผิดพลาด', err.message);
+    currentParticipant.usedTickets=ticketNo;
+    updateTicketsBar(); await loadHistory(); await loadPrizes();
+    rebuildSegments(); drawWheel(currentRotation);
+    const remaining=currentEmployee.tickets-ticketNo;
+    if (result.won) { showPopup({type:'win',prize:result.prizeName,ticketNo,remaining}); launchConfetti(); }
+    else showPopup({type:'miss',ticketNo,remaining});
+  } catch(err) {
+    console.error(err); isSpinning=false;
+    showPopup({type:'error',title:'เกิดข้อผิดพลาด',sub:err.message});
   }
 }
 
-// ── POPUP ──
-function showPopup(won, prize, customTitle, customSub, ticketNo, remaining) {
-  const popup   = document.getElementById('resultPopup');
-  const box     = document.getElementById('popupBox');
-  const icon    = document.getElementById('popupIcon');
-  const title   = document.getElementById('popupTitle');
-  const prizeEl = document.getElementById('popupPrize');
-  const sub     = document.getElementById('popupSub');
-  const close   = document.getElementById('popupClose');
-  const ticket  = document.getElementById('popupTicket');
-
-  // Clear old stars
-  box.querySelectorAll('.star').forEach(s => s.remove());
-
-  if (customTitle) {
-    box.className = 'popup-box miss';
-    icon.textContent = '⚠️';
-    title.className = 'popup-title miss';
-    title.textContent = customTitle;
-    prizeEl.innerHTML = '';
-    sub.textContent = customSub || '';
-    close.className = 'popup-close miss';
-    ticket.textContent = '';
-  } else if (won) {
-    box.className = 'popup-box win';
-    icon.textContent = '🎉';
-    title.className = 'popup-title win';
-    title.textContent = 'ยินดีด้วย!';
-    prizeEl.innerHTML = '<div class="popup-prize">🎁 ' + prize + '</div>';
-    sub.textContent = 'กรุณาติดต่อรับรางวัลที่ EHS';
-    close.className = 'popup-close win';
-    ticket.textContent = 'ตั๋วที่ ' + ticketNo + (remaining > 0 ? ' • เหลืออีก ' + remaining + ' ตั๋ว' : ' • หมดตั๋วแล้ว');
-    // Add decorative stars
-    const starPos = [
-      {top:'8%',left:'8%',delay:'0s'},{top:'12%',right:'10%',delay:'0.3s'},
-      {top:'5%',left:'42%',delay:'0.6s'},{bottom:'14%',left:'6%',delay:'0.2s'},
-      {bottom:'12%',right:'8%',delay:'0.5s'}
-    ];
-    starPos.forEach((pos, i) => {
-      const s = document.createElement('div');
-      s.className = 'star';
-      s.textContent = ['⭐','✨','🌟','💫','⚡'][i];
-      Object.assign(s.style, pos);
-      s.style.animationDelay = pos.delay;
-      s.style.animationDuration = (1.5 + i * 0.3) + 's';
+function showPopup(opts) {
+  const popup=document.getElementById('resultPopup');
+  const box=document.getElementById('popupBox');
+  box.querySelectorAll('.star-deco').forEach(s=>s.remove());
+  const icon=document.getElementById('popupIcon');
+  const title=document.getElementById('popupTitle');
+  const prizeArea=document.getElementById('popupPrizeArea');
+  const sub=document.getElementById('popupSub');
+  const closeBtn=document.getElementById('popupCloseBtn');
+  const tickInfo=document.getElementById('popupTicketInfo');
+  if (opts.type==='win') {
+    box.className='popup-box win';
+    icon.textContent='🎉'; title.className='popup-title win'; title.textContent='ยินดีด้วย!';
+    prizeArea.innerHTML='<div class="popup-prize-box">🎁 '+opts.prize+'</div>';
+    sub.textContent='กรุณาติดต่อรับรางวัลที่ HR';
+    closeBtn.className='popup-close win';
+    tickInfo.textContent='ตั๋วที่ '+opts.ticketNo+(opts.remaining>0?' • เหลืออีก '+opts.remaining+' ตั๋ว':' • หมดตั๋วแล้ว');
+    const sp=[{top:'8%',left:'7%',d:'0s'},{top:'10%',right:'8%',d:'0.25s'},{top:'4%',left:'44%',d:'0.5s'},{bottom:'16%',left:'5%',d:'0.15s'},{bottom:'14%',right:'7%',d:'0.4s'}];
+    const si=['⭐','✨','🌟','💫','⚡'];
+    sp.forEach((pos,i)=>{
+      const s=document.createElement('div'); s.className='star-deco'; s.textContent=si[i];
+      if(pos.top) s.style.top=pos.top; if(pos.bottom) s.style.bottom=pos.bottom;
+      if(pos.left) s.style.left=pos.left; if(pos.right) s.style.right=pos.right;
+      s.style.animationDelay=pos.d; s.style.animationDuration=(1.6+i*0.25)+'s';
       box.appendChild(s);
     });
+  } else if (opts.type==='miss') {
+    box.className='popup-box miss';
+    icon.textContent='😢'; title.className='popup-title miss'; title.textContent='ขอโชคใหม่นะครับ';
+    prizeArea.innerHTML='';
+    sub.textContent=opts.remaining>0?'ยังมีตั๋วเหลืออยู่ ลองหมุนอีกครั้ง!':'คุณใช้ตั๋วครบแล้ว';
+    closeBtn.className='popup-close miss';
+    tickInfo.textContent='ตั๋วที่ '+opts.ticketNo+(opts.remaining>0?' • เหลืออีก '+opts.remaining+' ตั๋ว':' • หมดตั๋วแล้ว');
   } else {
-    box.className = 'popup-box miss';
-    icon.textContent = '😢';
-    title.className = 'popup-title miss';
-    title.textContent = 'ขอโชคใหม่นะครับ';
-    prizeEl.innerHTML = '';
-    sub.textContent = remaining > 0 ? 'ยังมีตั๋วเหลืออยู่ ลองหมุนอีกครั้ง!' : 'คุณใช้ตั๋วครบแล้ว';
-    close.className = 'popup-close miss';
-    ticket.textContent = 'ตั๋วที่ ' + ticketNo + (remaining > 0 ? ' • เหลืออีก ' + remaining + ' ตั๋ว' : ' • หมดตั๋วแล้ว');
+    box.className='popup-box miss';
+    icon.textContent='⚠️'; title.className='popup-title miss'; title.textContent=opts.title||'แจ้งเตือน';
+    prizeArea.innerHTML=''; sub.textContent=opts.sub||'';
+    closeBtn.className='popup-close miss'; tickInfo.textContent='';
   }
-
   popup.classList.add('active');
 }
+function closePopup() { document.getElementById('resultPopup').classList.remove('active'); }
+document.getElementById('resultPopup').addEventListener('click',e=>{ if(e.target===document.getElementById('resultPopup')) closePopup(); });
 
-function closePopup() {
-  document.getElementById('resultPopup').classList.remove('active');
-}
-
-// ── LOGIN / LOGOUT ──
 async function doLogin() {
-  const sn = document.getElementById('snInput').value.trim();
-  if (!sn) return;
-  document.getElementById('loginError').style.display = 'none';
+  const sn=document.getElementById('snInput').value.trim();
+  if(!sn) return;
+  document.getElementById('loginError').style.display='none';
   try {
-    const emp = await db.collection('employees').doc(sn).get();
-    if (!emp.exists || emp.data().active === false) { document.getElementById('loginError').style.display='block'; return; }
-    currentEmployee = {sn, ...emp.data()};
-    const part = await db.collection('participants').doc(sn).get();
-    currentParticipant = part.exists ? part.data() : {usedTickets:0};
-    await db.collection('participants').doc(sn).set({lastLogin:firebase.firestore.FieldValue.serverTimestamp(), status:'active'},{merge:true});
-    await loadPrizes();
-    wheelSegments = buildSegments();
-    document.getElementById('welcomeText').textContent = 'ยินดีต้อนรับ ' + currentEmployee.name + ' (' + sn + ')';
-    updateTicketsBar();
-    await loadHistory();
-    showMain();
-    drawWheel(currentRotation);
-  } catch(err) {
-    document.getElementById('loginError').textContent = 'เกิดข้อผิดพลาด: ' + err.message;
-    document.getElementById('loginError').style.display = 'block';
+    const emp=await db.collection('employees').doc(sn).get();
+    if(!emp.exists||emp.data().active===false){document.getElementById('loginError').style.display='block';return;}
+    currentEmployee={sn,...emp.data()};
+    const part=await db.collection('participants').doc(sn).get();
+    currentParticipant=part.exists?part.data():{usedTickets:0};
+    await db.collection('participants').doc(sn).set({lastLogin:firebase.firestore.FieldValue.serverTimestamp(),status:'active'},{merge:true});
+    await loadPrizes(); rebuildSegments();
+    document.getElementById('welcomeText').textContent='ยินดีต้อนรับ '+currentEmployee.name+' ('+sn+')';
+    updateTicketsBar(); await loadHistory(); showMain(); drawWheel(currentRotation);
+  } catch(err){
+    document.getElementById('loginError').textContent='เกิดข้อผิดพลาด: '+err.message;
+    document.getElementById('loginError').style.display='block';
   }
 }
-
 function doLogout() {
-  currentEmployee=null; currentParticipant=null; prizes=[]; currentRotation=0; wheelSegments=[];
-  document.getElementById('snInput').value = '';
-  document.getElementById('mainScreen').style.display = 'none';
-  document.getElementById('adminScreen').style.display = 'none';
-  document.getElementById('loginScreen').style.display = 'flex';
+  currentEmployee=null;currentParticipant=null;prizes=[];currentRotation=0;cachedSegments=[];
+  document.getElementById('snInput').value='';
+  document.getElementById('mainScreen').style.display='none';
+  document.getElementById('adminScreen').style.display='none';
+  document.getElementById('loginScreen').style.display='flex';
 }
-
-async function loadPrizes() {
-  const snap = await db.collection('prizes').get();
-  prizes = snap.docs.map(d => ({id:d.id,...d.data()}));
-}
-
+async function loadPrizes() { const snap=await db.collection('prizes').get(); prizes=snap.docs.map(d=>({id:d.id,...d.data()})); }
 async function loadHistory() {
-  const snap = await db.collection('draws').where('sn','==',currentEmployee.sn).get();
-  const draws = snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0 - (b.timestamp?.toMillis?.())||0);
-  const list = document.getElementById('historyList');
-  if (!draws.length) { list.innerHTML='<p style="color:#666;text-align:center;padding:20px;">ยังไม่มีประวัติการหมุน</p>'; return; }
-  list.innerHTML = draws.map(d=>'<div class="history-item"><div><div class="h-ticket">ตั๋วที่ '+d.ticketNo+'</div><div class="h-prize '+(d.won?'win':'miss')+'">'+(d.won?'🎁 '+d.prize:'💫 ไม่ได้รางวัล')+'</div></div><div class="h-time">'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</div></div>').join('');
+  const snap=await db.collection('draws').where('sn','==',currentEmployee.sn).get();
+  const draws=snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);
+  const list=document.getElementById('historyList');
+  if(!draws.length){list.innerHTML='<p style="color:#666;text-align:center;padding:20px;">ยังไม่มีประวัติ</p>';return;}
+  list.innerHTML=draws.map(d=>'<div class="history-item"><div><div class="h-ticket">ตั๋วที่ '+d.ticketNo+'</div><div class="h-prize '+(d.won?'win':'miss')+'">'+(d.won?'🎁 '+d.prize:'💫 ไม่ได้รางวัล')+'</div></div><div class="h-time">'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</div></div>').join('');
 }
-
 function updateTicketsBar() {
-  const total=currentEmployee.tickets, used=currentParticipant.usedTickets||0;
+  const total=currentEmployee.tickets,used=currentParticipant.usedTickets||0;
   let h='<span style="color:#FFD700;font-weight:700;margin-right:8px;">ตั๋วของคุณ:</span>';
   for(let i=0;i<total;i++) h+='<span class="ticket-dot '+(i<used?'used':'')+'"></span>';
   h+='<span style="margin-left:10px;color:#aaa;font-size:14px;">ใช้แล้ว '+used+'/'+total+' ตั๋ว</span>';
   document.getElementById('ticketsBar').innerHTML=h;
 }
-
-function fmt(d) { return d.toLocaleDateString('th-TH')+' '+d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'}); }
-
-function showMain() {
+function fmt(d){return d.toLocaleDateString('th-TH')+' '+d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'});}
+function showMain(){
   document.getElementById('loginScreen').style.display='none';
   document.getElementById('mainScreen').style.display='block';
   document.getElementById('adminScreen').style.display='none';
 }
-function showAdminModal() {
+function showAdminModal(){
   document.getElementById('adminPwInput').value='';
   document.getElementById('adminPwError').style.display='none';
   document.getElementById('adminModal').classList.add('active');
 }
-function closeAdminModal() { document.getElementById('adminModal').classList.remove('active'); }
-
-async function checkAdmin() {
-  const pw = document.getElementById('adminPwInput').value;
-  try {
-    const cfg = await db.collection('config').doc('admin').get();
-    const ok = cfg.exists ? cfg.data().password : 'admin1234';
-    if (pw===ok) { closeAdminModal(); showAdminScreen(); }
+function closeAdminModal(){document.getElementById('adminModal').classList.remove('active');}
+async function checkAdmin(){
+  const pw=document.getElementById('adminPwInput').value;
+  try{
+    const cfg=await db.collection('config').doc('admin').get();
+    const ok=cfg.exists?cfg.data().password:'admin1234';
+    if(pw===ok){closeAdminModal();showAdminScreen();}
     else document.getElementById('adminPwError').style.display='block';
-  } catch { if(pw==='admin1234'){closeAdminModal();showAdminScreen();}else document.getElementById('adminPwError').style.display='block'; }
+  }catch{if(pw==='admin1234'){closeAdminModal();showAdminScreen();}else document.getElementById('adminPwError').style.display='block';}
 }
-
-async function showAdminScreen() {
+async function showAdminScreen(){
   document.getElementById('loginScreen').style.display='none';
   document.getElementById('mainScreen').style.display='none';
   document.getElementById('adminScreen').style.display='block';
   await loadAdminData();
 }
-
-async function loadAdminData() {
-  try {
-    const [eS,pS,dS] = await Promise.all([db.collection('employees').get(),db.collection('participants').get(),db.collection('draws').get()]);
-    const draws = dS.docs.map(d=>({id:d.id,...d.data()}));
+async function loadAdminData(){
+  try{
+    const [eS,pS,dS]=await Promise.all([db.collection('employees').get(),db.collection('participants').get(),db.collection('draws').get()]);
+    const draws=dS.docs.map(d=>({id:d.id,...d.data()}));
     document.getElementById('statTotal').textContent=eS.size;
     document.getElementById('statPlayed').textContent=pS.size;
     document.getElementById('statSpins').textContent=draws.length;
     document.getElementById('statWins').textContent=draws.filter(d=>d.won).length;
     await loadPrizes();
     document.getElementById('prizeStockGrid').innerHTML=prizes.map(p=>{
+      const pd=PRIZE_DATA.find(x=>x.id===p.id);
       const pct=p.total>0?(p.remaining/p.total)*100:0;
-      return '<div class="prize-item"><div class="pname">'+p.name+'</div><div class="pbar"><div class="pfill" style="width:'+pct+'%"></div></div><div class="pcount">เหลือ '+p.remaining+'/'+p.total+'</div></div>';
+      return '<div class="prize-item"><div class="pname">'+p.name+' <span style="color:#FFD700;font-size:11px;">('+( pd?pd.slotCount:'-')+' แถบ)</span></div><div class="pbar"><div class="pfill" style="width:'+pct+'%"></div></div><div class="pcount">เหลือ '+p.remaining+'/'+p.total+'</div></div>';
     }).join('');
     draws.sort((a,b)=>(b.timestamp?.toMillis?.())||0-(a.timestamp?.toMillis?.())||0);
     document.getElementById('allDrawsTable').innerHTML=draws.length?draws.map(d=>'<tr><td>'+d.sn+'</td><td>'+d.employeeName+'</td><td>'+d.ticketNo+'</td><td>'+d.prize+'</td><td><span class="badge '+(d.won?'win':'miss')+'">'+(d.won?'ได้รางวัล':'ไม่ได้รางวัล')+'</span></td><td>'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</td></tr>').join(''):'<tr><td colspan="6" style="text-align:center;color:#666;">ยังไม่มีข้อมูล</td></tr>';
     const parts={};pS.docs.forEach(d=>parts[d.id]=d.data());
     document.getElementById('employeeTable').innerHTML=eS.docs.map(d=>{const e=d.data(),p=parts[d.id]||{};return '<tr><td>'+e.sn+'</td><td>'+e.name+'</td><td>'+e.tickets+'</td><td>'+(p.usedTickets||0)+'</td><td><span class="badge '+(e.active?'win':'miss')+'">'+(e.active?'Active':'Inactive')+'</span></td></tr>';}).join('');
-  } catch(err){console.error(err);}
+  }catch(err){console.error(err);}
 }
-
-async function exportCSV() {
-  try {
-    const snap = await db.collection('draws').get();
-    const rows = snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);
+async function exportCSV(){
+  try{
+    const snap=await db.collection('draws').get();
+    const rows=snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);
     let csv='\uFEFFSN,ชื่อ,ตั๋วที่,รางวัล,ผล,เวลา\n';
     rows.forEach(r=>{const t=r.timestamp?.toDate?fmt(r.timestamp.toDate()):'-';csv+='"'+r.sn+'","'+r.employeeName+'","'+r.ticketNo+'","'+r.prize+'","'+(r.won?'ได้รางวัล':'ไม่ได้รางวัล')+'","'+t+'"\n';});
     const a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
-    a.download='sgc-lucky-draw-'+new Date().toISOString().slice(0,10)+'.csv';
-    a.click();
-  } catch(err){alert('Export ไม่สำเร็จ: '+err.message);}
+    a.download='sgc-lucky-draw-'+new Date().toISOString().slice(0,10)+'.csv'; a.click();
+  }catch(err){alert('Export ไม่สำเร็จ: '+err.message);}
 }
-
-async function setupDatabase() {
+async function setupDatabase(){
   if(!confirm('รันครั้งแรกเท่านั้น! ต้องการ Setup Database ใช่ไหม?')) return;
-  try {
+  try{
     const batch=db.batch();
     EMPLOYEE_DATA.forEach(e=>batch.set(db.collection('employees').doc(e.sn),{sn:e.sn,name:e.name,tickets:e.tickets,active:true}));
     PRIZE_DATA.forEach(p=>batch.set(db.collection('prizes').doc(p.id),{name:p.name,total:p.total,remaining:p.total}));
     batch.set(db.collection('config').doc('admin'),{password:'admin1234'});
-    await batch.commit();
-    alert('✅ Setup สำเร็จ!');
-    await loadAdminData();
-  } catch(err){alert('❌ Setup ไม่สำเร็จ: '+err.message);}
+    await batch.commit(); alert('✅ Setup สำเร็จ!'); await loadAdminData();
+  }catch(err){alert('❌ Setup ไม่สำเร็จ: '+err.message);}
 }
-
-function launchConfetti() {
-  const cols=['#FFD700','#E8303A','#4285F4','#34A853','#FF88FF','#FFA500'];
+function launchConfetti(){
+  const cols=['#FFD700','#FFB3C6','#FFC8A2','#B5EAD7','#C7CEEA','#FFDAC1'];
   for(let i=0;i<100;i++){
     setTimeout(()=>{
-      const el=document.createElement('div');
-      el.className='confetti-piece';
+      const el=document.createElement('div'); el.className='confetti-piece';
       el.style.cssText='left:'+Math.random()*100+'vw;background:'+cols[~~(Math.random()*cols.length)]+';animation-duration:'+(2+Math.random()*2)+'s;width:'+(8+Math.random()*8)+'px;height:'+(8+Math.random()*8)+'px;';
-      document.body.appendChild(el);
-      setTimeout(()=>el.remove(),4500);
+      document.body.appendChild(el); setTimeout(()=>el.remove(),4500);
     },i*18);
   }
 }
-
-// Close popup on overlay click
-document.getElementById('resultPopup').addEventListener('click', function(e) {
-  if (e.target === this) closePopup();
-});
 </script>
 </body>
 </html>
