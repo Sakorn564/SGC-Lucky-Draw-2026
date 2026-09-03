@@ -9,10 +9,10 @@
 :root{--bg:#000;--bgc:#131314;--card:#1F1F1F;--chi:#1a1a1b;--bd:#2a2a2a;--bhi:#3A3A3A;--fg:#FAFAFA;--mu:#AFB5BE;--di:#737373;--gr:#4ADE80;--bl:#93C5FD;--te:#3AE4C9;--grad:linear-gradient(90deg,#2168FD 0%,#1E71FA 22%,#37B1D3 55%,#39D6CB 78%,#3AE4C9 100%);--gd:linear-gradient(135deg,#2168FD 0%,#37B1D3 50%,#3AE4C9 100%);--gv:linear-gradient(180deg,#2168FD 0%,#3AE4C9 100%)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Manrope','Sarabun',sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;-webkit-font-smoothing:antialiased}
-#v_login,#v_spin,#v_admin{min-height:100vh}
-#v_spin,#v_admin{display:none}
-#v_login{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-#v_spin,#v_admin{flex-direction:column}
+#vL,#vS,#vA{min-height:100vh}
+#vS,#vA{display:none}
+#vL{display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+#vS,#vA{flex-direction:column}
 .lg{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(33,104,253,.12),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
 .lgg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 60% at 50% 50%,black,transparent);pointer-events:none}
 .lb{background:var(--bgc);border:1px solid var(--bd);border-radius:20px;padding:40px;width:380px;position:relative;z-index:1}
@@ -21,22 +21,22 @@ body{font-family:'Manrope','Sarabun',sans-serif;background:var(--bg);color:var(-
 .lt{font-size:17px;font-weight:900;letter-spacing:-.4px}
 .ls{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di);margin-top:2px}
 .flbl{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di);margin-bottom:7px;display:block;margin-top:14px}
-.fi{width:100%;background:rgba(33,104,253,.06);border:1px solid rgba(33,104,253,.18);border-radius:10px;padding:13px 15px;font-size:16px;font-weight:800;font-family:'Manrope',sans-serif;color:var(--fg);outline:none;letter-spacing:2px;transition:border-color .2s}
+.fi{width:100%;background:rgba(33,104,253,.06);border:1px solid rgba(33,104,253,.18);border-radius:10px;padding:14px 16px;font-size:20px;font-weight:800;font-family:'Manrope',sans-serif;color:var(--fg);outline:none;letter-spacing:3px;transition:border-color .2s}
 .fi:focus{border-color:rgba(33,104,253,.5)}
 .fi::placeholder{font-size:12px;letter-spacing:0;font-weight:500;color:var(--di)}
 .lbtn{width:100%;padding:14px;background:var(--gd);border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:900;font-family:'Manrope',sans-serif;cursor:pointer;margin-top:16px;transition:opacity .2s}
 .lbtn:hover{opacity:.88}
-.lerr{background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);border-radius:8px;padding:9px 13px;font-size:11px;font-weight:700;color:#FF6B6B;display:none;margin-top:10px}
+.lerr{background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.2);border-radius:8px;padding:9px 13px;font-size:11px;font-weight:700;color:#FF6B6B;display:none;margin-top:10px;line-height:1.5}
 .al{text-align:center;margin-top:14px;font-size:11px;font-weight:700;color:var(--di);cursor:pointer;transition:color .2s}
 .al:hover{color:var(--bl)}
-.setup_lnk{display:block;text-align:center;margin-top:6px;font-size:10px;color:rgba(255,255,255,.18);cursor:pointer;transition:color .2s}
-.setup_lnk:hover{color:rgba(255,255,255,.5)}
-.loading_overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000;backdrop-filter:blur(4px)}
-.loading_overlay.show{display:flex}
-.loading_box{background:var(--bgc);border:1px solid var(--bd);border-radius:16px;padding:32px 40px;text-align:center}
-.spinner{width:36px;height:36px;border:3px solid rgba(58,228,201,.2);border-top-color:#3AE4C9;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading_txt{font-size:13px;font-weight:700;color:var(--mu)}
+.slnk{display:block;text-align:center;margin-top:6px;font-size:10px;color:rgba(255,255,255,.18);cursor:pointer;transition:color .2s}
+.slnk:hover{color:rgba(255,255,255,.5)}
+.lov{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000;backdrop-filter:blur(4px)}
+.lov.show{display:flex}
+.lob{background:var(--bgc);border:1px solid var(--bd);border-radius:16px;padding:32px 40px;text-align:center}
+.spin{width:36px;height:36px;border:3px solid rgba(58,228,201,.2);border-top-color:#3AE4C9;border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 14px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.ltxt{font-size:13px;font-weight:700;color:var(--mu)}
 .sh{padding:13px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 .shl{display:flex;align-items:center;gap:10px}
 .shb{width:3px;height:28px;background:var(--gv);border-radius:2px}
@@ -99,8 +99,8 @@ body{font-family:'Manrope','Sarabun',sans-serif;background:var(--bg);color:var(-
 .mptg{font-size:8px;font-weight:800;border-radius:4px;padding:2px 7px;white-space:nowrap}
 .mptg.w{color:var(--gr);background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2)}
 .mptg.m{color:var(--di);background:rgba(255,255,255,.03);border:1px solid var(--bd)}
-.di_info{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.18);border-radius:9px;padding:10px 13px;font-size:10px;font-weight:700;color:var(--gr);text-align:center;display:none}
-.di_info.show{display:block}
+.di_nfo{background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.18);border-radius:9px;padding:10px 13px;font-size:10px;font-weight:700;color:var(--gr);text-align:center;display:none}
+.di_nfo.show{display:block}
 .dlbtn{width:100%;padding:12px;background:rgba(33,104,253,.1);border:1px solid rgba(33,104,253,.22);border-radius:10px;color:var(--bl);font-size:12px;font-weight:800;font-family:'Manrope',sans-serif;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:7px}
 .dlbtn:hover{background:rgba(33,104,253,.18);border-color:rgba(33,104,253,.4)}
 .adh{padding:13px 22px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
@@ -123,7 +123,7 @@ body{font-family:'Manrope','Sarabun',sans-serif;background:var(--bg);color:var(-
 .psbw{height:3px;background:rgba(255,255,255,.06);border-radius:2px;margin-bottom:5px}
 .psb{height:3px;border-radius:2px;transition:width .5s}
 .psc{font-size:12px;font-weight:900;text-align:right}
-.sr_row{display:flex;gap:8px;margin-bottom:12px}
+.srw{display:flex;gap:8px;margin-bottom:12px}
 .si{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:8px;padding:9px 13px;font-size:12px;font-weight:600;font-family:'Manrope',sans-serif;color:var(--fg);outline:none;transition:border-color .2s}
 .si:focus{border-color:rgba(33,104,253,.4)}
 .si::placeholder{color:var(--di)}
@@ -131,9 +131,6 @@ body{font-family:'Manrope','Sarabun',sans-serif;background:var(--bg);color:var(-
 .atbl th{padding:7px 11px;text-align:left;font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--di);border-bottom:1px solid var(--bd);background:rgba(255,255,255,.02)}
 .atbl td{padding:8px 11px;border-bottom:1px solid rgba(42,42,42,.5);vertical-align:top}
 .atbl tr:hover td{background:var(--chi)}
-.dim{color:var(--di)}
-.bld{font-weight:700}
-.ctr{text-align:center;font-weight:800}
 .ptag{display:inline-block;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.18);border-radius:4px;padding:1px 6px;font-size:8px;font-weight:700;color:var(--gr);margin:1px}
 .mtag{display:inline-block;background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:4px;padding:1px 6px;font-size:8px;font-weight:600;color:var(--di);margin:1px}
 .btn{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:7px;padding:6px 12px;color:var(--mu);font-size:10px;font-weight:700;font-family:'Manrope',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap}
@@ -159,28 +156,26 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:999}
 </head>
 <body>
 
-<!-- LOGIN -->
-<div id="v_login">
+<!-- LOGIN — SN only, no PIN -->
+<div id="vL">
   <div class="lg"></div><div class="lgg"></div>
   <div class="lb">
     <div class="ll"><div class="llb"></div><div><div class="lt">SGC Lucky Draw 2026</div><div class="ls">Annual Event</div></div></div>
     <label class="flbl">SN Number</label>
-    <input class="fi" id="i_sn" type="text" placeholder="Scan หรือพิมพ์ SN Number..." autocomplete="off" onkeydown="if(event.key==='Enter')document.getElementById('i_pin').focus()">
-    <label class="flbl">PIN (4 หลัก)</label>
-    <input class="fi" id="i_pin" type="password" placeholder="••••" maxlength="6" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
+    <input class="fi" id="iSN" type="text" placeholder="Scan หรือพิมพ์ SN Number..." autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
     <div class="lerr" id="lerr"></div>
     <button class="lbtn" onclick="doLogin()">เข้าสู่ระบบ</button>
-    <div class="al" onclick="showAdminModal()">Admin Dashboard</div>
-    <div class="setup_lnk" onclick="setupDB()">⚙ Setup Database (รันครั้งแรกเท่านั้น)</div>
+    <div class="al" onclick="showAdmModal()">Admin Dashboard</div>
+    <div class="slnk" onclick="setupDB()">⚙ Setup Database (รันครั้งแรกเท่านั้น)</div>
   </div>
 </div>
 
 <!-- SPIN VIEW -->
-<div id="v_spin" style="display:none;flex-direction:column">
+<div id="vS" style="display:none;flex-direction:column">
   <div class="sh">
-    <div class="shl"><div class="shb"></div><div><div class="shn" id="sp_name">—</div><div class="shsn" id="sp_sn">—</div></div></div>
+    <div class="shl"><div class="shb"></div><div><div class="shn" id="spN">—</div><div class="shsn" id="spSN">—</div></div></div>
     <div class="shr">
-      <div class="tp"><div class="tpn" id="sp_tk">0</div><div class="tpl">ตั๋ว</div></div>
+      <div class="tp"><div class="tpn" id="spTK">0</div><div class="tpl">ตั๋ว</div></div>
       <button class="ob" onclick="doLogout()">ออก</button>
     </div>
   </div>
@@ -209,11 +204,11 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:999}
     </div>
     <div class="sr">
       <div class="mpc">
-        <div class="mph"><div class="mpt">ของรางวัลที่ได้</div><div class="mpct" id="mpc">0 รายการ</div></div>
+        <div class="mph"><div class="mpt">ของรางวัลที่ได้</div><div class="mpct" id="mpct">0 รายการ</div></div>
         <div class="mpl" id="mpl"><div class="mpe">ยังไม่มีของรางวัล</div></div>
       </div>
-      <div class="di_info" id="di_info">✓ ใช้สิทธิ์ครบแล้ว<br><span style="font-size:9px;font-weight:600;color:var(--mu)">บันทึกอัตโนมัติแล้ว</span></div>
-      <button class="dlbtn" onclick="downloadPNG()">
+      <div class="di_nfo" id="diNfo">✓ ใช้สิทธิ์ครบแล้ว<br><span style="font-size:9px;font-weight:600;color:var(--mu)">บันทึกอัตโนมัติแล้ว</span></div>
+      <button class="dlbtn" onclick="dlPNG()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download ใบสรุปรางวัล (PNG)
       </button>
@@ -221,16 +216,16 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:999}
   </div>
 </div>
 
-<!-- ADMIN VIEW -->
-<div id="v_admin" style="display:none;flex-direction:column">
+<!-- ADMIN -->
+<div id="vA" style="display:none;flex-direction:column">
   <div class="adh">
     <div class="adhl"><div class="adhb"></div><div><div class="adht">Admin Dashboard</div></div></div>
     <div class="adhr">
       <div class="lchip"><div class="ldot"></div>LIVE</div>
-      <button class="btn" onclick="exportCSV()">
+      <button class="btn" onclick="expCSV()">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export CSV
       </button>
-      <button class="btn d" onclick="confirmReset()">
+      <button class="btn d" onclick="doReset()">
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FF6B6B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>Reset
       </button>
       <button class="btn" onclick="doLogout()">ออก</button>
@@ -239,9 +234,9 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:999}
   <div class="adb">
     <div class="adst">
       <div class="ast"><div class="astn">179</div><div class="astl">Total Prizes</div></div>
-      <div class="ast"><div class="astn" id="a_rem">—</div><div class="astl">Remaining</div></div>
-      <div class="ast"><div class="astn" id="a_par">—</div><div class="astl">Participants</div></div>
-      <div class="ast"><div class="astn" id="a_sp">—</div><div class="astl">Total Spins</div></div>
+      <div class="ast"><div class="astn" id="aRem">—</div><div class="astl">Remaining</div></div>
+      <div class="ast"><div class="astn" id="aPar">—</div><div class="astl">Participants</div></div>
+      <div class="ast"><div class="astn" id="aSp">—</div><div class="astl">Total Spins</div></div>
     </div>
     <div class="asec">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>Prize Stock
@@ -250,9 +245,7 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:999}
     <div class="asec">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#93C5FD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7"/></svg>Participant Results
     </div>
-    <div class="sr_row">
-      <input class="si" id="a_srch" placeholder="Search name or SN..." oninput="filterTable()">
-    </div>
+    <div class="srw"><input class="si" id="aSrch" placeholder="Search name or SN..." oninput="filterTbl()"></div>
     <table class="atbl">
       <thead><tr><th>#</th><th>Name</th><th>SN</th><th>Tickets</th><th>Spins</th><th>Prizes Won</th><th>Last Activity</th></tr></thead>
       <tbody id="atb"></tbody>
@@ -261,552 +254,535 @@ canvas#conf{position:fixed;inset:0;pointer-events:none;z-index:999}
 </div>
 
 <!-- ADMIN LOGIN MODAL -->
-<div class="modal" id="adm_modal">
+<div class="modal" id="admModal">
   <div class="mbox">
     <div class="mttl">Admin Access</div>
     <div class="msub">รหัสผ่าน Admin</div>
-    <input class="mpi" id="adm_pass" type="password" placeholder="••••••" onkeydown="if(event.key==='Enter')chkAdmin()">
-    <div class="merr" id="adm_err">รหัสผ่านไม่ถูกต้อง</div>
+    <input class="mpi" id="admPass" type="password" placeholder="••••••" onkeydown="if(event.key==='Enter')chkAdm()">
+    <div class="merr" id="admErr">รหัสผ่านไม่ถูกต้อง</div>
     <div class="mbtns">
-      <button class="mcan" onclick="closeAdminModal()">ยกเลิก</button>
-      <button class="btn p" style="flex:1;justify-content:center" onclick="chkAdmin()">เข้าสู่ระบบ</button>
+      <button class="mcan" onclick="closeAdmModal()">ยกเลิก</button>
+      <button class="btn p" style="flex:1;justify-content:center" onclick="chkAdm()">เข้าสู่ระบบ</button>
     </div>
   </div>
 </div>
 
 <!-- LOADING -->
-<div class="loading_overlay" id="loader">
-  <div class="loading_box">
-    <div class="spinner"></div>
-    <div class="loading_txt" id="loader_txt">กำลังโหลด...</div>
-  </div>
+<div class="lov" id="lov">
+  <div class="lob"><div class="spin"></div><div class="ltxt" id="ltxt">กำลังโหลด...</div></div>
 </div>
 
 <canvas id="conf"></canvas>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, query, orderBy, onSnapshot, runTransaction, where, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, addDoc, query, where, orderBy, onSnapshot, runTransaction, getDocs, serverTimestamp, limit } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// ── FIREBASE CONFIG ──────────────────────────────
-const firebaseConfig = {
-  apiKey: "AIzaSyCitdAnkw-_5Va_a1VMlHWT1FfiRairpx4",
-  authDomain: "sgc-lucky-draw-2026.firebaseapp.com",
-  projectId: "sgc-lucky-draw-2026",
-  storageBucket: "sgc-lucky-draw-2026.firebasestorage.app",
-  messagingSenderId: "335286641880",
-  appId: "1:335286641880:web:51b4545e3ff8e6f21c23ad",
-  measurementId: "G-JNTEK5TZZF"
+const FC = {
+  apiKey:"AIzaSyCitdAnkw-_5Va_a1VMlHWT1FfiRairpx4",
+  authDomain:"sgc-lucky-draw-2026.firebaseapp.com",
+  projectId:"sgc-lucky-draw-2026",
+  storageBucket:"sgc-lucky-draw-2026.firebasestorage.app",
+  messagingSenderId:"335286641880",
+  appId:"1:335286641880:web:51b4545e3ff8e6f21c23ad"
 };
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(FC);
 const db = getFirestore(app);
 
-// ── PRIZE DEFINITIONS ────────────────────────────
 const PRIZES = [
-  {id:'fan',       name:'พัดลม Hatari',              total:1,  bg:'#0f2a5c', ac:'#60a5fa', l1:'พัดลม',      l2:'Hatari'},
-  {id:'towel',     name:'ผ้าขุนหนู Frolina',          total:1,  bg:'#2a0f5c', ac:'#c084fc', l1:'ผ้าขุนหนู',  l2:'Frolina'},
-  {id:'blanket',   name:'ผ้าห่มเย็น besico',           total:1,  bg:'#0f3a2a', ac:'#34d399', l1:'ผ้าห่มเย็น', l2:'besico'},
-  {id:'uv_shirt',  name:'เสื้อแขนยาว UV',              total:5,  bg:'#3a2000', ac:'#fbbf24', l1:'เสื้อแขนยาว',l2:'UV'},
-  {id:'scale',     name:'เครื่องชั่งน้ำหนัก',          total:1,  bg:'#1a0f3a', ac:'#a78bfa', l1:'เครื่องชั่ง', l2:'น้ำหนัก'},
-  {id:'nano_mask', name:'หน้ากากผ้านาโนแพ็คคู่',       total:80, bg:'#0f2a14', ac:'#4ade80', l1:'หน้ากากผ้า', l2:'นาโน'},
-  {id:'inhaler',   name:'ยาดม ตาพาสเทล',              total:20, bg:'#3a0f1a', ac:'#fb7185', l1:'ยาดม',       l2:'พาสเทล'},
-  {id:'mama',      name:'มาม่าคัพเล็ก',                total:10, bg:'#2a1800', ac:'#fcd34d', l1:'มาม่า',      l2:'คัพเล็ก'},
-  {id:'ovaltine',  name:'โอวัลตินซอง',                 total:60, bg:'#0f1a3a', ac:'#38bdf8', l1:'โอวัลติน',  l2:'ซอง'},
+  {id:'fan',      name:'พัดลม Hatari',            total:1,  bg:'#0f2a5c',ac:'#60a5fa',l1:'พัดลม',     l2:'Hatari'},
+  {id:'towel',    name:'ผ้าขุนหนู Frolina',        total:1,  bg:'#2a0f5c',ac:'#c084fc',l1:'ผ้าขุนหนู', l2:'Frolina'},
+  {id:'blanket',  name:'ผ้าห่มเย็น besico',         total:1,  bg:'#0f3a2a',ac:'#34d399',l1:'ผ้าห่มเย็น',l2:'besico'},
+  {id:'uv_shirt', name:'เสื้อแขนยาว UV',            total:5,  bg:'#3a2000',ac:'#fbbf24',l1:'เสื้อแขนยาว',l2:'UV'},
+  {id:'scale',    name:'เครื่องชั่งน้ำหนัก',        total:1,  bg:'#1a0f3a',ac:'#a78bfa',l1:'เครื่องชั่ง',l2:'น้ำหนัก'},
+  {id:'nano_mask',name:'หน้ากากผ้านาโนแพ็คคู่',     total:80, bg:'#0f2a14',ac:'#4ade80',l1:'หน้ากากผ้า',l2:'นาโน'},
+  {id:'inhaler',  name:'ยาดม ตาพาสเทล',            total:20, bg:'#3a0f1a',ac:'#fb7185',l1:'ยาดม',      l2:'พาสเทล'},
+  {id:'mama',     name:'มาม่าคัพเล็ก',              total:10, bg:'#2a1800',ac:'#fcd34d',l1:'มาม่า',     l2:'คัพเล็ก'},
+  {id:'ovaltine', name:'โอวัลตินซอง',               total:60, bg:'#0f1a3a',ac:'#38bdf8',l1:'โอวัลติน', l2:'ซอง'},
 ];
-const TOTAL_PRIZES = 179;
 
-// ── EMPLOYEE DATA ────────────────────────────────
 const EMP = {
-  "1000248304":{name:"Kanokgarn Piromnoi",tickets:2,pin:"1234"},
-  "2200238":{name:"Anirut Senparb",tickets:1,pin:"1234"},
-  "7147591":{name:"Grittin Prajunthon",tickets:1,pin:"1234"},
-  "2438074":{name:"Kritchai Uawithaya",tickets:1,pin:"1234"},
-  "2200257":{name:"Napat Pannanakool",tickets:1,pin:"1234"},
-  "2438078":{name:"Sarayoot Longklong",tickets:1,pin:"1234"},
-  "7153791":{name:"Yuttapoom Bunta",tickets:1,pin:"1234"},
-  "2430916":{name:"Booncherd Wongprajun",tickets:1,pin:"1234"},
-  "2400333":{name:"Noppasit Suwaratthanont",tickets:1,pin:"1234"},
-  "2004401":{name:"Chanasorn Waewking",tickets:1,pin:"1234"},
-  "7120619":{name:"Chatree Micharee",tickets:2,pin:"1234"},
-  "2416214":{name:"Jatuphol Chainad",tickets:2,pin:"1234"},
-  "2404423":{name:"Ameon Siriphed",tickets:1,pin:"1234"},
-  "1000242055":{name:"Anamika Ngoenoiu",tickets:1,pin:"1234"},
-  "2430556":{name:"Apapan Wila",tickets:1,pin:"1234"},
-  "2004758":{name:"Aranya Sitthiboon",tickets:1,pin:"1234"},
-  "2435143":{name:"Channipha Kuyphinikorn",tickets:1,pin:"1234"},
-  "2002574":{name:"Chuenchom Apitamwiwat",tickets:1,pin:"1234"},
-  "7149428":{name:"Chutiphon Thongthong",tickets:1,pin:"1234"},
-  "2421119":{name:"Dararut Kodsamnuan",tickets:1,pin:"1234"},
-  "2442133":{name:"Jeeranan Chotinet",tickets:1,pin:"1234"},
-  "7126238":{name:"Laphassarin Suwanchairob",tickets:1,pin:"1234"},
-  "2429047":{name:"Mintra Thaothong",tickets:1,pin:"1234"},
-  "2003529":{name:"Nattapron Netsuwan",tickets:1,pin:"1234"},
-  "2440429":{name:"Pichamon Chomdorn",tickets:1,pin:"1234"},
-  "2002517":{name:"Ratdawan Mamukda",tickets:1,pin:"1234"},
-  "7190178":{name:"Sawitree Wasiwat",tickets:1,pin:"1234"},
-  "2200660":{name:"Jidapha Bunnoy",tickets:1,pin:"1234"},
-  "2436449":{name:"Wirat Techamalaungkul",tickets:1,pin:"1234"},
-  "1000285595":{name:"Kajornsak Boonmee",tickets:2,pin:"1234"},
-  "2405533":{name:"Chanchai Chimsungnoen",tickets:1,pin:"1234"},
-  "1000243767":{name:"Anucha Chotsupharit",tickets:1,pin:"1234"},
-  "2005540":{name:"Jaran Khansorn",tickets:1,pin:"1234"},
-  "2422288":{name:"Kritsana Manakrood",tickets:1,pin:"1234"},
-  "2410584":{name:"Nattheera Teboonmee",tickets:1,pin:"1234"},
-  "2002087":{name:"Pimolnat Preechathitiwat",tickets:1,pin:"1234"},
-  "2005802":{name:"Raerai Khaminthong",tickets:1,pin:"1234"},
-  "2002909":{name:"Rapeeporn Wongwai",tickets:1,pin:"1234"},
-  "2414698":{name:"Sukanya Sookruang",tickets:1,pin:"1234"},
-  "2200594":{name:"Anucha Rakphirom",tickets:2,pin:"1234"},
-  "1000294229":{name:"Nattanicha Tanapoomchai",tickets:3,pin:"1234"},
-  "7145687":{name:"Pilaiwan Wongwat",tickets:1,pin:"1234"},
-  "1000025867":{name:"Sawitree Vanhakij",tickets:1,pin:"1234"},
-  "2431874":{name:"Adisak Tajo",tickets:1,pin:"1234"},
-  "2004339":{name:"Pairot Chanawatee",tickets:1,pin:"1234"},
-  "2200669":{name:"Panphitcha Thatmee",tickets:1,pin:"1234"},
-  "7106054":{name:"Sittichai Buayeam",tickets:1,pin:"1234"},
-  "2418270":{name:"Sarawut Rungruaysap",tickets:1,pin:"1234"},
-  "7123111":{name:"Suntisuk Srikrot",tickets:1,pin:"1234"},
-  "2007946":{name:"Achitaya Varin",tickets:1,pin:"1234"},
-  "2003457":{name:"Arreerat Vorraphan",tickets:1,pin:"1234"},
-  "7105811":{name:"Jittima Padsoda",tickets:1,pin:"1234"},
-  "2412258":{name:"Paradorn Sophak",tickets:1,pin:"1234"},
-  "2419563":{name:"Pongsak Phoseeta",tickets:1,pin:"1234"},
-  "2400047":{name:"Rung-Arun Suerto",tickets:1,pin:"1234"},
-  "2005214":{name:"Siranee Sripong",tickets:1,pin:"1234"},
-  "7105826":{name:"Siriwat Dunmadan",tickets:1,pin:"1234"},
-  "2008011":{name:"Sithara Kusub",tickets:1,pin:"1234"},
-  "2005481":{name:"Supaporn Kamkhunthod",tickets:1,pin:"1234"},
-  "7105808":{name:"Sutatsana Suebsaun",tickets:1,pin:"1234"},
-  "2400271":{name:"Thanawan Vilasri",tickets:1,pin:"1234"},
-  "1000243152":{name:"Thirayut Srisomboon",tickets:1,pin:"1234"},
-  "2418576":{name:"Winai Anurak",tickets:1,pin:"1234"},
-  "2004697":{name:"Somporn Subin",tickets:1,pin:"1234"},
-  "2438060":{name:"Ladawan Thatwisai",tickets:1,pin:"1234"},
-  "2401201":{name:"Mayuree Ummatthai",tickets:1,pin:"1234"},
-  "2000591":{name:"Kamonwan Kumla",tickets:2,pin:"1234"},
-  "2423430":{name:"Atichard Kupanlam",tickets:2,pin:"1234"},
-  "2417218":{name:"Atikan Hemnithi",tickets:2,pin:"1234"},
-  "2005164":{name:"Benjawan Ratchooree",tickets:1,pin:"1234"},
-  "2002929":{name:"Chanyanuch Chanchula",tickets:2,pin:"1234"},
-  "2200347":{name:"Jaruwat Nopakan",tickets:2,pin:"1234"},
-  "2408017":{name:"Nhungnut Sawhatdi",tickets:2,pin:"1234"},
-  "2435144":{name:"Piyaanan Huanhong",tickets:2,pin:"1234"},
-  "7130549":{name:"Rosuelee Bulah",tickets:2,pin:"1234"},
-  "2200515":{name:"Saowalak Pribvai",tickets:2,pin:"1234"},
-  "1000242609":{name:"Tidarat Sertkratok",tickets:2,pin:"1234"},
-  "1000255473":{name:"Wanida Masuk",tickets:2,pin:"1234"},
-  "7176897":{name:"Thunyasamorn Nanthakid",tickets:1,pin:"1234"},
-  "7152379":{name:"Tiwanon Laoprajit",tickets:1,pin:"1234"},
-  "2435174":{name:"Narumol Poempoon",tickets:1,pin:"1234"},
-  "2407510":{name:"Sarawut Pornsee",tickets:1,pin:"1234"},
-  "1000258002":{name:"Ratri Kaeochan",tickets:1,pin:"1234"},
-  "2400025":{name:"Bancha Saensook",tickets:1,pin:"1234"},
-  "2400086":{name:"Winyoo Suksamran",tickets:1,pin:"1234"},
-  "7153688":{name:"wantipa boonnontae",tickets:2,pin:"1234"},
-  "2435961":{name:"Wattanachai Soidokson",tickets:1,pin:"1234"},
-  "2415606":{name:"Wichai Jarassuttipong",tickets:2,pin:"1234"},
-  "1000005678":{name:"Wilasinee Sunracha",tickets:1,pin:"1234"},
-  "1000255244":{name:"Wiwaporn Khamkha",tickets:1,pin:"1234"},
-  "1000283301":{name:"Worraprat Thantanasap",tickets:1,pin:"1234"},
-  "1000245885":{name:"Ladaranee Krongsombut",tickets:1,pin:"1234"},
-  "1000242193":{name:"Atchara Yookhong",tickets:2,pin:"1234"},
-  "2004906":{name:"Jansuda Promnoi",tickets:2,pin:"1234"},
-  "1000270790":{name:"Kanchana Chaloeisak",tickets:2,pin:"1234"},
-  "2407769":{name:"Kanthatee Chantha",tickets:2,pin:"1234"},
-  "1000284331":{name:"Kanyaluk Pornchai",tickets:2,pin:"1234"},
-  "7145297":{name:"Khomsan Sahwangkaeo",tickets:2,pin:"1234"},
-  "2002583":{name:"Onnalin Sawangdee",tickets:2,pin:"1234"},
-  "2439466":{name:"Seksan Boonchoo",tickets:2,pin:"1234"},
-  "2445924":{name:"Siriluk Chaisiri",tickets:2,pin:"1234"},
-  "2425010":{name:"Thongpoon Namtho",tickets:2,pin:"1234"},
-  "1000248188":{name:"Waraporn Suriyawong",tickets:2,pin:"1234"},
-  "2438066":{name:"Wittaya Kaewprom",tickets:2,pin:"1234"},
-  "2413045":{name:"Supaporn Parusook",tickets:1,pin:"1234"},
-  "2003729":{name:"Thonglon Theampat",tickets:1,pin:"1234"},
-  "2001030":{name:"Nadtamon Boontamrongthanachot",tickets:1,pin:"1234"},
-  "2000797":{name:"Junjira Saijaem",tickets:1,pin:"1234"},
-  "7107241":{name:"Akekawat Ketin",tickets:1,pin:"1234"},
-  "2403214":{name:"Pruksa Kachari",tickets:1,pin:"1234"},
-  "7107114":{name:"Samai Chailert",tickets:1,pin:"1234"},
-  "7105790":{name:"Apinya Janwichai",tickets:1,pin:"1234"},
-  "2007895":{name:"Wilawan Kamjorn",tickets:1,pin:"1234"},
-  "7107380":{name:"Phokin Korkeaw",tickets:1,pin:"1234"},
-  "2200635":{name:"Phattira Kleekhajorn",tickets:1,pin:"1234"},
-  "7106953":{name:"Chanintra Klahanveeragul",tickets:1,pin:"1234"},
-  "2200280":{name:"Rattanapron Pholdon",tickets:1,pin:"1234"},
-  "2200511":{name:"Paranee Treemoon",tickets:1,pin:"1234"},
-  "1000297899":{name:"Khermintra Chawasit",tickets:1,pin:"1234"},
-  "1000276711":{name:"Karnchanaphon Kankitdumrong",tickets:1,pin:"1234"},
-  "7320809":{name:"Warisa Phochoo",tickets:1,pin:"1234"},
-  "1000297312":{name:"Wanwisa Poasakun",tickets:1,pin:"1234"},
-  "2410309":{name:"Kanjaree Chatluang",tickets:1,pin:"1234"},
-  "2411072":{name:"Jutamas Thanyaphol",tickets:1,pin:"1234"},
-  "7153614":{name:"Suthathip Boonnil",tickets:1,pin:"1234"},
+  "1000248304":{name:"Kanokgarn Piromnoi",tickets:2},
+  "2200238":{name:"Anirut Senparb",tickets:1},
+  "7147591":{name:"Grittin Prajunthon",tickets:1},
+  "2438074":{name:"Kritchai Uawithaya",tickets:1},
+  "2200257":{name:"Napat Pannanakool",tickets:1},
+  "2438078":{name:"Sarayoot Longklong",tickets:1},
+  "7153791":{name:"Yuttapoom Bunta",tickets:1},
+  "2430916":{name:"Booncherd Wongprajun",tickets:1},
+  "2400333":{name:"Noppasit Suwaratthanont",tickets:1},
+  "2004401":{name:"Chanasorn Waewking",tickets:1},
+  "7120619":{name:"Chatree Micharee",tickets:2},
+  "2416214":{name:"Jatuphol Chainad",tickets:2},
+  "2404423":{name:"Ameon Siriphed",tickets:1},
+  "1000242055":{name:"Anamika Ngoenoiu",tickets:1},
+  "2430556":{name:"Apapan Wila",tickets:1},
+  "2004758":{name:"Aranya Sitthiboon",tickets:1},
+  "2435143":{name:"Channipha Kuyphinikorn",tickets:1},
+  "2002574":{name:"Chuenchom Apitamwiwat",tickets:1},
+  "7149428":{name:"Chutiphon Thongthong",tickets:1},
+  "2421119":{name:"Dararut Kodsamnuan",tickets:1},
+  "2442133":{name:"Jeeranan Chotinet",tickets:1},
+  "7126238":{name:"Laphassarin Suwanchairob",tickets:1},
+  "2429047":{name:"Mintra Thaothong",tickets:1},
+  "2003529":{name:"Nattapron Netsuwan",tickets:1},
+  "2440429":{name:"Pichamon Chomdorn",tickets:1},
+  "2002517":{name:"Ratdawan Mamukda",tickets:1},
+  "7190178":{name:"Sawitree Wasiwat",tickets:1},
+  "2200660":{name:"Jidapha Bunnoy",tickets:1},
+  "2436449":{name:"Wirat Techamalaungkul",tickets:1},
+  "1000285595":{name:"Kajornsak Boonmee",tickets:2},
+  "2405533":{name:"Chanchai Chimsungnoen",tickets:1},
+  "1000243767":{name:"Anucha Chotsupharit",tickets:1},
+  "2005540":{name:"Jaran Khansorn",tickets:1},
+  "2422288":{name:"Kritsana Manakrood",tickets:1},
+  "2410584":{name:"Nattheera Teboonmee",tickets:1},
+  "2002087":{name:"Pimolnat Preechathitiwat",tickets:1},
+  "2005802":{name:"Raerai Khaminthong",tickets:1},
+  "2002909":{name:"Rapeeporn Wongwai",tickets:1},
+  "2414698":{name:"Sukanya Sookruang",tickets:1},
+  "2200594":{name:"Anucha Rakphirom",tickets:2},
+  "1000294229":{name:"Nattanicha Tanapoomchai",tickets:3},
+  "7145687":{name:"Pilaiwan Wongwat",tickets:1},
+  "1000025867":{name:"Sawitree Vanhakij",tickets:1},
+  "2431874":{name:"Adisak Tajo",tickets:1},
+  "2004339":{name:"Pairot Chanawatee",tickets:1},
+  "2200669":{name:"Panphitcha Thatmee",tickets:1},
+  "7106054":{name:"Sittichai Buayeam",tickets:1},
+  "2418270":{name:"Sarawut Rungruaysap",tickets:1},
+  "7123111":{name:"Suntisuk Srikrot",tickets:1},
+  "2007946":{name:"Achitaya Varin",tickets:1},
+  "2003457":{name:"Arreerat Vorraphan",tickets:1},
+  "7105811":{name:"Jittima Padsoda",tickets:1},
+  "2412258":{name:"Paradorn Sophak",tickets:1},
+  "2419563":{name:"Pongsak Phoseeta",tickets:1},
+  "2400047":{name:"Rung-Arun Suerto",tickets:1},
+  "2005214":{name:"Siranee Sripong",tickets:1},
+  "7105826":{name:"Siriwat Dunmadan",tickets:1},
+  "2008011":{name:"Sithara Kusub",tickets:1},
+  "2005481":{name:"Supaporn Kamkhunthod",tickets:1},
+  "7105808":{name:"Sutatsana Suebsaun",tickets:1},
+  "2400271":{name:"Thanawan Vilasri",tickets:1},
+  "1000243152":{name:"Thirayut Srisomboon",tickets:1},
+  "2418576":{name:"Winai Anurak",tickets:1},
+  "2004697":{name:"Somporn Subin",tickets:1},
+  "2438060":{name:"Ladawan Thatwisai",tickets:1},
+  "2401201":{name:"Mayuree Ummatthai",tickets:1},
+  "2000591":{name:"Kamonwan Kumla",tickets:2},
+  "2423430":{name:"Atichard Kupanlam",tickets:2},
+  "2417218":{name:"Atikan Hemnithi",tickets:2},
+  "2005164":{name:"Benjawan Ratchooree",tickets:1},
+  "2002929":{name:"Chanyanuch Chanchula",tickets:2},
+  "2200347":{name:"Jaruwat Nopakan",tickets:2},
+  "2408017":{name:"Nhungnut Sawhatdi",tickets:2},
+  "2435144":{name:"Piyaanan Huanhong",tickets:2},
+  "7130549":{name:"Rosuelee Bulah",tickets:2},
+  "2200515":{name:"Saowalak Pribvai",tickets:2},
+  "1000242609":{name:"Tidarat Sertkratok",tickets:2},
+  "1000255473":{name:"Wanida Masuk",tickets:2},
+  "7176897":{name:"Thunyasamorn Nanthakid",tickets:1},
+  "7152379":{name:"Tiwanon Laoprajit",tickets:1},
+  "2435174":{name:"Narumol Poempoon",tickets:1},
+  "2407510":{name:"Sarawut Pornsee",tickets:1},
+  "1000258002":{name:"Ratri Kaeochan",tickets:1},
+  "2400025":{name:"Bancha Saensook",tickets:1},
+  "2400086":{name:"Winyoo Suksamran",tickets:1},
+  "7153688":{name:"wantipa boonnontae",tickets:2},
+  "2435961":{name:"Wattanachai Soidokson",tickets:1},
+  "2415606":{name:"Wichai Jarassuttipong",tickets:2},
+  "1000005678":{name:"Wilasinee Sunracha",tickets:1},
+  "1000255244":{name:"Wiwaporn Khamkha",tickets:1},
+  "1000283301":{name:"Worraprat Thantanasap",tickets:1},
+  "1000245885":{name:"Ladaranee Krongsombut",tickets:1},
+  "1000242193":{name:"Atchara Yookhong",tickets:2},
+  "2004906":{name:"Jansuda Promnoi",tickets:2},
+  "1000270790":{name:"Kanchana Chaloeisak",tickets:2},
+  "2407769":{name:"Kanthatee Chantha",tickets:2},
+  "1000284331":{name:"Kanyaluk Pornchai",tickets:2},
+  "7145297":{name:"Khomsan Sahwangkaeo",tickets:2},
+  "2002583":{name:"Onnalin Sawangdee",tickets:2},
+  "2439466":{name:"Seksan Boonchoo",tickets:2},
+  "2445924":{name:"Siriluk Chaisiri",tickets:2},
+  "2425010":{name:"Thongpoon Namtho",tickets:2},
+  "1000248188":{name:"Waraporn Suriyawong",tickets:2},
+  "2438066":{name:"Wittaya Kaewprom",tickets:2},
+  "2413045":{name:"Supaporn Parusook",tickets:1},
+  "2003729":{name:"Thonglon Theampat",tickets:1},
+  "2001030":{name:"Nadtamon Boontamrongthanachot",tickets:1},
+  "2000797":{name:"Junjira Saijaem",tickets:1},
+  "7107241":{name:"Akekawat Ketin",tickets:1},
+  "2403214":{name:"Pruksa Kachari",tickets:1},
+  "7107114":{name:"Samai Chailert",tickets:1},
+  "7105790":{name:"Apinya Janwichai",tickets:1},
+  "2007895":{name:"Wilawan Kamjorn",tickets:1},
+  "7107380":{name:"Phokin Korkeaw",tickets:1},
+  "2200635":{name:"Phattira Kleekhajorn",tickets:1},
+  "7106953":{name:"Chanintra Klahanveeragul",tickets:1},
+  "2200280":{name:"Rattanapron Pholdon",tickets:1},
+  "2200511":{name:"Paranee Treemoon",tickets:1},
+  "1000297899":{name:"Khermintra Chawasit",tickets:1},
+  "1000276711":{name:"Karnchanaphon Kankitdumrong",tickets:1},
+  "7320809":{name:"Warisa Phochoo",tickets:1},
+  "1000297312":{name:"Wanwisa Poasakun",tickets:1},
+  "2410309":{name:"Kanjaree Chatluang",tickets:1},
+  "2411072":{name:"Jutamas Thanyaphol",tickets:1},
+  "7153614":{name:"Suthathip Boonnil",tickets:1},
 };
 
-// ── STATE ────────────────────────────────────────
-let CUR = null; // current employee session
-let stockCache = {};
-let adminUnsub = null;
-let wAngle = 0, spinning = false;
-let allDrawsCache = [];
+let CUR=null, SC={}, aUnsub=null, wA=0, spinning=false, allDraws=[];
+document.fonts.ready.then(()=>drawW(wA));
 
-document.fonts.ready.then(() => drawWheel(wAngle));
-
-// ── SETUP DB ─────────────────────────────────────
+// ── SETUP ────────────────────────────────────────
 async function setupDB() {
-  showLoader('กำลัง Setup Database...');
+  showL('กำลัง Setup...');
   try {
-    for (const p of PRIZES) {
-      await setDoc(doc(db,'prizes',p.id), {name:p.name,total:p.total,remaining:p.total}, {merge:true});
-    }
+    for (const p of PRIZES) await setDoc(doc(db,'prizes',p.id),{name:p.name,total:p.total,remaining:p.total},{merge:true});
     for (const [sn,e] of Object.entries(EMP)) {
-      await setDoc(doc(db,'employees',sn), {name:e.name,sn,tickets:e.tickets,pin:e.pin,active:true}, {merge:true});
-      await setDoc(doc(db,'participants',sn), {sn,usedTickets:0,lastLogin:null,status:'pending'}, {merge:true});
+      await setDoc(doc(db,'employees',sn),{name:e.name,sn,tickets:e.tickets,active:true},{merge:true});
+      await setDoc(doc(db,'participants',sn),{sn,usedTickets:0,lastLogin:null,status:'pending'},{merge:true});
     }
-    await setDoc(doc(db,'config','admin'), {password:'SGC2026Admin'}, {merge:true});
-    hideLoader();
-    alert('✅ Setup เสร็จแล้ว! Admin password: SGC2026Admin');
-  } catch(e) { hideLoader(); alert('Error: '+e.message); }
+    await setDoc(doc(db,'config','admin'),{password:'SGC2026Admin'},{merge:true});
+    hideL(); alert('✅ Setup เสร็จแล้ว! Admin: SGC2026Admin');
+  } catch(e){hideL();alert('Error: '+e.message);}
 }
 
-// ── LOGIN ────────────────────────────────────────
+// ── LOGIN (SN only) ───────────────────────────────
 async function doLogin() {
-  const sn = document.getElementById('i_sn').value.trim().replace(/\s/g,'');
-  const pin = document.getElementById('i_pin').value.trim();
+  const sn = document.getElementById('iSN').value.trim().replace(/\s/g,'');
   const err = document.getElementById('lerr');
-  err.style.display = 'none';
-  if (!sn||!pin) { showErr('กรุณากรอก SN และ PIN'); return; }
+  err.style.display='none';
+  if (!sn) { showErr('กรุณากรอก SN Number'); return; }
 
-  showLoader('กำลังตรวจสอบ...');
+  showL('กำลังตรวจสอบ...');
   try {
-    const empDoc = await getDoc(doc(db,'employees',sn));
-    if (!empDoc.exists()) { hideLoader(); showErr('ไม่พบ SN นี้ในระบบ'); return; }
-    const ed = empDoc.data();
-    if (!ed.active) { hideLoader(); showErr('SN นี้ถูกปิดการใช้งาน'); return; }
-    if (String(ed.pin) !== String(pin)) { hideLoader(); showErr('PIN ไม่ถูกต้อง'); return; }
+    // Check local EMP first (fast)
+    if (!EMP[sn]) { hideL(); showErr('ไม่พบ SN นี้ในระบบ'); return; }
 
-    const partDoc = await getDoc(doc(db,'participants',sn));
-    const pd = partDoc.exists() ? partDoc.data() : {usedTickets:0};
+    const empData = EMP[sn];
 
-    const q = query(collection(db,'draws'), where('sn','==',sn), orderBy('timestamp','asc'));
-    const snap = await getDocs(q);
-    const spins = snap.docs.map(d=>d.data());
+    // Get participant state from Firestore
+    const partRef = doc(db,'participants',sn);
+    const partSnap = await getDoc(partRef);
+    if (!partSnap.exists()) {
+      // Auto-create participant record if doesn't exist
+      await setDoc(partRef,{sn,usedTickets:0,lastLogin:serverTimestamp(),status:'active'});
+    } else {
+      await updateDoc(partRef,{lastLogin:serverTimestamp(),status:'active'});
+    }
+    const pd = partSnap.exists() ? partSnap.data() : {usedTickets:0};
 
-    await updateDoc(doc(db,'participants',sn), {lastLogin:serverTimestamp(), status:'active'});
+    // Get draw history — simple query WITHOUT orderBy to avoid index requirement
+    const drawsSnap = await getDocs(query(collection(db,'draws'), where('sn','==',sn)));
+    const spins = drawsSnap.docs
+      .map(d=>d.data())
+      .sort((a,b)=> (a.ticketNo||0)-(b.ticketNo||0)); // sort client-side by ticketNo
 
     // Load prize stock
     const psnap = await getDocs(collection(db,'prizes'));
-    stockCache = {};
-    psnap.forEach(d=>{ stockCache[d.id]=d.data(); });
+    SC={};
+    psnap.forEach(d=>{ SC[d.id]=d.data(); });
 
-    CUR = {sn, name:ed.name, tickets:ed.tickets, usedTickets:pd.usedTickets||0, spins};
-    hideLoader();
+    CUR = {sn, name:empData.name, tickets:empData.tickets, usedTickets:pd.usedTickets||0, spins};
+    hideL();
     enterSpin();
-  } catch(e) { hideLoader(); showErr('เกิดข้อผิดพลาด: '+e.message); }
+  } catch(e){hideL();showErr('Error: '+e.message);}
 }
 
-function showErr(m) { const e=document.getElementById('lerr'); e.textContent=m; e.style.display='block'; }
+function showErr(m){const e=document.getElementById('lerr');e.textContent=m;e.style.display='block';}
 
-// ── SPIN VIEW ────────────────────────────────────
-function enterSpin() {
-  sv('v_spin');
-  document.getElementById('sp_name').textContent = CUR.name;
-  document.getElementById('sp_sn').textContent = 'SN: '+CUR.sn;
-  document.getElementById('sp_tk').textContent = CUR.tickets;
-  document.getElementById('rb').className = 'rb';
-  document.getElementById('rbp').className = 'rbp';
-  document.getElementById('rbp').textContent = 'กดปุ่มด้านล่างเพื่อเริ่ม';
-  document.getElementById('rbp').style = '';
-  document.getElementById('rbs').className = 'rbs';
-  drawWheel(wAngle); renderDots(); renderMyPrizes(); updBtn();
+// ── SPIN VIEW ─────────────────────────────────────
+function enterSpin(){
+  sv('vS');
+  document.getElementById('spN').textContent=CUR.name;
+  document.getElementById('spSN').textContent='SN: '+CUR.sn;
+  document.getElementById('spTK').textContent=CUR.tickets;
+  document.getElementById('rb').className='rb';
+  document.getElementById('rbp').className='rbp';
+  document.getElementById('rbp').textContent='กดปุ่มด้านล่างเพื่อเริ่ม';
+  document.getElementById('rbp').style='';
+  document.getElementById('rbs').className='rbs';
+  drawW(wA); renderDots(); renderPrizes(); updBtn();
 }
 
-function renderDots() {
-  const dr = document.getElementById('dr'); dr.innerHTML = '';
-  for (let i=0; i<CUR.tickets; i++) {
-    const d = document.createElement('div'); d.className = 'dot';
-    const s = CUR.spins[i];
-    if (i < CUR.usedTickets) {
-      if (s&&s.won) { d.classList.add('won'); d.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'; }
-      else { d.classList.add('used'); d.textContent=i+1; }
-    } else if (i===CUR.usedTickets) { d.classList.add('nxt'); d.textContent=i+1; }
-    else { d.textContent=i+1; }
+function renderDots(){
+  const dr=document.getElementById('dr');dr.innerHTML='';
+  for(let i=0;i<CUR.tickets;i++){
+    const d=document.createElement('div');d.className='dot';
+    const s=CUR.spins[i];
+    if(i<CUR.usedTickets){
+      if(s&&s.won){d.classList.add('won');d.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';}
+      else{d.classList.add('used');d.textContent=i+1;}
+    } else if(i===CUR.usedTickets){d.classList.add('nxt');d.textContent=i+1;}
+    else{d.textContent=i+1;}
     dr.appendChild(d);
   }
 }
 
-function renderMyPrizes() {
-  const won = CUR.spins.filter(s=>s.won);
-  document.getElementById('mpc').textContent = won.length+' รายการ';
-  const list = document.getElementById('mpl');
-  if (!CUR.spins.length) { list.innerHTML='<div class="mpe">ยังไม่มีของรางวัล</div>'; return; }
-  list.innerHTML = CUR.spins.map((s,i)=>
-    s.won ? `<div class="mpi"><div class="mpn">${i+1}</div><div class="mpnm">${s.prize}</div><div class="mptg w">ได้รับ</div></div>`
-          : `<div class="mpi"><div class="mpn">${i+1}</div><div class="mpnm di">ไม่ถูกรางวัล</div><div class="mptg m">—</div></div>`
+function renderPrizes(){
+  const won=CUR.spins.filter(s=>s.won);
+  document.getElementById('mpct').textContent=won.length+' รายการ';
+  const list=document.getElementById('mpl');
+  if(!CUR.spins.length){list.innerHTML='<div class="mpe">ยังไม่มีของรางวัล</div>';return;}
+  list.innerHTML=CUR.spins.map((s,i)=>
+    s.won?`<div class="mpi"><div class="mpn">${i+1}</div><div class="mpnm">${s.prize}</div><div class="mptg w">ได้รับ</div></div>`
+         :`<div class="mpi"><div class="mpn">${i+1}</div><div class="mpnm di">ไม่ถูกรางวัล</div><div class="mptg m">—</div></div>`
   ).join('');
-  document.getElementById('di_info').classList.toggle('show', CUR.usedTickets >= CUR.tickets);
+  document.getElementById('diNfo').classList.toggle('show',CUR.usedTickets>=CUR.tickets);
 }
 
-function updBtn() {
-  const btn = document.getElementById('spbtn');
-  const rem = CUR.tickets - CUR.usedTickets;
-  const tl = Object.values(stockCache).reduce((s,p)=>s+Math.max(0,p.remaining||0),0);
-  if (tl<=0) { btn.textContent='รางวัลหมดแล้ว'; btn.disabled=true; }
-  else if (rem<=0) { btn.textContent='✓ ใช้สิทธิ์ครบแล้ว'; btn.disabled=true; }
-  else { btn.textContent='RANDOM — เหลือ '+rem+' ครั้ง'; btn.disabled=false; }
+function updBtn(){
+  const btn=document.getElementById('spbtn');
+  const rem=CUR.tickets-CUR.usedTickets;
+  const tl=Object.values(SC).reduce((s,p)=>s+Math.max(0,p.remaining||0),0);
+  if(tl<=0){btn.textContent='รางวัลหมดแล้ว';btn.disabled=true;}
+  else if(rem<=0){btn.textContent='✓ ใช้สิทธิ์ครบแล้ว';btn.disabled=true;}
+  else{btn.textContent='RANDOM — เหลือ '+rem+' ครั้ง';btn.disabled=false;}
 }
 
-// ── WHEEL DRAW ───────────────────────────────────
-function drawWheel(a) {
-  const cv = document.getElementById('whl'), ctx = cv.getContext('2d');
-  const CX=150,CY=150,R=142, NS=PRIZES.length, ARC=(Math.PI*2)/NS;
+// ── WHEEL ─────────────────────────────────────────
+function drawW(a){
+  const cv=document.getElementById('whl'),ctx=cv.getContext('2d');
+  const CX=150,CY=150,R=142,NS=PRIZES.length,ARC=(Math.PI*2)/NS;
   ctx.clearRect(0,0,300,300);
-  for (let i=0; i<NS; i++) {
-    const p=PRIZES[i], sA=a+i*ARC-Math.PI/2, eA=sA+ARC, mA=sA+ARC/2;
-    const st=stockCache[p.id], rem=st?st.remaining:p.total, dep=rem<=0;
-    ctx.beginPath(); ctx.moveTo(CX,CY); ctx.arc(CX,CY,R,sA,eA); ctx.closePath();
-    ctx.fillStyle=dep?'#111':p.bg; ctx.fill();
-    ctx.strokeStyle='rgba(0,0,0,.5)'; ctx.lineWidth=2; ctx.stroke();
-    if (!dep) {
-      ctx.save(); ctx.beginPath(); ctx.arc(CX,CY,R-3,sA+0.06,eA-0.06);
-      ctx.strokeStyle=p.ac; ctx.lineWidth=3; ctx.globalAlpha=.45; ctx.stroke(); ctx.globalAlpha=1; ctx.restore();
-    }
-    ctx.save(); ctx.translate(CX,CY); ctx.rotate(mA);
+  for(let i=0;i<NS;i++){
+    const p=PRIZES[i],sA=a+i*ARC-Math.PI/2,eA=sA+ARC,mA=sA+ARC/2;
+    const st=SC[p.id],rem=st?st.remaining:p.total,dep=rem<=0;
+    ctx.beginPath();ctx.moveTo(CX,CY);ctx.arc(CX,CY,R,sA,eA);ctx.closePath();
+    ctx.fillStyle=dep?'#111':p.bg;ctx.fill();
+    ctx.strokeStyle='rgba(0,0,0,.5)';ctx.lineWidth=2;ctx.stroke();
+    if(!dep){ctx.save();ctx.beginPath();ctx.arc(CX,CY,R-3,sA+0.06,eA-0.06);ctx.strokeStyle=p.ac;ctx.lineWidth=3;ctx.globalAlpha=.45;ctx.stroke();ctx.globalAlpha=1;ctx.restore();}
+    ctx.save();ctx.translate(CX,CY);ctx.rotate(mA);
     const TR=R*0.62;
-    ctx.font='700 10px Sarabun,Arial,sans-serif';
-    ctx.fillStyle=dep?'rgba(255,255,255,.2)':p.ac;
-    ctx.textAlign='center'; ctx.textBaseline='alphabetic';
-    ctx.shadowColor='rgba(0,0,0,.9)'; ctx.shadowBlur=5;
+    ctx.font='700 10px Sarabun,Arial,sans-serif';ctx.fillStyle=dep?'rgba(255,255,255,.2)':p.ac;ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.shadowColor='rgba(0,0,0,.9)';ctx.shadowBlur=5;
     ctx.fillText(p.l1,TR,-4);
-    ctx.font='600 9px Sarabun,Arial,sans-serif';
-    ctx.fillStyle=dep?'rgba(255,255,255,.15)':'rgba(255,255,255,.8)';
+    ctx.font='600 9px Sarabun,Arial,sans-serif';ctx.fillStyle=dep?'rgba(255,255,255,.15)':'rgba(255,255,255,.8)';
     ctx.fillText(p.l2,TR,8);
-    ctx.font='900 9px Manrope,Arial,sans-serif';
-    ctx.fillStyle=dep?'rgba(255,255,255,.1)':p.ac; ctx.shadowBlur=3;
-    ctx.fillText('×'+rem,TR,20); ctx.shadowBlur=0; ctx.restore();
+    ctx.font='900 9px Manrope,Arial,sans-serif';ctx.fillStyle=dep?'rgba(255,255,255,.1)':p.ac;ctx.shadowBlur=3;
+    ctx.fillText('×'+rem,TR,20);ctx.shadowBlur=0;ctx.restore();
   }
   const hub=ctx.createRadialGradient(CX,CY,3,CX,CY,26);
-  hub.addColorStop(0,'#2a2a3e'); hub.addColorStop(1,'#06060f');
-  ctx.beginPath(); ctx.arc(CX,CY,26,0,Math.PI*2); ctx.fillStyle=hub; ctx.fill();
-  ctx.strokeStyle='rgba(58,228,201,.7)'; ctx.lineWidth=2; ctx.stroke();
-  ctx.beginPath(); ctx.arc(CX,CY,7,0,Math.PI*2); ctx.fillStyle='#3AE4C9'; ctx.fill();
+  hub.addColorStop(0,'#2a2a3e');hub.addColorStop(1,'#06060f');
+  ctx.beginPath();ctx.arc(CX,CY,26,0,Math.PI*2);ctx.fillStyle=hub;ctx.fill();
+  ctx.strokeStyle='rgba(58,228,201,.7)';ctx.lineWidth=2;ctx.stroke();
+  ctx.beginPath();ctx.arc(CX,CY,7,0,Math.PI*2);ctx.fillStyle='#3AE4C9';ctx.fill();
 }
 
-// ── SPIN ─────────────────────────────────────────
-async function doSpin() {
-  if (!CUR||spinning) return;
-  if (CUR.usedTickets >= CUR.tickets) return;
-  const pool = [];
-  PRIZES.forEach(p=>{ const s=stockCache[p.id]; const l=s?Math.max(0,s.remaining):0; for(let i=0;i<l;i++) pool.push(p.id); });
-  if (!pool.length) { alert('รางวัลหมดแล้ว'); return; }
-
-  spinning = true;
-  document.getElementById('spbtn').disabled = true;
+// ── SPIN ──────────────────────────────────────────
+async function doSpin(){
+  if(!CUR||spinning)return;
+  if(CUR.usedTickets>=CUR.tickets)return;
+  const pool=[];
+  PRIZES.forEach(p=>{const s=SC[p.id];const l=s?Math.max(0,s.remaining):0;for(let i=0;i<l;i++)pool.push(p.id);});
+  if(!pool.length){alert('รางวัลหมดแล้ว');return;}
+  spinning=true;
+  document.getElementById('spbtn').disabled=true;
   document.getElementById('spbtn').classList.add('go');
   document.getElementById('wg').classList.add('on');
-  document.getElementById('rb').className = 'rb';
-  document.getElementById('rbp').className = 'rbp'; document.getElementById('rbp').style='';
+  document.getElementById('rb').className='rb';
+  document.getElementById('rbp').className='rbp';document.getElementById('rbp').style='';
 
-  const wonId = pool[Math.floor(Math.random()*pool.length)];
-  const wonDef = PRIZES.find(p=>p.id===wonId);
-  const idx = PRIZES.indexOf(wonDef);
-  const NS=PRIZES.length, ARC=(Math.PI*2)/NS;
-  const segMid = idx*ARC+ARC/2;
-  const nSpins = 5+Math.floor(Math.random()*4);
-  const target = -segMid+Math.PI/2+nSpins*Math.PI*2+(Math.random()*ARC*.3-ARC*.15);
-  const dur = 4200+Math.random()*800;
-  const st=wAngle, t0=performance.now();
+  const wonId=pool[Math.floor(Math.random()*pool.length)];
+  const wonDef=PRIZES.find(p=>p.id===wonId);
+  const idx=PRIZES.indexOf(wonDef);
+  const NS=PRIZES.length,ARC=(Math.PI*2)/NS;
+  const segMid=idx*ARC+ARC/2;
+  const nSpins=5+Math.floor(Math.random()*4);
+  const target=-segMid+Math.PI/2+nSpins*Math.PI*2+(Math.random()*ARC*.3-ARC*.15);
+  const dur=4200+Math.random()*800;
+  const st=wA,t0=performance.now();
   const ease=t=>1-Math.pow(1-t,3.8);
   const tick=now=>{
     const prog=Math.min((now-t0)/dur,1);
-    wAngle=st+(target-st)*ease(prog); drawWheel(wAngle);
-    if(prog<1) requestAnimationFrame(tick);
-    else { wAngle=target; drawWheel(wAngle); commitSpin(wonId,wonDef); }
+    wA=st+(target-st)*ease(prog);drawW(wA);
+    if(prog<1)requestAnimationFrame(tick);
+    else{wA=target;drawW(wA);commitSpin(wonId,wonDef);}
   };
   requestAnimationFrame(tick);
 }
 
-async function commitSpin(prizeId, prizeDef) {
-  const sn=CUR.sn, tkNo=CUR.usedTickets+1;
-  try {
-    await runTransaction(db, async tx => {
-      const pRef=doc(db,'prizes',prizeId), partRef=doc(db,'participants',sn);
-      const [pSnap,partSnap] = await Promise.all([tx.get(pRef),tx.get(partRef)]);
-      if (!pSnap.exists()) throw new Error('Prize not found');
-      if (pSnap.data().remaining<=0) throw new Error('Out of stock');
-      const curUsed = partSnap.exists()?partSnap.data().usedTickets:0;
-      if (curUsed >= EMP[sn].tickets) throw new Error('No tickets');
-      tx.update(pRef, {remaining: pSnap.data().remaining-1});
-      tx.update(partRef, {usedTickets:curUsed+1, lastSpin:serverTimestamp()});
+async function commitSpin(pId,pDef){
+  const sn=CUR.sn,tkNo=CUR.usedTickets+1;
+  try{
+    await runTransaction(db,async tx=>{
+      const pRef=doc(db,'prizes',pId),partRef=doc(db,'participants',sn);
+      const[pSnap,partSnap]=await Promise.all([tx.get(pRef),tx.get(partRef)]);
+      if(!pSnap.exists())throw new Error('Prize not found');
+      if(pSnap.data().remaining<=0)throw new Error('Out of stock');
+      const curUsed=partSnap.exists()?partSnap.data().usedTickets:0;
+      if(curUsed>=EMP[sn].tickets)throw new Error('No tickets');
+      tx.update(pRef,{remaining:pSnap.data().remaining-1});
+      tx.update(partRef,{usedTickets:curUsed+1,lastSpin:serverTimestamp()});
     });
-    await addDoc(collection(db,'draws'), {sn, employeeName:CUR.name, ticketNo:tkNo, prize:prizeDef.name, prizeId, won:true, timestamp:serverTimestamp()});
-    stockCache[prizeId].remaining--;
+    await addDoc(collection(db,'draws'),{sn,employeeName:CUR.name,ticketNo:tkNo,prize:pDef.name,prizeId:pId,won:true,timestamp:serverTimestamp()});
+    SC[pId].remaining--;
     CUR.usedTickets++;
-    CUR.spins.push({won:true, prize:prizeDef.name, prizeId, ticketNo:tkNo});
-    finSpin(true, prizeDef);
-  } catch(e) {
+    CUR.spins.push({won:true,prize:pDef.name,prizeId:pId,ticketNo:tkNo});
+    finSpin(true,pDef);
+  }catch(e){
     console.error(e);
-    if (e.message==='Out of stock'||e.message==='No tickets') {
-      await addDoc(collection(db,'draws'), {sn, employeeName:CUR.name, ticketNo:tkNo, prize:null, prizeId:null, won:false, timestamp:serverTimestamp()});
-      await updateDoc(doc(db,'participants',sn), {usedTickets:CUR.usedTickets+1});
-      CUR.usedTickets++; CUR.spins.push({won:false, ticketNo:tkNo});
-      finSpin(false, null);
-    } else { spinning=false; document.getElementById('spbtn').disabled=false; document.getElementById('spbtn').classList.remove('go'); document.getElementById('wg').classList.remove('on'); alert('เกิดข้อผิดพลาด กรุณาลองใหม่'); }
+    if(e.message==='Out of stock'||e.message==='No tickets'){
+      await addDoc(collection(db,'draws'),{sn,employeeName:CUR.name,ticketNo:tkNo,prize:null,prizeId:null,won:false,timestamp:serverTimestamp()});
+      await updateDoc(doc(db,'participants',sn),{usedTickets:CUR.usedTickets+1});
+      CUR.usedTickets++;CUR.spins.push({won:false,ticketNo:tkNo});
+      finSpin(false,null);
+    }else{spinning=false;document.getElementById('spbtn').disabled=false;document.getElementById('spbtn').classList.remove('go');document.getElementById('wg').classList.remove('on');alert('เกิดข้อผิดพลาด: '+e.message);}
   }
 }
 
-function finSpin(won, prizeDef) {
+function finSpin(won,pDef){
   spinning=false;
   document.getElementById('spbtn').classList.remove('go');
   document.getElementById('wg').classList.remove('on');
-  const rb=document.getElementById('rb'), rp=document.getElementById('rbp'), rs=document.getElementById('rbs');
-  if (won&&prizeDef) {
-    rb.className='rb won'; rp.className='rbp wt'; rp.textContent=prizeDef.name; rp.style='';
+  const rb=document.getElementById('rb'),rp=document.getElementById('rbp'),rs=document.getElementById('rbs');
+  if(won&&pDef){
+    rb.className='rb won';rp.className='rbp wt';rp.textContent=pDef.name;rp.style='';
     rs.textContent='ยินดีด้วย! บันทึกอัตโนมัติแล้ว';
-    setTimeout(()=>{ rp.classList.add('sv'); rs.classList.add('sv'); },80);
-    fireConf(); setTimeout(()=>drawWheel(wAngle),300);
-  } else {
-    rb.className='rb'; rp.className='rbp lt'; rp.textContent='ไม่ถูกรางวัล'; rp.style='';
+    setTimeout(()=>{rp.classList.add('sv');rs.classList.add('sv');},80);
+    fireConf();setTimeout(()=>drawW(wA),300);
+  }else{
+    rb.className='rb';rp.className='rbp lt';rp.textContent='ไม่ถูกรางวัล';rp.style='';
     rs.textContent='ขอให้โชคดีครั้งหน้า';
-    setTimeout(()=>{ rp.classList.add('sv'); rs.classList.add('sv'); },80);
+    setTimeout(()=>{rp.classList.add('sv');rs.classList.add('sv');},80);
   }
-  renderDots(); renderMyPrizes(); updBtn();
+  renderDots();renderPrizes();updBtn();
 }
 
-// ── DOWNLOAD PNG ─────────────────────────────────
-function downloadPNG() {
-  const won = CUR.spins.filter(s=>s.won);
-  const cv = document.createElement('canvas');
-  cv.width=480; cv.height=Math.max(400,220+won.length*56+80);
+// ── DOWNLOAD PNG ──────────────────────────────────
+function dlPNG(){
+  const won=CUR.spins.filter(s=>s.won);
+  const cv=document.createElement('canvas');
+  cv.width=480;cv.height=Math.max(400,220+won.length*56+80);
   const ctx=cv.getContext('2d');
   const bg=ctx.createLinearGradient(0,0,0,cv.height);
-  bg.addColorStop(0,'#0a0a14'); bg.addColorStop(1,'#060610');
-  ctx.fillStyle=bg; ctx.fillRect(0,0,cv.width,cv.height);
-  ctx.strokeStyle='rgba(58,228,201,.4)'; ctx.lineWidth=2; ctx.strokeRect(12,12,cv.width-24,cv.height-24);
-  ctx.fillStyle='#3AE4C9'; ctx.font='bold 13px Sarabun,Arial'; ctx.textAlign='center';
+  bg.addColorStop(0,'#0a0a14');bg.addColorStop(1,'#060610');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,cv.width,cv.height);
+  ctx.strokeStyle='rgba(58,228,201,.4)';ctx.lineWidth=2;ctx.strokeRect(12,12,cv.width-24,cv.height-24);
+  ctx.fillStyle='#3AE4C9';ctx.font='bold 13px Sarabun,Arial';ctx.textAlign='center';
   ctx.fillText('SGC LUCKY DRAW 2026',cv.width/2,48);
-  ctx.fillStyle='rgba(255,255,255,.2)'; ctx.fillRect(40,56,cv.width-80,1);
-  ctx.fillStyle='#FAFAFA'; ctx.font='bold 20px Sarabun,Arial';
-  ctx.fillText(CUR.name.toUpperCase(),cv.width/2,84);
-  ctx.fillStyle='#737373'; ctx.font='12px Manrope,Arial';
-  ctx.fillText('SN: '+CUR.sn,cv.width/2,104);
-  ctx.fillStyle='rgba(255,255,255,.1)'; ctx.fillRect(40,118,cv.width-80,1);
-  ctx.fillStyle='#93C5FD'; ctx.font='bold 10px Manrope,Arial';
-  ctx.fillText('YOUR PRIZES',cv.width/2,140);
-  if (!won.length) { ctx.fillStyle='#737373'; ctx.font='13px Sarabun,Arial'; ctx.fillText('ไม่ได้รับของรางวัล',cv.width/2,175); }
-  else {
+  ctx.fillStyle='rgba(255,255,255,.2)';ctx.fillRect(40,56,cv.width-80,1);
+  ctx.fillStyle='#FAFAFA';ctx.font='bold 20px Sarabun,Arial';ctx.fillText(CUR.name.toUpperCase(),cv.width/2,84);
+  ctx.fillStyle='#737373';ctx.font='12px Manrope,Arial';ctx.fillText('SN: '+CUR.sn,cv.width/2,104);
+  ctx.fillStyle='rgba(255,255,255,.1)';ctx.fillRect(40,118,cv.width-80,1);
+  ctx.fillStyle='#93C5FD';ctx.font='bold 10px Manrope,Arial';ctx.fillText('YOUR PRIZES',cv.width/2,140);
+  if(!won.length){ctx.fillStyle='#737373';ctx.font='13px Sarabun,Arial';ctx.fillText('ไม่ได้รับของรางวัล',cv.width/2,175);}
+  else{
     won.forEach((s,i)=>{
       const y=160+i*52;
       ctx.fillStyle='rgba(74,222,128,.07)';
-      rr(ctx,48,y,cv.width-96,40,8); ctx.fill();
-      ctx.strokeStyle='rgba(74,222,128,.2)'; ctx.lineWidth=1; ctx.stroke();
-      ctx.fillStyle='#FAFAFA'; ctx.font='bold 13px Sarabun,Arial'; ctx.textAlign='left';
-      ctx.fillText(s.prize,72,y+25); ctx.textAlign='center';
+      rr(ctx,48,y,cv.width-96,40,8);ctx.fill();
+      ctx.strokeStyle='rgba(74,222,128,.2)';ctx.lineWidth=1;ctx.stroke();
+      ctx.fillStyle='#FAFAFA';ctx.font='bold 13px Sarabun,Arial';ctx.textAlign='left';
+      ctx.fillText(s.prize,72,y+25);ctx.textAlign='center';
     });
   }
   const fy=cv.height-44;
-  ctx.fillStyle='rgba(255,255,255,.08)'; ctx.fillRect(40,fy-10,cv.width-80,1);
-  ctx.fillStyle='#737373'; ctx.font='10px Manrope,Arial'; ctx.textAlign='center';
+  ctx.fillStyle='rgba(255,255,255,.08)';ctx.fillRect(40,fy-10,cv.width-80,1);
+  ctx.fillStyle='#737373';ctx.font='10px Manrope,Arial';ctx.textAlign='center';
   const now=new Date();
   ctx.fillText(now.toLocaleDateString('en-US',{day:'2-digit',month:'long',year:'numeric'})+'  '+now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}),cv.width/2,fy+8);
-  const a=document.createElement('a'); a.download='SGC_Prize_'+CUR.sn+'.png'; a.href=cv.toDataURL('image/png'); a.click();
+  const a=document.createElement('a');a.download='SGC_Prize_'+CUR.sn+'.png';a.href=cv.toDataURL('image/png');a.click();
 }
 function rr(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.arcTo(x+w,y,x+w,y+r,r);ctx.lineTo(x+w,y+h-r);ctx.arcTo(x+w,y+h,x+w-r,y+h,r);ctx.lineTo(x+r,y+h);ctx.arcTo(x,y+h,x,y+h-r,r);ctx.lineTo(x,y+r);ctx.arcTo(x,y,x+r,y,r);ctx.closePath();}
 
-// ── ADMIN ────────────────────────────────────────
-function showAdminModal() { document.getElementById('adm_modal').classList.add('show'); document.getElementById('adm_pass').value=''; document.getElementById('adm_err').style.display='none'; }
-function closeAdminModal() { document.getElementById('adm_modal').classList.remove('show'); }
-async function chkAdmin() {
-  const p=document.getElementById('adm_pass').value;
-  try {
+// ── ADMIN ─────────────────────────────────────────
+function showAdmModal(){document.getElementById('admModal').classList.add('show');document.getElementById('admPass').value='';document.getElementById('admErr').style.display='none';}
+function closeAdmModal(){document.getElementById('admModal').classList.remove('show');}
+async function chkAdm(){
+  const p=document.getElementById('admPass').value;
+  try{
     const cfg=await getDoc(doc(db,'config','admin'));
-    if (cfg.exists()&&cfg.data().password===p) { closeAdminModal(); enterAdmin(); }
-    else { document.getElementById('adm_err').style.display='block'; }
-  } catch(e) { if(p==='SGC2026Admin'){closeAdminModal();enterAdmin();}else{document.getElementById('adm_err').style.display='block';} }
+    if(cfg.exists()&&cfg.data().password===p){closeAdmModal();enterAdmin();}
+    else{document.getElementById('admErr').style.display='block';}
+  }catch(e){if(p==='SGC2026Admin'){closeAdmModal();enterAdmin();}else{document.getElementById('admErr').style.display='block';}}
 }
 
-function enterAdmin() {
-  sv('v_admin');
-  if (adminUnsub) adminUnsub();
+function enterAdmin(){
+  sv('vA');
+  if(aUnsub)aUnsub();
   const u1=onSnapshot(collection(db,'prizes'),snap=>{
-    let rem=0; snap.forEach(d=>{ stockCache[d.id]=d.data(); rem+=Math.max(0,d.data().remaining||0); });
-    document.getElementById('a_rem').textContent=rem;
-    renderPrizeStock();
+    let rem=0;snap.forEach(d=>{SC[d.id]=d.data();rem+=Math.max(0,d.data().remaining||0);});
+    document.getElementById('aRem').textContent=rem;
+    renderStock();
   });
   const u2=onSnapshot(collection(db,'participants'),snap=>{
-    let par=0,sp=0; snap.forEach(d=>{ const u=d.data().usedTickets||0; if(u>0){par++;sp+=u;} });
-    document.getElementById('a_par').textContent=par;
-    document.getElementById('a_sp').textContent=sp;
+    let par=0,sp=0;snap.forEach(d=>{const u=d.data().usedTickets||0;if(u>0){par++;sp+=u;}});
+    document.getElementById('aPar').textContent=par;
+    document.getElementById('aSp').textContent=sp;
   });
-  const u3=onSnapshot(query(collection(db,'draws'),orderBy('timestamp','desc')),snap=>{
-    allDrawsCache=snap.docs.map(d=>({id:d.id,...d.data()}));
-    renderTable(allDrawsCache);
+  // Use simple query without orderBy to avoid index
+  const u3=onSnapshot(collection(db,'draws'),snap=>{
+    allDraws=snap.docs.map(d=>({id:d.id,...d.data()}));
+    // Sort client-side by timestamp descending
+    allDraws.sort((a,b)=>{
+      const ta=a.timestamp?.toMillis?a.timestamp.toMillis():0;
+      const tb=b.timestamp?.toMillis?b.timestamp.toMillis():0;
+      return tb-ta;
+    });
+    renderTbl(allDraws);
   });
-  adminUnsub=()=>{u1();u2();u3();};
+  aUnsub=()=>{u1();u2();u3();};
 }
 
-function renderPrizeStock() {
+function renderStock(){
   document.getElementById('psl').innerHTML=PRIZES.map(p=>{
-    const s=stockCache[p.id]||{total:p.total,remaining:p.total};
-    const pct=(s.remaining/s.total)*100; const dep=s.remaining<=0;
+    const s=SC[p.id]||{total:p.total,remaining:p.total};
+    const pct=(s.remaining/s.total)*100,dep=s.remaining<=0;
     return `<div class="psi ${dep?'dep':''}"><div class="psin">${p.name}</div><div class="psbw"><div class="psb" style="width:${pct}%;background:${p.ac}50"></div></div><div class="psc" style="color:${dep?'var(--di)':p.ac}">${s.remaining}<span style="color:var(--di)">/${s.total}</span></div></div>`;
   }).join('');
 }
 
-function renderTable(draws) {
-  const srch=(document.getElementById('a_srch').value||'').toLowerCase();
+function renderTbl(draws){
+  const srch=(document.getElementById('aSrch').value||'').toLowerCase();
   const bySN={};
   draws.forEach(d=>{
-    if(!bySN[d.sn]) bySN[d.sn]={sn:d.sn,name:d.employeeName,draws:[]};
+    if(!bySN[d.sn])bySN[d.sn]={sn:d.sn,name:d.employeeName,draws:[]};
     bySN[d.sn].draws.push(d);
   });
   const rows=Object.values(bySN).filter(e=>!srch||e.sn.includes(srch)||(e.name||'').toLowerCase().includes(srch));
   document.getElementById('atb').innerHTML=rows.map((e,i)=>{
-    const emp=EMP[e.sn]; const tk=emp?emp.tickets:'?';
-    const last=e.draws[0]?.timestamp?.toDate?e.draws[0].timestamp.toDate().toLocaleString('th-TH',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'—';
+    const emp=EMP[e.sn];const tk=emp?emp.tickets:'?';
+    const lastDraw=e.draws.find(d=>d.timestamp?.toDate);
+    const last=lastDraw?lastDraw.timestamp.toDate().toLocaleString('th-TH',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'—';
     const tags=e.draws.map(d=>d.won?`<span class="ptag">${d.prize}</span>`:`<span class="mtag">—</span>`).join('');
-    return `<tr><td class="dim">${i+1}</td><td class="bld">${e.name||'—'}</td><td class="dim" style="font-size:9px;letter-spacing:.5px">${e.sn}</td><td class="ctr" style="color:var(--bl)">${tk}</td><td class="ctr" style="color:var(--te)">${e.draws.length}</td><td>${tags||'<span style="color:var(--di);font-size:9px">ยังไม่เข้าร่วม</span>'}</td><td class="dim" style="font-size:9px">${last}</td></tr>`;
+    return `<tr><td style="color:var(--di);font-size:9px">${i+1}</td><td style="font-weight:700;font-size:10px">${e.name||'—'}</td><td style="font-size:9px;color:var(--di);letter-spacing:.5px">${e.sn}</td><td style="text-align:center;font-weight:800;color:var(--bl)">${tk}</td><td style="text-align:center;font-weight:800;color:var(--te)">${e.draws.length}</td><td>${tags||'<span style="color:var(--di);font-size:9px">ยังไม่เข้าร่วม</span>'}</td><td style="font-size:9px;color:var(--di)">${last}</td></tr>`;
   }).join('')||'<tr><td colspan="7" style="text-align:center;color:var(--di);padding:20px;font-size:11px">ยังไม่มีข้อมูล</td></tr>';
 }
 
-function filterTable() { renderTable(allDrawsCache); }
+function filterTbl(){renderTbl(allDraws);}
 
-async function exportCSV() {
-  showLoader('กำลัง Export...');
-  const snap=await getDocs(query(collection(db,'draws'),orderBy('timestamp','asc')));
+async function expCSV(){
+  showL('กำลัง Export...');
+  const snap=await getDocs(collection(db,'draws'));
   const rows=['\uFEFFชื่อ,SN,Ticket No,รางวัล,ถูกรางวัล,เวลา'];
   snap.forEach(d=>{
     const data=d.data();
     const t=data.timestamp?.toDate?data.timestamp.toDate().toLocaleString('th-TH'):'—';
     rows.push(`"${data.employeeName}","${data.sn}",${data.ticketNo},"${data.prize||'ไม่ถูก'}",${data.won?'ใช่':'ไม่'},"${t}"`);
   });
-  hideLoader();
-  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([rows.join('\n')],{type:'text/csv;charset=utf-8'})); a.download='sgc_results.csv'; a.click();
+  hideL();
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows.join('\n')],{type:'text/csv;charset=utf-8'}));a.download='sgc_results.csv';a.click();
 }
 
-async function confirmReset() {
-  if (!confirm('⚠️ Reset จะล้างผลการหมุนทั้งหมด ยืนยัน?')) return;
-  showLoader('กำลัง Reset...');
-  for (const p of PRIZES) await updateDoc(doc(db,'prizes',p.id),{remaining:p.total});
+async function doReset(){
+  if(!confirm('⚠️ Reset ทั้งหมด ยืนยัน?'))return;
+  showL('กำลัง Reset...');
+  for(const p of PRIZES)await updateDoc(doc(db,'prizes',p.id),{remaining:p.total});
   const ps=await getDocs(collection(db,'participants'));
-  for (const d of ps.docs) await updateDoc(d.ref,{usedTickets:0,status:'pending'});
-  hideLoader(); alert('✅ Reset เรียบร้อย');
+  for(const d of ps.docs)await updateDoc(d.ref,{usedTickets:0,status:'pending'});
+  hideL();alert('✅ Reset เรียบร้อย');
 }
 
-// ── LOGOUT ───────────────────────────────────────
-function doLogout() {
+function doLogout(){
   CUR=null;
-  if(adminUnsub){adminUnsub();adminUnsub=null;}
-  document.getElementById('i_sn').value='';
-  document.getElementById('i_pin').value='';
+  if(aUnsub){aUnsub();aUnsub=null;}
+  document.getElementById('iSN').value='';
   document.getElementById('lerr').style.display='none';
-  sv('v_login');
+  sv('vL');
 }
 
-// ── CONFETTI ─────────────────────────────────────
-function fireConf() {
-  const cv=document.getElementById('conf'); cv.width=innerWidth; cv.height=innerHeight;
+// ── CONFETTI ──────────────────────────────────────
+function fireConf(){
+  const cv=document.getElementById('conf');cv.width=innerWidth;cv.height=innerHeight;
   const ctx=cv.getContext('2d');
   const cols=['#2168FD','#3AE4C9','#93C5FD','#7C3AED','#FBBF24','#4ADE80','#FB7185'];
   const pts=Array.from({length:120},()=>({x:Math.random()*cv.width,y:-20,vx:(Math.random()-.5)*7,vy:2+Math.random()*6,r:3+Math.random()*7,col:cols[Math.floor(Math.random()*cols.length)],rot:Math.random()*360,rv:(Math.random()-.5)*10,al:1}));
@@ -815,16 +791,15 @@ function fireConf() {
   requestAnimationFrame(tick);
 }
 
-// ── UTILS ────────────────────────────────────────
-function sv(id){['v_login','v_spin','v_admin'].forEach(v=>{const el=document.getElementById(v);el.style.display=v===id?(v==='v_login'?'flex':'flex'):'none';});}
-function showLoader(t){document.getElementById('loader_txt').textContent=t||'กำลังโหลด...';document.getElementById('loader').classList.add('show');}
-function hideLoader(){document.getElementById('loader').classList.remove('show');}
+// ── UTILS ─────────────────────────────────────────
+function sv(id){['vL','vS','vA'].forEach(v=>{const el=document.getElementById(v);el.style.display=v===id?'flex':'none';});}
+function showL(t){document.getElementById('ltxt').textContent=t||'กำลังโหลด...';document.getElementById('lov').classList.add('show');}
+function hideL(){document.getElementById('lov').classList.remove('show');}
 
-// ── EXPOSE ───────────────────────────────────────
-window.doLogin=doLogin; window.doSpin=doSpin; window.downloadPNG=downloadPNG;
-window.showAdminModal=showAdminModal; window.closeAdminModal=closeAdminModal;
-window.chkAdmin=chkAdmin; window.exportCSV=exportCSV; window.confirmReset=confirmReset;
-window.doLogout=doLogout; window.filterTable=filterTable; window.setupDB=setupDB;
+window.doLogin=doLogin;window.doSpin=doSpin;window.dlPNG=dlPNG;
+window.showAdmModal=showAdmModal;window.closeAdmModal=closeAdmModal;
+window.chkAdm=chkAdm;window.expCSV=expCSV;window.doReset=doReset;
+window.doLogout=doLogout;window.filterTbl=filterTbl;window.setupDB=setupDB;
 </script>
 </body>
 </html>
