@@ -230,7 +230,7 @@ tr:last-child td { border-bottom:none; }
   <div class="login-card">
     <div style="font-size:48px;margin-bottom:12px;">🎰</div>
     <h1>SGC Lucky Draw 2026</h1>
-    <p>กรอก SN ของคุณเพื่อเข้าสู่ระบบ</p>
+    <p id="loginSubText">กรอก SN ของคุณเพื่อเข้าสู่ระบบ</p>
     <input type="text" id="snInput" placeholder="Employee SN" maxlength="20" autocomplete="off" onkeydown="if(event.key==='Enter')doLogin()">
     <button class="btn-login" onclick="doLogin()">🎟️ เข้าสู่ระบบ</button>
     <div id="loginError">❌ ไม่พบ SN นี้ในระบบ หรือบัญชีถูกระงับ</div>
@@ -279,10 +279,12 @@ tr:last-child td { border-bottom:none; }
     <h1>⚙ Admin Dashboard</h1>
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
       <button class="btn-fullreset" onclick="showResetModal()">🔄 Full Reset ระบบ</button>
+      <button class="btn-small" id="systemToggleBtn" onclick="toggleSystemStatus()">🔒 ปิดระบบ</button>
       <button class="btn-export" onclick="exportCSV()">📥 Export CSV</button>
       <button class="btn-small" onclick="showMain()">← กลับ</button>
     </div>
   </div>
+  <div id="systemStatusAdmin" style="margin-bottom:18px;padding:12px 16px;border-radius:12px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.25);color:#86efac;font-weight:700;text-align:center;">🟢 ระบบเปิดใช้งาน</div>
   <div class="stats-grid">
     <div class="stat-card"><div class="num" id="statTotal">-</div><div class="label">พนักงานทั้งหมด</div></div>
     <div class="stat-card"><div class="num" id="statPlayed">-</div><div class="label">เล่นแล้ว</div></div>
@@ -392,9 +394,11 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+getSystemStatus();
 
 let currentEmployee=null, currentParticipant=null, prizes=[], isSpinning=false, currentRotation=0, cachedSegments=[];
 let myDrawHistory = []; // เก็บ history ของ user ปัจจุบัน
+let systemEnabled = true;
 
 const PRIZE_DATA = [
   { id:'fan',      name:'พัดลม Hatari',             slotCount:1, total:1,  color:['#E8303A','#C42828'] },
@@ -460,6 +464,8 @@ async function determineResult(){
 }
 
 async function spinWheel(){
+  await getSystemStatus();
+  if(!systemEnabled){showPopup({type:'error',title:'ระบบปิดให้บริการ',sub:'กรุณาติดต่อ Admin'});return;}
   if(isSpinning)return;if(!currentEmployee||!currentParticipant)return;
   const used=currentParticipant.usedTickets||0;
   if(used>=currentEmployee.tickets){showPopup({type:'error',title:'ตั๋วหมดแล้ว',sub:'ไม่สามารถหมุนได้อีก'});return;}
@@ -587,7 +593,65 @@ function closePopup(){document.getElementById('resultPopup').classList.remove('a
 document.getElementById('resultPopup').addEventListener('click',e=>{if(e.target===document.getElementById('resultPopup'))closePopup();});
 document.getElementById('summaryOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('summaryOverlay'))closeSummary();});
 
+
+async function getSystemStatus(){
+  try{
+    const cfg=await db.collection('config').doc('system').get();
+    systemEnabled=cfg.exists ? cfg.data().enabled!==false : true;
+  }catch(err){
+    console.error(err);
+    systemEnabled=true;
+  }
+  updateSystemUI();
+  return systemEnabled;
+}
+
+function updateSystemUI(){
+  const banner=document.getElementById('systemClosedBanner');
+  const card=document.querySelector('.login-card');
+  const btn=document.querySelector('.btn-login');
+  const input=document.getElementById('snInput');
+  const sub=document.getElementById('loginSubText');
+  if(banner) banner.style.display=systemEnabled?'none':'block';
+  if(card) card.style.opacity=systemEnabled?'1':'0.65';
+  if(btn){btn.disabled=!systemEnabled;btn.style.opacity=systemEnabled?'1':'0.45';btn.style.cursor=systemEnabled?'pointer':'not-allowed';}
+  if(input) input.disabled=!systemEnabled;
+  if(sub) sub.textContent=systemEnabled?'กรอก SN ของคุณเพื่อเข้าสู่ระบบ':'ระบบถูกปิดโดย Admin ไม่สามารถเข้าสู่ระบบได้';
+}
+
+async function toggleSystemStatus(){
+  try{
+    const ref=db.collection('config').doc('system');
+    const next=!systemEnabled;
+    await ref.set({enabled:next,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});
+    systemEnabled=next;
+    updateSystemUI();
+    updateAdminSystemUI();
+    alert(next?'🟢 เปิดระบบแล้ว พนักงานสามารถเข้าสู่ระบบได้':'🔒 ปิดระบบแล้ว พนักงานจะไม่สามารถเข้าสู่ระบบได้');
+  }catch(err){
+    alert('❌ เปลี่ยนสถานะระบบไม่สำเร็จ: '+err.message);
+  }
+}
+
+function updateAdminSystemUI(){
+  const el=document.getElementById('systemStatusAdmin');
+  const btn=document.getElementById('systemToggleBtn');
+  if(el){
+    el.textContent=systemEnabled?'🟢 ระบบเปิดใช้งาน':'🔴 ระบบปิดให้บริการ';
+    el.style.background=systemEnabled?'rgba(74,222,128,.08)':'rgba(239,68,68,.10)';
+    el.style.borderColor=systemEnabled?'rgba(74,222,128,.25)':'rgba(239,68,68,.30)';
+    el.style.color=systemEnabled?'#86efac':'#ffb4b4';
+  }
+  if(btn){
+    btn.textContent=systemEnabled?'🔒 ปิดระบบ':'🔓 เปิดระบบ';
+    btn.style.borderColor=systemEnabled?'rgba(255,100,100,.4)':'rgba(74,222,128,.35)';
+    btn.style.color=systemEnabled?'#ff8888':'#86efac';
+  }
+}
+
 async function doLogin(){
+  await getSystemStatus();
+  if(!systemEnabled){updateSystemUI();return;}
   const sn=document.getElementById('snInput').value.trim();if(!sn)return;
   document.getElementById('loginError').style.display='none';
   try{
@@ -619,7 +683,7 @@ function showMain(){document.getElementById('loginScreen').style.display='none';
 function showAdminModal(){document.getElementById('adminPwInput').value='';document.getElementById('adminPwError').style.display='none';document.getElementById('adminModal').classList.add('active');}
 function closeAdminModal(){document.getElementById('adminModal').classList.remove('active');}
 async function checkAdmin(){const pw=document.getElementById('adminPwInput').value;try{const cfg=await db.collection('config').doc('admin').get();const ok=cfg.exists?cfg.data().password:'admin1234';if(pw===ok){closeAdminModal();showAdminScreen();}else document.getElementById('adminPwError').style.display='block';}catch{if(pw==='admin1234'){closeAdminModal();showAdminScreen();}else document.getElementById('adminPwError').style.display='block';}}
-async function showAdminScreen(){document.getElementById('loginScreen').style.display='none';document.getElementById('mainScreen').style.display='none';document.getElementById('adminScreen').style.display='block';await loadAdminData();}
+async function showAdminScreen(){document.getElementById('loginScreen').style.display='none';document.getElementById('mainScreen').style.display='none';document.getElementById('adminScreen').style.display='block';await getSystemStatus();updateAdminSystemUI();await loadAdminData();}
 async function loadAdminData(){try{const [eS,pS,dS]=await Promise.all([db.collection('employees').get(),db.collection('participants').get(),db.collection('draws').get()]);const draws=dS.docs.map(d=>({id:d.id,...d.data()}));document.getElementById('statTotal').textContent=eS.size;document.getElementById('statPlayed').textContent=pS.size;document.getElementById('statSpins').textContent=draws.length;document.getElementById('statWins').textContent=draws.filter(d=>d.won).length;await loadPrizes();document.getElementById('prizeStockGrid').innerHTML=prizes.map(p=>{const pd=PRIZE_DATA.find(x=>x.id===p.id);const pct=p.total>0?(p.remaining/p.total)*100:0;return '<div class="prize-item"><div class="pname">'+p.name+' <span style="color:#FFD700;font-size:11px;">'+(pd?'('+pd.slotCount+' แถบ)':'')+'</span></div><div class="pbar"><div class="pfill" style="width:'+pct+'%"></div></div><div class="pcount">เหลือ '+p.remaining+'/'+p.total+'</div></div>';}).join('');draws.sort((a,b)=>(b.timestamp?.toMillis?.())||0-(a.timestamp?.toMillis?.())||0);document.getElementById('allDrawsTable').innerHTML=draws.length?draws.map(d=>'<tr><td>'+d.sn+'</td><td>'+d.employeeName+'</td><td>'+d.ticketNo+'</td><td>'+d.prize+'</td><td><span class="badge '+(d.won?'win':'miss')+'">'+(d.won?'ได้รางวัล':'ของหมด')+'</span></td><td>'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</td></tr>').join(''):'<tr><td colspan="6" style="text-align:center;color:#666;">ยังไม่มีข้อมูล</td></tr>';const parts={};pS.docs.forEach(d=>parts[d.id]=d.data());document.getElementById('employeeTable').innerHTML=eS.docs.map(d=>{const e=d.data(),p=parts[d.id]||{};const isTest=e.sn==='12345';return '<tr><td>'+e.sn+'</td><td>'+e.name+(isTest?' <span class="badge test">TEST</span>':'')+'</td><td>'+e.tickets+'</td><td>'+(p.usedTickets||0)+'</td><td><span class="badge '+(e.active?'win':'miss')+'">'+(e.active?'Active':'Inactive')+'</span></td></tr>';}).join('');}catch(err){console.error(err);}}
 async function addTestAccount(){try{const ex=await db.collection('employees').doc('12345').get();if(ex.exists){alert('✅ มีอยู่แล้ว');return;}await db.collection('employees').doc('12345').set({sn:'12345',name:'TEst',tickets:10,active:true});alert('✅ เพิ่ม TEst สำเร็จ');await loadAdminData();}catch(err){alert('❌ '+err.message);}}
 async function exportCSV(){try{const snap=await db.collection('draws').get();const rows=snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);let csv='\uFEFFSN,ชื่อ,ตั๋วที่,รางวัล,ผล,เวลา\n';rows.forEach(r=>{const t=r.timestamp?.toDate?fmt(r.timestamp.toDate()):'-';csv+='"'+r.sn+'","'+r.employeeName+'","'+r.ticketNo+'","'+r.prize+'","'+(r.won?'ได้รางวัล':'ของหมด')+'","'+t+'"\n';});const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='sgc-lucky-draw-'+new Date().toISOString().slice(0,10)+'.csv';a.click();}catch(err){alert('Export ไม่สำเร็จ: '+err.message);}}
