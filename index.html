@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SGC Lucky Draw 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#0a0a2e 0%,#1a1a4e 50%,#0d0d35 100%); min-height:100vh; color:#fff; }
-
 #loginScreen { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; padding:20px; }
 .login-card { background:rgba(255,255,255,0.05); backdrop-filter:blur(20px); border:1px solid rgba(255,215,0,0.3); border-radius:24px; padding:40px; width:100%; max-width:420px; text-align:center; }
 .login-card h1 { font-size:28px; font-weight:800; color:#FFD700; margin-bottom:8px; }
@@ -18,7 +18,6 @@ body { font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#0a0a
 .btn-login { width:100%; padding:14px; background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; font-size:18px; font-weight:800; border:none; border-radius:12px; cursor:pointer; }
 .btn-login:hover { transform:translateY(-2px); }
 #loginError { color:#ff6b6b; margin-top:12px; font-size:14px; display:none; }
-
 #mainScreen { display:none; min-height:100vh; }
 .header { background:rgba(0,0,0,0.4); padding:14px 24px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,215,0,0.2); }
 .header-left h2 { color:#FFD700; font-size:18px; font-weight:800; }
@@ -30,27 +29,27 @@ body { font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#0a0a
 .tickets-bar { background:rgba(255,215,0,0.08); border-bottom:1px solid rgba(255,215,0,0.15); padding:10px 24px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 .ticket-dot { width:14px; height:14px; border-radius:50%; background:#FFD700; display:inline-block; }
 .ticket-dot.used { background:#444; }
-
 .wheel-section { display:flex; flex-direction:column; align-items:center; padding:30px 20px; }
 .wheel-wrapper { position:relative; width:580px; height:580px; margin:0 auto; }
 #wheelCanvas { display:block; cursor:pointer; border-radius:50%; }
 .wheel-pointer { position:absolute; right:-18px; top:50%; transform:translateY(-50%); width:0; height:0; border-top:20px solid transparent; border-bottom:20px solid transparent; border-left:40px solid #DD1111; z-index:10; }
-
-.wheel-center {
-  position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%);
-  width:82px; height:82px; border-radius:50%;
-  background:linear-gradient(145deg,#FFB3C6,#FFC8A2,#FFFACD);
-  border:4px solid #fff;
-  box-shadow:0 4px 16px rgba(0,0,0,0.28), inset 0 2px 4px rgba(255,255,255,0.65);
-  z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center;
-  cursor:pointer; transition:transform 0.15s, box-shadow 0.15s; user-select:none;
-}
+.wheel-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:82px; height:82px; border-radius:50%; background:linear-gradient(145deg,#FFB3C6,#FFC8A2,#FFFACD); border:4px solid #fff; box-shadow:0 4px 16px rgba(0,0,0,0.28),inset 0 2px 4px rgba(255,255,255,0.65); z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; transition:transform 0.15s; user-select:none; }
 .wheel-center:hover { transform:translate(-50%,-50%) scale(1.08); }
 .wheel-center:active { transform:translate(-50%,-50%) scale(0.94); }
 .wheel-center .spin-icon { font-size:28px; line-height:1; pointer-events:none; }
 .wheel-center .spin-label { font-size:11px; font-weight:800; color:#333; font-family:'Sarabun',sans-serif; line-height:1.2; pointer-events:none; }
 .spin-hint { margin-top:14px; color:rgba(255,255,255,0.5); font-size:14px; }
+
+/* RESULT SUMMARY BUTTON */
+.summary-btn-wrap { max-width:580px; width:100%; margin:16px auto 0; text-align:center; }
+.btn-show-summary {
+  padding:14px 36px; border-radius:14px; border:none; cursor:pointer;
+  font-size:17px; font-weight:800; font-family:'Sarabun',sans-serif;
+  background:linear-gradient(135deg,#4ade80,#22c55e); color:#000;
+  transition:transform 0.15s, box-shadow 0.2s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn-show-summary:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(74,222,128,0.4); }
 
 .history-section { max-width:580px; width:100%; margin:20px auto 40px; }
 .history-section h3 { color:#FFD700; font-size:16px; margin-bottom:12px; }
@@ -61,7 +60,7 @@ body { font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#0a0a
 .h-time { font-size:12px; color:#666; }
 
 #adminScreen { display:none; min-height:100vh; padding:24px; }
-.admin-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
+.admin-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; flex-wrap:wrap; gap:10px; }
 .admin-header h1 { color:#FFD700; font-size:24px; font-weight:800; }
 .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:24px; }
 .stat-card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,215,0,0.2); border-radius:14px; padding:20px; text-align:center; }
@@ -76,14 +75,18 @@ tr:last-child td { border-bottom:none; }
 .badge { display:inline-block; padding:2px 10px; border-radius:20px; font-size:12px; font-weight:700; }
 .badge.win { background:rgba(74,222,128,0.15); color:#4ade80; }
 .badge.miss { background:rgba(255,255,255,0.06); color:#888; }
+.badge.test { background:rgba(255,165,0,0.15); color:#FFA500; }
 .btn-export { padding:10px 20px; background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; border:none; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; font-family:'Sarabun',sans-serif; }
 .prize-stock { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; padding:16px 20px; }
 .prize-item .pname { font-size:13px; color:#ddd; margin-bottom:6px; }
 .prize-item .pbar { height:6px; border-radius:3px; background:rgba(255,255,255,0.1); overflow:hidden; }
 .prize-item .pfill { height:100%; border-radius:3px; background:linear-gradient(90deg,#FFD700,#FFA500); }
 .prize-item .pcount { font-size:12px; color:#888; margin-top:4px; }
-.setup-section { text-align:center; margin:20px 0; }
+.action-section { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin:24px 0; }
 .btn-setup { padding:10px 24px; background:rgba(255,100,100,0.15); border:1px solid rgba(255,100,100,0.4); color:#ff8888; border-radius:10px; cursor:pointer; font-size:13px; font-family:'Sarabun',sans-serif; }
+.btn-addtest { padding:10px 24px; background:rgba(255,165,0,0.15); border:1px solid rgba(255,165,0,0.4); color:#FFA500; border-radius:10px; cursor:pointer; font-size:13px; font-family:'Sarabun',sans-serif; font-weight:700; }
+.btn-fullreset { padding:12px 32px; background:linear-gradient(135deg,rgba(239,68,68,0.9),rgba(185,28,28,0.9)); border:2px solid rgba(239,68,68,0.6); color:#fff; border-radius:12px; cursor:pointer; font-size:15px; font-family:'Sarabun',sans-serif; font-weight:800; transition:all 0.2s; display:flex; align-items:center; gap:8px; }
+.btn-fullreset:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(239,68,68,0.4); }
 
 .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:100; align-items:center; justify-content:center; }
 .modal-overlay.active { display:flex; }
@@ -95,7 +98,19 @@ tr:last-child td { border-bottom:none; }
 .modal-btn-row button { flex:1; padding:12px; border-radius:10px; border:none; cursor:pointer; font-size:15px; font-weight:700; font-family:'Sarabun',sans-serif; }
 .btn-confirm { background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; }
 .btn-cancel { background:rgba(255,255,255,0.08); color:#aaa; border:1px solid rgba(255,255,255,0.15) !important; }
+.reset-warning { background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.2); border-radius:10px; padding:14px 16px; margin-bottom:16px; text-align:left; }
+.reset-warning .item { display:flex; align-items:center; gap:8px; margin-top:6px; font-size:13px; color:#ccc; }
+.reset-warning .dot { width:6px; height:6px; border-radius:50%; background:#ef4444; flex-shrink:0; }
+.reset-keep { background:rgba(74,222,128,0.08); border:1px solid rgba(74,222,128,0.2); border-radius:10px; padding:12px 16px; margin-bottom:16px; font-size:13px; color:#86efac; }
+#progressOverlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:200; align-items:center; justify-content:center; }
+#progressOverlay.active { display:flex; }
+.progress-box { background:#1a1a3e; border:1px solid rgba(239,68,68,0.3); border-radius:20px; padding:36px 40px; width:90%; max-width:420px; text-align:center; }
+.progress-box h3 { color:#ff6b6b; font-size:20px; font-weight:800; margin-bottom:20px; }
+.progress-bar-wrap { background:rgba(255,255,255,0.08); border-radius:8px; height:10px; overflow:hidden; margin-bottom:16px; }
+.progress-bar-fill { height:100%; background:linear-gradient(90deg,#ef4444,#FFD700); border-radius:8px; transition:width 0.4s ease; }
+.progress-step { font-size:14px; color:#aaa; }
 
+/* RESULT POPUP */
 #resultPopup { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.88); z-index:500; align-items:center; justify-content:center; }
 #resultPopup.active { display:flex; }
 .popup-box { position:relative; text-align:center; padding:52px 44px 44px; border-radius:32px; width:92%; max-width:500px; animation:popIn .4s cubic-bezier(0.175,0.885,0.32,1.275) both; }
@@ -107,24 +122,110 @@ tr:last-child td { border-bottom:none; }
 .popup-title.win { color:#FFD700; }
 .popup-title.miss { color:#aaa; }
 .popup-prize-box { font-size:24px; font-weight:800; color:#fff; margin-bottom:10px; background:rgba(255,215,0,0.1); padding:16px 24px; border-radius:14px; border:1px solid rgba(255,215,0,0.3); }
-.popup-sub { font-size:15px; color:#aaa; margin-bottom:28px; }
-.popup-close { padding:14px 52px; border-radius:14px; border:none; cursor:pointer; font-size:18px; font-weight:800; font-family:'Sarabun',sans-serif; transition:transform 0.15s; }
-.popup-close:hover { transform:scale(1.04); }
-.popup-close.win { background:linear-gradient(135deg,#FFD700,#FFA500); color:#000; }
+.popup-sub { font-size:15px; color:#aaa; margin-bottom:20px; }
+.popup-btn-row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:12px; }
+.popup-close { padding:12px 36px; border-radius:12px; border:none; cursor:pointer; font-size:16px; font-weight:800; font-family:'Sarabun',sans-serif; }
+.popup-close.win { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2) !important; }
 .popup-close.miss { background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.2) !important; }
-.popup-ticket-info { font-size:13px; color:#555; margin-top:14px; }
+.btn-view-summary { padding:12px 36px; border-radius:12px; border:none; cursor:pointer; font-size:16px; font-weight:800; font-family:'Sarabun',sans-serif; background:linear-gradient(135deg,#4ade80,#22c55e); color:#000; }
+.popup-ticket-info { font-size:13px; color:#555; }
 .star-deco { position:absolute; font-size:22px; pointer-events:none; animation:starBob 2s ease-in-out infinite; }
 @keyframes starBob { 0%,100%{transform:translateY(0);opacity:.85;} 50%{transform:translateY(-10px);opacity:1;} }
 
+/* ══════════════════════════════════
+   PRIZE SUMMARY OVERLAY
+══════════════════════════════════ */
+#summaryOverlay {
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.92); z-index:600;
+  align-items:center; justify-content:center;
+  padding:20px;
+}
+#summaryOverlay.active { display:flex; flex-direction:column; gap:16px; }
+
+/* THE CARD — this gets downloaded */
+#summaryCard {
+  background:#0a0f1e;
+  border:2px solid #00E5B4;
+  border-radius:16px;
+  padding:32px 28px;
+  width:100%; max-width:480px;
+  text-align:center;
+  font-family:'Sarabun',sans-serif;
+  position:relative;
+  overflow:hidden;
+}
+#summaryCard::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,#00E5B4,#2168FD,#00E5B4);
+}
+.sc-brand {
+  font-size:11px; font-weight:800; letter-spacing:3px;
+  color:#00E5B4; text-transform:uppercase; margin-bottom:14px;
+}
+.sc-name {
+  font-size:26px; font-weight:800; color:#FFFFFF;
+  letter-spacing:1px; margin-bottom:4px; text-transform:uppercase;
+}
+.sc-sn {
+  font-size:13px; color:#888; margin-bottom:20px;
+}
+.sc-label {
+  font-size:10px; font-weight:800; letter-spacing:2.5px;
+  color:#00E5B4; text-transform:uppercase; margin-bottom:12px;
+}
+.sc-prizes { width:100%; margin-bottom:20px; }
+.sc-prize-row {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(0,229,180,0.15);
+  border-radius:10px; padding:12px 18px;
+  margin-bottom:8px; text-align:left;
+  font-size:16px; font-weight:700; color:#FFFFFF;
+  display:flex; align-items:center; gap:10px;
+}
+.sc-prize-row .picon { font-size:18px; }
+.sc-no-prize {
+  color:#666; font-size:15px; padding:16px;
+  background:rgba(255,255,255,0.03); border-radius:10px;
+  border:1px dashed rgba(255,255,255,0.08);
+}
+.sc-date {
+  font-size:12px; color:#555; margin-top:8px;
+}
+.sc-watermark {
+  position:absolute; bottom:12px; right:16px;
+  font-size:10px; color:rgba(0,229,180,0.2);
+  font-weight:700; letter-spacing:1px;
+}
+
+/* Download buttons */
+.summary-actions { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.btn-download {
+  padding:12px 28px; border-radius:12px; border:none; cursor:pointer;
+  font-size:15px; font-weight:800; font-family:'Sarabun',sans-serif;
+  background:linear-gradient(135deg,#00E5B4,#2168FD); color:#fff;
+  display:flex; align-items:center; gap:8px;
+  transition:transform 0.15s;
+}
+.btn-download:hover { transform:translateY(-2px); }
+.btn-close-summary {
+  padding:12px 28px; border-radius:12px; cursor:pointer;
+  font-size:15px; font-weight:700; font-family:'Sarabun',sans-serif;
+  background:rgba(255,255,255,0.08); color:#aaa;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.dl-hint { font-size:12px; color:#555; text-align:center; }
+
 @keyframes confettiFall { to{transform:translateY(110vh) rotate(720deg);opacity:0;} }
-.confetti-piece { position:fixed; top:-10px; animation:confettiFall linear forwards; z-index:600; border-radius:2px; pointer-events:none; }
+.confetti-piece { position:fixed; top:-10px; animation:confettiFall linear forwards; z-index:700; border-radius:2px; pointer-events:none; }
 </style>
 </head>
 <body>
-
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
+<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-card">
     <div style="font-size:48px;margin-bottom:12px;">🎰</div>
@@ -136,6 +237,7 @@ tr:last-child td { border-bottom:none; }
   </div>
 </div>
 
+<!-- MAIN -->
 <div id="mainScreen">
   <div class="header">
     <div class="header-left">
@@ -159,16 +261,24 @@ tr:last-child td { border-bottom:none; }
     </div>
     <p class="spin-hint">คลิกที่วงล้อหรือปุ่มตรงกลางเพื่อหมุน</p>
   </div>
+  <!-- SUMMARY BUTTON — แสดงหลังมีประวัติ -->
+  <div class="summary-btn-wrap" id="summaryBtnWrap" style="display:none;">
+    <button class="btn-show-summary" onclick="showSummary()">
+      📋 ดูสรุปรางวัลทั้งหมด &amp; Download
+    </button>
+  </div>
   <div class="history-section">
     <h3>📋 ประวัติการหมุน</h3>
     <div id="historyList"><p style="color:#666;text-align:center;padding:20px;">กำลังโหลด...</p></div>
   </div>
 </div>
 
+<!-- ADMIN -->
 <div id="adminScreen">
   <div class="admin-header">
     <h1>⚙ Admin Dashboard</h1>
-    <div style="display:flex;gap:10px;">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <button class="btn-fullreset" onclick="showResetModal()">🔄 Full Reset ระบบ</button>
       <button class="btn-export" onclick="exportCSV()">📥 Export CSV</button>
       <button class="btn-small" onclick="showMain()">← กลับ</button>
     </div>
@@ -179,29 +289,22 @@ tr:last-child td { border-bottom:none; }
     <div class="stat-card"><div class="num" id="statSpins">-</div><div class="label">หมุนทั้งหมด</div></div>
     <div class="stat-card"><div class="num" id="statWins">-</div><div class="label">ได้รางวัล</div></div>
   </div>
-  <div class="admin-table-wrap">
-    <h3>🏆 สต็อกรางวัล</h3>
-    <div class="prize-stock" id="prizeStockGrid"></div>
-  </div>
-  <div class="setup-section">
+  <div class="admin-table-wrap"><h3>🏆 สต็อกรางวัล</h3><div class="prize-stock" id="prizeStockGrid"></div></div>
+  <div class="action-section">
     <button class="btn-setup" onclick="setupDatabase()">⚙ Setup Database — รันครั้งแรกเท่านั้น</button>
+    <button class="btn-addtest" onclick="addTestAccount()">🧪 เพิ่ม Test Account (SN: 12345)</button>
   </div>
   <div class="admin-table-wrap">
     <h3>📋 ประวัติการหมุนทั้งหมด</h3>
-    <div style="overflow-x:auto;">
-      <table><thead><tr><th>SN</th><th>ชื่อ</th><th>ตั๋วที่</th><th>รางวัล</th><th>ผล</th><th>เวลา</th></tr></thead>
-      <tbody id="allDrawsTable"></tbody></table>
-    </div>
+    <div style="overflow-x:auto;"><table><thead><tr><th>SN</th><th>ชื่อ</th><th>ตั๋วที่</th><th>รางวัล</th><th>ผล</th><th>เวลา</th></tr></thead><tbody id="allDrawsTable"></tbody></table></div>
   </div>
   <div class="admin-table-wrap" style="margin-top:20px;">
     <h3>👥 รายชื่อพนักงาน</h3>
-    <div style="overflow-x:auto;">
-      <table><thead><tr><th>SN</th><th>ชื่อ</th><th>ตั๋ว</th><th>ใช้แล้ว</th><th>สถานะ</th></tr></thead>
-      <tbody id="employeeTable"></tbody></table>
-    </div>
+    <div style="overflow-x:auto;"><table><thead><tr><th>SN</th><th>ชื่อ</th><th>ตั๋ว</th><th>ใช้แล้ว</th><th>สถานะ</th></tr></thead><tbody id="employeeTable"></tbody></table></div>
   </div>
 </div>
 
+<!-- ADMIN MODAL -->
 <div class="modal-overlay" id="adminModal">
   <div class="modal-box">
     <h3>🔐 Admin Login</h3>
@@ -214,15 +317,68 @@ tr:last-child td { border-bottom:none; }
   </div>
 </div>
 
+<!-- RESET MODAL -->
+<div class="modal-overlay" id="resetModal">
+  <div class="modal-box" style="max-width:440px;">
+    <h3 style="color:#ff6b6b;margin-bottom:16px;">🔄 Full Reset ระบบ</h3>
+    <div class="reset-warning">
+      <p style="font-weight:700;color:#fca5a5;margin-bottom:8px;">สิ่งที่จะถูกลบ:</p>
+      <div class="item"><span class="dot"></span>ประวัติการหมุน (draws)</div>
+      <div class="item"><span class="dot"></span>ข้อมูลผู้เล่น (participants) → เล่นแล้ว = 0</div>
+      <div class="item"><span class="dot"></span>รีเซ็ตสต็อกรางวัลกลับเต็ม</div>
+    </div>
+    <div class="reset-keep">✅ <strong>คงไว้:</strong> รายชื่อพนักงาน + รหัสผ่าน Admin</div>
+    <p style="color:#aaa;font-size:13px;margin-bottom:16px;">ยืนยันด้วยรหัสผ่าน Admin</p>
+    <input type="password" id="resetPwInput" placeholder="รหัสผ่าน Admin" onkeydown="if(event.key==='Enter')confirmFullReset()">
+    <div id="resetPwError" style="color:#ff6b6b;font-size:13px;margin-bottom:10px;display:none;">รหัสผ่านไม่ถูกต้อง</div>
+    <div class="modal-btn-row">
+      <button class="btn-cancel" onclick="closeResetModal()">ยกเลิก</button>
+      <button style="flex:1;padding:12px;border-radius:10px;border:none;cursor:pointer;font-size:15px;font-weight:800;font-family:'Sarabun',sans-serif;color:#fff;background:linear-gradient(135deg,#ef4444,#b91c1c);" onclick="confirmFullReset()">🔄 Reset เลย</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div id="progressOverlay">
+  <div class="progress-box" id="progressBox">
+    <h3>🔄 กำลัง Reset...</h3>
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-step" id="progressStep">เริ่มต้น...</div>
+  </div>
+</div>
+
+<!-- RESULT POPUP -->
 <div id="resultPopup">
   <div class="popup-box" id="popupBox">
     <div class="popup-icon" id="popupIcon"></div>
     <div class="popup-title" id="popupTitle"></div>
     <div id="popupPrizeArea"></div>
     <div class="popup-sub" id="popupSub"></div>
-    <button class="popup-close" id="popupCloseBtn" onclick="closePopup()">ตกลง</button>
+    <div class="popup-btn-row">
+      <button class="popup-close" id="popupCloseBtn" onclick="closePopup()">ปิด</button>
+      <button class="btn-view-summary" id="popupSummaryBtn" onclick="closePopupAndShowSummary()" style="display:none;">📋 ดูสรุปรางวัล</button>
+    </div>
     <div class="popup-ticket-info" id="popupTicketInfo"></div>
   </div>
+</div>
+
+<!-- PRIZE SUMMARY OVERLAY -->
+<div id="summaryOverlay">
+  <!-- THE CARD -->
+  <div id="summaryCard">
+    <div class="sc-brand">SGC Lucky Draw 2026</div>
+    <div class="sc-name" id="scName">-</div>
+    <div class="sc-sn" id="scSN">-</div>
+    <div class="sc-label">Your Prizes</div>
+    <div class="sc-prizes" id="scPrizes"></div>
+    <div class="sc-date" id="scDate"></div>
+    <div class="sc-watermark">SGC 2026</div>
+  </div>
+  <div class="summary-actions">
+    <button class="btn-download" onclick="downloadCard()">⬇ Download PNG</button>
+    <button class="btn-close-summary" onclick="closeSummary()">ปิด</button>
+  </div>
+  <div class="dl-hint">📸 Save รูปนี้ไว้แสดงเพื่อรับรางวัล</div>
 </div>
 
 <script>
@@ -237,14 +393,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-let currentEmployee = null;
-let currentParticipant = null;
-let prizes = [];
-let isSpinning = false;
-let currentRotation = 0;
-let cachedSegments = [];
+let currentEmployee=null, currentParticipant=null, prizes=[], isSpinning=false, currentRotation=0, cachedSegments=[];
+let myDrawHistory = []; // เก็บ history ของ user ปัจจุบัน
 
-// ── PRIZE DATA — slotCount ตามตาราง √n ──
 const PRIZE_DATA = [
   { id:'fan',      name:'พัดลม Hatari',             slotCount:1, total:1,  color:['#E8303A','#C42828'] },
   { id:'towel',    name:'ผ้าขนหนู Frolina',         slotCount:1, total:1,  color:['#4285F4','#2D6FD4'] },
@@ -257,330 +408,241 @@ const PRIZE_DATA = [
   { id:'ovaltine', name:'โอวัลตินซอง',              slotCount:8, total:60, color:['#388E3C','#256128'] }
 ];
 
-// ── EMPLOYEE DATA — เพิ่ม Pilaiwan Wongwat 7145687 tickets:2 ──
 const EMPLOYEE_DATA = [
-  { sn:'1000294229', name:'Nattanicha',      tickets:3 },
-  { sn:'1000312456', name:'Somchai',         tickets:2 },
-  { sn:'1000278901', name:'Pranee',          tickets:5 },
-  { sn:'1000345678', name:'Wichai',          tickets:1 },
-  { sn:'1000289012', name:'Malee',           tickets:3 },
-  { sn:'1000301234', name:'Thanit',          tickets:2 },
-  { sn:'1000367890', name:'Siriporn',        tickets:4 },
-  { sn:'1000323456', name:'Kamon',           tickets:2 },
-  { sn:'1000290123', name:'Pailin',          tickets:3 },
-  { sn:'1000334567', name:'Noparat',         tickets:1 },
-  { sn:'7145687',    name:'Pilaiwan Wongwat',tickets:2 }
+  { sn:'1000294229', name:'Nattanicha',       tickets:3  },
+  { sn:'1000312456', name:'Somchai',          tickets:2  },
+  { sn:'1000278901', name:'Pranee',           tickets:5  },
+  { sn:'1000345678', name:'Wichai',           tickets:1  },
+  { sn:'1000289012', name:'Malee',            tickets:3  },
+  { sn:'1000301234', name:'Thanit',           tickets:2  },
+  { sn:'1000367890', name:'Siriporn',         tickets:4  },
+  { sn:'1000323456', name:'Kamon',            tickets:2  },
+  { sn:'1000290123', name:'Pailin',           tickets:3  },
+  { sn:'1000334567', name:'Noparat',          tickets:1  },
+  { sn:'7145687',    name:'Pilaiwan Wongwat', tickets:2  },
+  { sn:'12345',      name:'TEst',             tickets:10 }
 ];
 
-function buildSegments() {
-  const segs = [];
-  for (const pd of PRIZE_DATA) {
-    const live = prizes.find(p => p.id === pd.id);
-    const remaining = live !== undefined ? live.remaining : pd.total;
-    if (remaining <= 0) continue;
-    for (let i = 0; i < pd.slotCount; i++) {
-      segs.push({ prizeId:pd.id, name:pd.name, color:pd.color[i % 2] });
-    }
-  }
-  for (let i = segs.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [segs[i], segs[j]] = [segs[j], segs[i]];
-  }
-  return segs;
-}
-function getSegments() { if (!cachedSegments.length) cachedSegments = buildSegments(); return cachedSegments; }
-function rebuildSegments() { cachedSegments = buildSegments(); }
+function buildSegments(){const segs=[];for(const pd of PRIZE_DATA){const live=prizes.find(p=>p.id===pd.id);const rem=live!==undefined?live.remaining:pd.total;if(rem<=0)continue;for(let i=0;i<pd.slotCount;i++)segs.push({prizeId:pd.id,name:pd.name,color:pd.color[i%2]});}for(let i=segs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[segs[i],segs[j]]=[segs[j],segs[i]];}return segs;}
+function getSegments(){if(!cachedSegments.length)cachedSegments=buildSegments();return cachedSegments;}
+function rebuildSegments(){cachedSegments=buildSegments();}
 
-function drawWheel(rot) {
-  const canvas = document.getElementById('wheelCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const W = canvas.width, cx = W/2, R = cx-4;
+function drawWheel(rot){
+  const canvas=document.getElementById('wheelCanvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d'),W=canvas.width,cx=W/2,R=cx-4;
   ctx.clearRect(0,0,W,W);
-  const segs = getSegments();
-  if (!segs.length) {
-    ctx.beginPath(); ctx.arc(cx,cx,R,0,2*Math.PI); ctx.fillStyle='#333'; ctx.fill();
-    ctx.fillStyle='#fff'; ctx.font='20px Sarabun'; ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillText('รางวัลหมดแล้ว',cx,cx); return;
-  }
-  const arc = (2*Math.PI)/segs.length;
-  for (let i=0; i<segs.length; i++) {
-    const sa=rot+i*arc, ea=sa+arc, ma=sa+arc/2;
-    ctx.beginPath(); ctx.moveTo(cx,cx); ctx.arc(cx,cx,R,sa,ea); ctx.closePath();
-    ctx.fillStyle=segs[i].color; ctx.fill();
-    ctx.strokeStyle='#FFFFFF'; ctx.lineWidth=2.5; ctx.stroke();
-    const arcPx=arc*R;
-    if (arcPx<14) continue;
-    ctx.save(); ctx.translate(cx,cx); ctx.rotate(ma);
-    const label=getLabel(segs[i].name,arcPx);
-    const lines=label.split('\n');
-    const fs=Math.max(11,Math.min(18,arcPx/(lines.length*4.2)));
-    const lh=fs*1.3, totalH=lines.length*lh, textR=R*0.63;
-    ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.font='700 '+fs+'px Sarabun,sans-serif';
-    ctx.strokeStyle='rgba(0,0,0,0.7)'; ctx.lineWidth=3; ctx.lineJoin='round';
-    ctx.fillStyle='#FFFFFF';
-    lines.forEach((line,li)=>{
-      const y=-totalH/2+li*lh+lh/2;
-      ctx.strokeText(line,textR,y); ctx.fillText(line,textR,y);
-    });
+  const segs=getSegments();
+  if(!segs.length){ctx.beginPath();ctx.arc(cx,cx,R,0,2*Math.PI);ctx.fillStyle='#333';ctx.fill();ctx.fillStyle='#fff';ctx.font='20px Sarabun';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('รางวัลหมดแล้ว',cx,cx);return;}
+  const arc=(2*Math.PI)/segs.length;
+  for(let i=0;i<segs.length;i++){
+    const sa=rot+i*arc,ea=sa+arc,ma=sa+arc/2;
+    ctx.beginPath();ctx.moveTo(cx,cx);ctx.arc(cx,cx,R,sa,ea);ctx.closePath();ctx.fillStyle=segs[i].color;ctx.fill();ctx.strokeStyle='#FFFFFF';ctx.lineWidth=2.5;ctx.stroke();
+    const arcPx=arc*R;if(arcPx<14)continue;
+    ctx.save();ctx.translate(cx,cx);ctx.rotate(ma);
+    const label=getLabel(segs[i].name,arcPx),lines=label.split('\n'),fs=Math.max(11,Math.min(18,arcPx/(lines.length*4.2))),lh=fs*1.3,totalH=lines.length*lh,textR=R*0.63;
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.font='700 '+fs+'px Sarabun,sans-serif';ctx.strokeStyle='rgba(0,0,0,0.7)';ctx.lineWidth=3;ctx.lineJoin='round';ctx.fillStyle='#FFFFFF';
+    lines.forEach((line,li)=>{const y=-totalH/2+li*lh+lh/2;ctx.strokeText(line,textR,y);ctx.fillText(line,textR,y);});
     ctx.restore();
   }
-  ctx.beginPath(); ctx.arc(cx,cx,R,0,2*Math.PI); ctx.strokeStyle='#BBBBBB'; ctx.lineWidth=4; ctx.stroke();
+  ctx.beginPath();ctx.arc(cx,cx,R,0,2*Math.PI);ctx.strokeStyle='#BBBBBB';ctx.lineWidth=4;ctx.stroke();
+}
+function getLabel(name,arcPx){if(arcPx>=72){const p=name.split(' ');return p.length>=2?p[0]+'\n'+p.slice(1).join(' '):name;}if(arcPx>=36)return name.split(' ')[0];if(arcPx>=20)return name.slice(0,4);return name.slice(0,2);}
+
+async function determineResult(){
+  const snap=await db.collection('prizes').get();
+  const fp=snap.docs.map(d=>({id:d.id,...d.data()}));
+  const avail=PRIZE_DATA.filter(pd=>{const live=fp.find(p=>p.id===pd.id);return live&&live.remaining>0;});
+  if(!avail.length)return{won:false,prizeId:null,prizeName:null};
+  const totalSlots=avail.reduce((a,pd)=>a+pd.slotCount,0);
+  let r=Math.random()*totalSlots;
+  for(const pd of avail){r-=pd.slotCount;if(r<=0)return{won:true,prizeId:pd.id,prizeName:pd.name};}
+  return{won:true,prizeId:avail[0].id,prizeName:avail[0].name};
 }
 
-function getLabel(name,arcPx) {
-  if (arcPx>=72) { const p=name.split(' '); return p.length>=2?p[0]+'\n'+p.slice(1).join(' '):name; }
-  if (arcPx>=36) return name.split(' ')[0];
-  if (arcPx>=20) return name.slice(0,4);
-  return name.slice(0,2);
-}
-
-async function spinWheel() {
-  if (isSpinning) return;
-  if (!currentEmployee||!currentParticipant) return;
+async function spinWheel(){
+  if(isSpinning)return;if(!currentEmployee||!currentParticipant)return;
   const used=currentParticipant.usedTickets||0;
-  if (used>=currentEmployee.tickets) {
-    showPopup({type:'error',title:'ตั๋วหมดแล้ว',sub:'ไม่สามารถหมุนได้อีก'}); return;
-  }
+  if(used>=currentEmployee.tickets){showPopup({type:'error',title:'ตั๋วหมดแล้ว',sub:'ไม่สามารถหมุนได้อีก'});return;}
   isSpinning=true;
-  const btn=document.getElementById('spinBtn');
-  btn.style.transform='translate(-50%,-50%) scale(0.9)';
-  setTimeout(()=>{ btn.style.transform='translate(-50%,-50%) scale(1)'; },150);
-
+  const btn=document.getElementById('spinBtn');btn.style.transform='translate(-50%,-50%) scale(0.9)';setTimeout(()=>{btn.style.transform='translate(-50%,-50%) scale(1)';},150);
   const result=await determineResult();
-  const segs=getSegments();
-  const arc=(2*Math.PI)/segs.length;
+  const segs=getSegments(),arc=(2*Math.PI)/segs.length;
   let targetIdx=Math.floor(Math.random()*segs.length);
-  if (result.won) {
-    const matches=segs.map((s,i)=>s.prizeId===result.prizeId?i:-1).filter(i=>i>=0);
-    if (matches.length) targetIdx=matches[Math.floor(Math.random()*matches.length)];
-  }
-  const segMid=targetIdx*arc+arc/2;
-  const spins=6+Math.floor(Math.random()*3);
-  const cur=currentRotation%(2*Math.PI);
-  const needed=((-segMid-cur)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);
-  const finalR=currentRotation+spins*2*Math.PI+needed;
-  const dur=4500, t0=performance.now(), r0=currentRotation;
-  function animate(now) {
-    const t=Math.min((now-t0)/dur,1);
-    const e=1-Math.pow(1-t,4);
-    currentRotation=r0+(finalR-r0)*e;
-    drawWheel(currentRotation);
-    if (t<1) requestAnimationFrame(animate);
-    else { currentRotation=finalR; drawWheel(finalR); isSpinning=false; finishSpin(result); }
-  }
+  if(result.won){const matches=segs.map((s,i)=>s.prizeId===result.prizeId?i:-1).filter(i=>i>=0);if(matches.length)targetIdx=matches[Math.floor(Math.random()*matches.length)];}
+  const segMid=targetIdx*arc+arc/2,spins=6+Math.floor(Math.random()*3),cur=currentRotation%(2*Math.PI),needed=((-segMid-cur)%(2*Math.PI)+2*Math.PI)%(2*Math.PI),finalR=currentRotation+spins*2*Math.PI+needed;
+  const dur=4500,t0=performance.now(),r0=currentRotation;
+  function animate(now){const t=Math.min((now-t0)/dur,1),e=1-Math.pow(1-t,4);currentRotation=r0+(finalR-r0)*e;drawWheel(currentRotation);if(t<1)requestAnimationFrame(animate);else{currentRotation=finalR;drawWheel(finalR);isSpinning=false;finishSpin(result);}}
   requestAnimationFrame(animate);
 }
 
-async function determineResult() {
-  const snap=await db.collection('prizes').get();
-  const fp=snap.docs.map(d=>({id:d.id,...d.data()}));
-  const avail=PRIZE_DATA.filter(pd=>{ const live=fp.find(p=>p.id===pd.id); return live?live.remaining>0:pd.total>0; });
-  if (!avail.length) return {won:false,prizeId:null,prizeName:null};
-  const totalSlots=avail.reduce((a,pd)=>a+pd.slotCount,0);
-  const roll=Math.floor(Math.random()*(totalSlots*2));
-  if (roll<totalSlots) {
-    let r=Math.random()*totalSlots;
-    for (const pd of avail) { r-=pd.slotCount; if(r<=0) return {won:true,prizeId:pd.id,prizeName:pd.name}; }
-    return {won:true,prizeId:avail[0].id,prizeName:avail[0].name};
-  }
-  return {won:false,prizeId:null,prizeName:null};
-}
-
-async function finishSpin(result) {
-  const sn=currentEmployee.sn;
-  const ticketNo=(currentParticipant.usedTickets||0)+1;
-  try {
+async function finishSpin(result){
+  const sn=currentEmployee.sn,ticketNo=(currentParticipant.usedTickets||0)+1;
+  try{
     await db.runTransaction(async tx=>{
-      const pRef=db.collection('participants').doc(sn);
-      const pDoc=await tx.get(pRef);
+      const pRef=db.collection('participants').doc(sn),pDoc=await tx.get(pRef);
       const used=pDoc.exists?(pDoc.data().usedTickets||0):0;
-      if (used>=currentEmployee.tickets) throw new Error('ใช้ตั๋วครบแล้ว');
-      if (result.won) {
-        const prRef=db.collection('prizes').doc(result.prizeId);
-        const prDoc=await tx.get(prRef);
-        if (!prDoc.exists||prDoc.data().remaining<=0) { result.won=false; result.prizeName=null; }
-        else tx.update(prRef,{remaining:prDoc.data().remaining-1});
-      }
+      if(used>=currentEmployee.tickets)throw new Error('ใช้ตั๋วครบแล้ว');
+      if(result.won&&result.prizeId){const prRef=db.collection('prizes').doc(result.prizeId),prDoc=await tx.get(prRef);if(prDoc.exists&&prDoc.data().remaining>0)tx.update(prRef,{remaining:prDoc.data().remaining-1});}
       tx.set(db.collection('draws').doc(),{sn,employeeName:currentEmployee.name,ticketNo,prize:result.prizeName||'ไม่ได้รางวัล',won:result.won,timestamp:firebase.firestore.FieldValue.serverTimestamp()});
       tx.set(pRef,{usedTickets:used+1,lastLogin:firebase.firestore.FieldValue.serverTimestamp(),status:'active'},{merge:true});
     });
     currentParticipant.usedTickets=ticketNo;
-    updateTicketsBar(); await loadHistory(); await loadPrizes();
-    rebuildSegments(); drawWheel(currentRotation);
+    updateTicketsBar();await loadHistory();await loadPrizes();rebuildSegments();drawWheel(currentRotation);
     const remaining=currentEmployee.tickets-ticketNo;
-    if (result.won) { showPopup({type:'win',prize:result.prizeName,ticketNo,remaining}); launchConfetti(); }
+    if(result.won){showPopup({type:'win',prize:result.prizeName,ticketNo,remaining});launchConfetti();}
     else showPopup({type:'miss',ticketNo,remaining});
+  }catch(err){console.error(err);isSpinning=false;showPopup({type:'error',title:'เกิดข้อผิดพลาด',sub:err.message});}
+}
+
+// ══════════════════════════════════════════
+// PRIZE SUMMARY CARD
+// ══════════════════════════════════════════
+function showSummary(){
+  const wonPrizes = myDrawHistory.filter(d => d.won);
+  const card = document.getElementById('summaryCard');
+
+  // Fill card data
+  document.getElementById('scName').textContent = (currentEmployee.name || '-').toUpperCase();
+  document.getElementById('scSN').textContent = 'SN: ' + currentEmployee.sn;
+
+  const prizesEl = document.getElementById('scPrizes');
+  if(wonPrizes.length === 0){
+    prizesEl.innerHTML = '<div class="sc-no-prize">ยังไม่มีรางวัล</div>';
+  } else {
+    prizesEl.innerHTML = wonPrizes.map(d =>
+      '<div class="sc-prize-row"><span class="picon">🎁</span>' + d.prize + '</div>'
+    ).join('');
+  }
+
+  const now = new Date();
+  document.getElementById('scDate').textContent = now.toLocaleDateString('en-US', {month:'long',day:'numeric',year:'numeric'}) + '  ' + now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+
+  document.getElementById('summaryOverlay').classList.add('active');
+}
+
+function closeSummary(){
+  document.getElementById('summaryOverlay').classList.remove('active');
+}
+
+function closePopupAndShowSummary(){
+  closePopup();
+  showSummary();
+}
+
+async function downloadCard(){
+  const card = document.getElementById('summaryCard');
+  try {
+    const canvas = await html2canvas(card, {
+      backgroundColor:'#0a0f1e',
+      scale:2,
+      useCORS:true,
+      logging:false
+    });
+    const link = document.createElement('a');
+    link.download = 'SGC-LuckyDraw-' + currentEmployee.sn + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
   } catch(err) {
-    console.error(err); isSpinning=false;
-    showPopup({type:'error',title:'เกิดข้อผิดพลาด',sub:err.message});
+    // Fallback: แจ้งให้ screenshot เอง
+    alert('📸 กรุณาแคปหน้าจอเพื่อบันทึกรางวัล\n(กด PrtSc หรือ Snipping Tool)');
   }
 }
 
-function showPopup(opts) {
-  const popup=document.getElementById('resultPopup');
-  const box=document.getElementById('popupBox');
+// ── POPUP ──
+function showPopup(opts){
+  const popup=document.getElementById('resultPopup'),box=document.getElementById('popupBox');
   box.querySelectorAll('.star-deco').forEach(s=>s.remove());
-  const icon=document.getElementById('popupIcon');
-  const title=document.getElementById('popupTitle');
-  const prizeArea=document.getElementById('popupPrizeArea');
-  const sub=document.getElementById('popupSub');
-  const closeBtn=document.getElementById('popupCloseBtn');
-  const tickInfo=document.getElementById('popupTicketInfo');
-  if (opts.type==='win') {
-    box.className='popup-box win';
-    icon.textContent='🎉'; title.className='popup-title win'; title.textContent='ยินดีด้วย!';
+  const icon=document.getElementById('popupIcon'),title=document.getElementById('popupTitle'),
+        prizeArea=document.getElementById('popupPrizeArea'),sub=document.getElementById('popupSub'),
+        closeBtn=document.getElementById('popupCloseBtn'),summaryBtn=document.getElementById('popupSummaryBtn'),
+        tickInfo=document.getElementById('popupTicketInfo');
+
+  summaryBtn.style.display='none';
+
+  if(opts.type==='win'){
+    box.className='popup-box win';icon.textContent='🎉';
+    title.className='popup-title win';title.textContent='ยินดีด้วย!';
     prizeArea.innerHTML='<div class="popup-prize-box">🎁 '+opts.prize+'</div>';
     sub.textContent='กรุณาติดต่อรับรางวัลที่ HR';
     closeBtn.className='popup-close win';
+    summaryBtn.style.display='inline-block'; // แสดงปุ่มดูสรุป
     tickInfo.textContent='ตั๋วที่ '+opts.ticketNo+(opts.remaining>0?' • เหลืออีก '+opts.remaining+' ตั๋ว':' • หมดตั๋วแล้ว');
     const sp=[{top:'8%',left:'7%',d:'0s'},{top:'10%',right:'8%',d:'0.25s'},{top:'4%',left:'44%',d:'0.5s'},{bottom:'16%',left:'5%',d:'0.15s'},{bottom:'14%',right:'7%',d:'0.4s'}];
-    const si=['⭐','✨','🌟','💫','⚡'];
-    sp.forEach((pos,i)=>{
-      const s=document.createElement('div'); s.className='star-deco'; s.textContent=si[i];
-      if(pos.top) s.style.top=pos.top; if(pos.bottom) s.style.bottom=pos.bottom;
-      if(pos.left) s.style.left=pos.left; if(pos.right) s.style.right=pos.right;
-      s.style.animationDelay=pos.d; s.style.animationDuration=(1.6+i*0.25)+'s';
-      box.appendChild(s);
-    });
-  } else if (opts.type==='miss') {
-    box.className='popup-box miss';
-    icon.textContent='😢'; title.className='popup-title miss'; title.textContent='ขอโชคใหม่นะครับ';
-    prizeArea.innerHTML='';
-    sub.textContent=opts.remaining>0?'ยังมีตั๋วเหลืออยู่ ลองหมุนอีกครั้ง!':'คุณใช้ตั๋วครบแล้ว';
+    ['⭐','✨','🌟','💫','⚡'].forEach((ic,i)=>{const s=document.createElement('div');s.className='star-deco';s.textContent=ic;const pos=sp[i];if(pos.top)s.style.top=pos.top;if(pos.bottom)s.style.bottom=pos.bottom;if(pos.left)s.style.left=pos.left;if(pos.right)s.style.right=pos.right;s.style.animationDelay=pos.d;s.style.animationDuration=(1.6+i*0.25)+'s';box.appendChild(s);});
+  } else if(opts.type==='miss'){
+    box.className='popup-box miss';icon.textContent='📦';
+    title.className='popup-title miss';title.textContent='ของรางวัลหมดแล้ว';
+    prizeArea.innerHTML='';sub.textContent='รางวัลถูกรับครบทุกชิ้นแล้ว';
     closeBtn.className='popup-close miss';
     tickInfo.textContent='ตั๋วที่ '+opts.ticketNo+(opts.remaining>0?' • เหลืออีก '+opts.remaining+' ตั๋ว':' • หมดตั๋วแล้ว');
   } else {
-    box.className='popup-box miss';
-    icon.textContent='⚠️'; title.className='popup-title miss'; title.textContent=opts.title||'แจ้งเตือน';
-    prizeArea.innerHTML=''; sub.textContent=opts.sub||'';
-    closeBtn.className='popup-close miss'; tickInfo.textContent='';
+    box.className='popup-box miss';icon.textContent='⚠️';
+    title.className='popup-title miss';title.textContent=opts.title||'แจ้งเตือน';
+    prizeArea.innerHTML='';sub.textContent=opts.sub||'';
+    closeBtn.className='popup-close miss';tickInfo.textContent='';
   }
   popup.classList.add('active');
 }
-function closePopup() { document.getElementById('resultPopup').classList.remove('active'); }
-document.getElementById('resultPopup').addEventListener('click',e=>{ if(e.target===document.getElementById('resultPopup')) closePopup(); });
+function closePopup(){document.getElementById('resultPopup').classList.remove('active');}
+document.getElementById('resultPopup').addEventListener('click',e=>{if(e.target===document.getElementById('resultPopup'))closePopup();});
+document.getElementById('summaryOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('summaryOverlay'))closeSummary();});
 
-async function doLogin() {
-  const sn=document.getElementById('snInput').value.trim();
-  if(!sn) return;
+async function doLogin(){
+  const sn=document.getElementById('snInput').value.trim();if(!sn)return;
   document.getElementById('loginError').style.display='none';
-  try {
+  try{
     const emp=await db.collection('employees').doc(sn).get();
     if(!emp.exists||emp.data().active===false){document.getElementById('loginError').style.display='block';return;}
     currentEmployee={sn,...emp.data()};
     const part=await db.collection('participants').doc(sn).get();
     currentParticipant=part.exists?part.data():{usedTickets:0};
     await db.collection('participants').doc(sn).set({lastLogin:firebase.firestore.FieldValue.serverTimestamp(),status:'active'},{merge:true});
-    await loadPrizes(); rebuildSegments();
+    await loadPrizes();rebuildSegments();
     document.getElementById('welcomeText').textContent='ยินดีต้อนรับ '+currentEmployee.name+' ('+sn+')';
-    updateTicketsBar(); await loadHistory(); showMain(); drawWheel(currentRotation);
-  } catch(err){
-    document.getElementById('loginError').textContent='เกิดข้อผิดพลาด: '+err.message;
-    document.getElementById('loginError').style.display='block';
-  }
+    updateTicketsBar();await loadHistory();showMain();drawWheel(currentRotation);
+  }catch(err){document.getElementById('loginError').textContent='เกิดข้อผิดพลาด: '+err.message;document.getElementById('loginError').style.display='block';}
 }
-function doLogout() {
-  currentEmployee=null;currentParticipant=null;prizes=[];currentRotation=0;cachedSegments=[];
-  document.getElementById('snInput').value='';
-  document.getElementById('mainScreen').style.display='none';
-  document.getElementById('adminScreen').style.display='none';
-  document.getElementById('loginScreen').style.display='flex';
-}
-async function loadPrizes() { const snap=await db.collection('prizes').get(); prizes=snap.docs.map(d=>({id:d.id,...d.data()})); }
-async function loadHistory() {
+function doLogout(){currentEmployee=null;currentParticipant=null;prizes=[];currentRotation=0;cachedSegments=[];myDrawHistory=[];document.getElementById('snInput').value='';document.getElementById('mainScreen').style.display='none';document.getElementById('adminScreen').style.display='none';document.getElementById('loginScreen').style.display='flex';document.getElementById('summaryBtnWrap').style.display='none';}
+async function loadPrizes(){const snap=await db.collection('prizes').get();prizes=snap.docs.map(d=>({id:d.id,...d.data()}));}
+async function loadHistory(){
   const snap=await db.collection('draws').where('sn','==',currentEmployee.sn).get();
-  const draws=snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);
+  myDrawHistory=snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);
   const list=document.getElementById('historyList');
-  if(!draws.length){list.innerHTML='<p style="color:#666;text-align:center;padding:20px;">ยังไม่มีประวัติ</p>';return;}
-  list.innerHTML=draws.map(d=>'<div class="history-item"><div><div class="h-ticket">ตั๋วที่ '+d.ticketNo+'</div><div class="h-prize '+(d.won?'win':'miss')+'">'+(d.won?'🎁 '+d.prize:'💫 ไม่ได้รางวัล')+'</div></div><div class="h-time">'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</div></div>').join('');
+  if(!myDrawHistory.length){list.innerHTML='<p style="color:#666;text-align:center;padding:20px;">ยังไม่มีประวัติ</p>';document.getElementById('summaryBtnWrap').style.display='none';return;}
+  list.innerHTML=myDrawHistory.map(d=>'<div class="history-item"><div><div class="h-ticket">ตั๋วที่ '+d.ticketNo+'</div><div class="h-prize '+(d.won?'win':'miss')+'">'+(d.won?'🎁 '+d.prize:'📦 ของหมดแล้ว')+'</div></div><div class="h-time">'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</div></div>').join('');
+  // แสดงปุ่ม summary ถ้ามีประวัติแล้ว
+  document.getElementById('summaryBtnWrap').style.display='block';
 }
-function updateTicketsBar() {
-  const total=currentEmployee.tickets,used=currentParticipant.usedTickets||0;
-  let h='<span style="color:#FFD700;font-weight:700;margin-right:8px;">ตั๋วของคุณ:</span>';
-  for(let i=0;i<total;i++) h+='<span class="ticket-dot '+(i<used?'used':'')+'"></span>';
-  h+='<span style="margin-left:10px;color:#aaa;font-size:14px;">ใช้แล้ว '+used+'/'+total+' ตั๋ว</span>';
-  document.getElementById('ticketsBar').innerHTML=h;
-}
+function updateTicketsBar(){const total=currentEmployee.tickets,used=currentParticipant.usedTickets||0;let h='<span style="color:#FFD700;font-weight:700;margin-right:8px;">ตั๋วของคุณ:</span>';for(let i=0;i<total;i++)h+='<span class="ticket-dot '+(i<used?'used':'')+'"></span>';h+='<span style="margin-left:10px;color:#aaa;font-size:14px;">ใช้แล้ว '+used+'/'+total+' ตั๋ว</span>';document.getElementById('ticketsBar').innerHTML=h;}
 function fmt(d){return d.toLocaleDateString('th-TH')+' '+d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'});}
-function showMain(){
-  document.getElementById('loginScreen').style.display='none';
-  document.getElementById('mainScreen').style.display='block';
-  document.getElementById('adminScreen').style.display='none';
-}
-function showAdminModal(){
-  document.getElementById('adminPwInput').value='';
-  document.getElementById('adminPwError').style.display='none';
-  document.getElementById('adminModal').classList.add('active');
-}
+function showMain(){document.getElementById('loginScreen').style.display='none';document.getElementById('mainScreen').style.display='block';document.getElementById('adminScreen').style.display='none';}
+function showAdminModal(){document.getElementById('adminPwInput').value='';document.getElementById('adminPwError').style.display='none';document.getElementById('adminModal').classList.add('active');}
 function closeAdminModal(){document.getElementById('adminModal').classList.remove('active');}
-async function checkAdmin(){
-  const pw=document.getElementById('adminPwInput').value;
+async function checkAdmin(){const pw=document.getElementById('adminPwInput').value;try{const cfg=await db.collection('config').doc('admin').get();const ok=cfg.exists?cfg.data().password:'admin1234';if(pw===ok){closeAdminModal();showAdminScreen();}else document.getElementById('adminPwError').style.display='block';}catch{if(pw==='admin1234'){closeAdminModal();showAdminScreen();}else document.getElementById('adminPwError').style.display='block';}}
+async function showAdminScreen(){document.getElementById('loginScreen').style.display='none';document.getElementById('mainScreen').style.display='none';document.getElementById('adminScreen').style.display='block';await loadAdminData();}
+async function loadAdminData(){try{const [eS,pS,dS]=await Promise.all([db.collection('employees').get(),db.collection('participants').get(),db.collection('draws').get()]);const draws=dS.docs.map(d=>({id:d.id,...d.data()}));document.getElementById('statTotal').textContent=eS.size;document.getElementById('statPlayed').textContent=pS.size;document.getElementById('statSpins').textContent=draws.length;document.getElementById('statWins').textContent=draws.filter(d=>d.won).length;await loadPrizes();document.getElementById('prizeStockGrid').innerHTML=prizes.map(p=>{const pd=PRIZE_DATA.find(x=>x.id===p.id);const pct=p.total>0?(p.remaining/p.total)*100:0;return '<div class="prize-item"><div class="pname">'+p.name+' <span style="color:#FFD700;font-size:11px;">'+(pd?'('+pd.slotCount+' แถบ)':'')+'</span></div><div class="pbar"><div class="pfill" style="width:'+pct+'%"></div></div><div class="pcount">เหลือ '+p.remaining+'/'+p.total+'</div></div>';}).join('');draws.sort((a,b)=>(b.timestamp?.toMillis?.())||0-(a.timestamp?.toMillis?.())||0);document.getElementById('allDrawsTable').innerHTML=draws.length?draws.map(d=>'<tr><td>'+d.sn+'</td><td>'+d.employeeName+'</td><td>'+d.ticketNo+'</td><td>'+d.prize+'</td><td><span class="badge '+(d.won?'win':'miss')+'">'+(d.won?'ได้รางวัล':'ของหมด')+'</span></td><td>'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</td></tr>').join(''):'<tr><td colspan="6" style="text-align:center;color:#666;">ยังไม่มีข้อมูล</td></tr>';const parts={};pS.docs.forEach(d=>parts[d.id]=d.data());document.getElementById('employeeTable').innerHTML=eS.docs.map(d=>{const e=d.data(),p=parts[d.id]||{};const isTest=e.sn==='12345';return '<tr><td>'+e.sn+'</td><td>'+e.name+(isTest?' <span class="badge test">TEST</span>':'')+'</td><td>'+e.tickets+'</td><td>'+(p.usedTickets||0)+'</td><td><span class="badge '+(e.active?'win':'miss')+'">'+(e.active?'Active':'Inactive')+'</span></td></tr>';}).join('');}catch(err){console.error(err);}}
+async function addTestAccount(){try{const ex=await db.collection('employees').doc('12345').get();if(ex.exists){alert('✅ มีอยู่แล้ว');return;}await db.collection('employees').doc('12345').set({sn:'12345',name:'TEst',tickets:10,active:true});alert('✅ เพิ่ม TEst สำเร็จ');await loadAdminData();}catch(err){alert('❌ '+err.message);}}
+async function exportCSV(){try{const snap=await db.collection('draws').get();const rows=snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);let csv='\uFEFFSN,ชื่อ,ตั๋วที่,รางวัล,ผล,เวลา\n';rows.forEach(r=>{const t=r.timestamp?.toDate?fmt(r.timestamp.toDate()):'-';csv+='"'+r.sn+'","'+r.employeeName+'","'+r.ticketNo+'","'+r.prize+'","'+(r.won?'ได้รางวัล':'ของหมด')+'","'+t+'"\n';});const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.download='sgc-lucky-draw-'+new Date().toISOString().slice(0,10)+'.csv';a.click();}catch(err){alert('Export ไม่สำเร็จ: '+err.message);}}
+async function setupDatabase(){if(!confirm('รันครั้งแรกเท่านั้น!'))return;try{const batch=db.batch();EMPLOYEE_DATA.forEach(e=>batch.set(db.collection('employees').doc(e.sn),{sn:e.sn,name:e.name,tickets:e.tickets,active:true}));PRIZE_DATA.forEach(p=>batch.set(db.collection('prizes').doc(p.id),{name:p.name,total:p.total,remaining:p.total}));batch.set(db.collection('config').doc('admin'),{password:'admin1234'});await batch.commit();alert('✅ Setup สำเร็จ!');await loadAdminData();}catch(err){alert('❌ '+err.message);}}
+function showResetModal(){document.getElementById('resetPwInput').value='';document.getElementById('resetPwError').style.display='none';document.getElementById('resetModal').classList.add('active');}
+function closeResetModal(){document.getElementById('resetModal').classList.remove('active');}
+async function confirmFullReset(){const pw=document.getElementById('resetPwInput').value;try{const cfg=await db.collection('config').doc('admin').get();const ok=cfg.exists?cfg.data().password:'admin1234';if(pw!==ok){document.getElementById('resetPwError').style.display='block';return;}}catch{if(pw!=='admin1234'){document.getElementById('resetPwError').style.display='block';return;}}closeResetModal();await doFullReset();}
+async function doFullReset(){
+  const overlay=document.getElementById('progressOverlay');overlay.classList.add('active');
+  document.getElementById('progressBox').innerHTML='<h3>🔄 กำลัง Reset ระบบ...</h3><div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div><div class="progress-step" id="progressStep">เริ่มต้น...</div>';
+  const setP=(pct,msg)=>{document.getElementById('progressFill').style.width=pct+'%';document.getElementById('progressStep').textContent=msg;};
   try{
-    const cfg=await db.collection('config').doc('admin').get();
-    const ok=cfg.exists?cfg.data().password:'admin1234';
-    if(pw===ok){closeAdminModal();showAdminScreen();}
-    else document.getElementById('adminPwError').style.display='block';
-  }catch{if(pw==='admin1234'){closeAdminModal();showAdminScreen();}else document.getElementById('adminPwError').style.display='block';}
+    setP(10,'📋 ลบประวัติการหมุน...');await deleteCollection('draws');setP(35,'✅ ลบประวัติแล้ว');
+    setP(40,'👥 ลบข้อมูลผู้เล่น...');await deleteCollection('participants');setP(70,'✅ เล่นแล้ว = 0');
+    setP(75,'🏆 Reset สต็อกรางวัล...');const batch=db.batch();PRIZE_DATA.forEach(pd=>batch.set(db.collection('prizes').doc(pd.id),{name:pd.name,total:pd.total,remaining:pd.total}));await batch.commit();setP(100,'✅ Reset สำเร็จ!');
+    await new Promise(r=>setTimeout(r,600));
+    document.getElementById('progressBox').innerHTML='<div style="font-size:56px;margin-bottom:16px;">✅</div><h3 style="color:#4ade80;font-size:22px;margin-bottom:12px;">Reset สำเร็จ!</h3><p style="color:#aaa;font-size:14px;margin-bottom:20px;">ระบบพร้อมใช้งานใหม่แล้ว</p><button onclick="closeProgressAndReload()" style="padding:12px 32px;background:linear-gradient(135deg,#4ade80,#22c55e);color:#000;border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;font-family:Sarabun,sans-serif;">เริ่มต้นใหม่ 🎉</button>';
+    await loadPrizes();rebuildSegments();drawWheel(currentRotation);
+  }catch(err){document.getElementById('progressBox').innerHTML='<div style="font-size:48px;margin-bottom:16px;">❌</div><h3 style="color:#ff6b6b;margin-bottom:12px;">เกิดข้อผิดพลาด</h3><p style="color:#aaa;font-size:14px;margin-bottom:20px;">'+err.message+'</p><button onclick="document.getElementById(\'progressOverlay\').classList.remove(\'active\')" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:Sarabun,sans-serif;">ปิด</button>';}
 }
-async function showAdminScreen(){
-  document.getElementById('loginScreen').style.display='none';
-  document.getElementById('mainScreen').style.display='none';
-  document.getElementById('adminScreen').style.display='block';
-  await loadAdminData();
-}
-async function loadAdminData(){
-  try{
-    const [eS,pS,dS]=await Promise.all([db.collection('employees').get(),db.collection('participants').get(),db.collection('draws').get()]);
-    const draws=dS.docs.map(d=>({id:d.id,...d.data()}));
-    document.getElementById('statTotal').textContent=eS.size;
-    document.getElementById('statPlayed').textContent=pS.size;
-    document.getElementById('statSpins').textContent=draws.length;
-    document.getElementById('statWins').textContent=draws.filter(d=>d.won).length;
-    await loadPrizes();
-    document.getElementById('prizeStockGrid').innerHTML=prizes.map(p=>{
-      const pd=PRIZE_DATA.find(x=>x.id===p.id);
-      const pct=p.total>0?(p.remaining/p.total)*100:0;
-      return '<div class="prize-item"><div class="pname">'+p.name+' <span style="color:#FFD700;font-size:11px;">('+( pd?pd.slotCount:'-')+' แถบ)</span></div><div class="pbar"><div class="pfill" style="width:'+pct+'%"></div></div><div class="pcount">เหลือ '+p.remaining+'/'+p.total+'</div></div>';
-    }).join('');
-    draws.sort((a,b)=>(b.timestamp?.toMillis?.())||0-(a.timestamp?.toMillis?.())||0);
-    document.getElementById('allDrawsTable').innerHTML=draws.length?draws.map(d=>'<tr><td>'+d.sn+'</td><td>'+d.employeeName+'</td><td>'+d.ticketNo+'</td><td>'+d.prize+'</td><td><span class="badge '+(d.won?'win':'miss')+'">'+(d.won?'ได้รางวัล':'ไม่ได้รางวัล')+'</span></td><td>'+(d.timestamp?.toDate?fmt(d.timestamp.toDate()):'-')+'</td></tr>').join(''):'<tr><td colspan="6" style="text-align:center;color:#666;">ยังไม่มีข้อมูล</td></tr>';
-    const parts={};pS.docs.forEach(d=>parts[d.id]=d.data());
-    document.getElementById('employeeTable').innerHTML=eS.docs.map(d=>{const e=d.data(),p=parts[d.id]||{};return '<tr><td>'+e.sn+'</td><td>'+e.name+'</td><td>'+e.tickets+'</td><td>'+(p.usedTickets||0)+'</td><td><span class="badge '+(e.active?'win':'miss')+'">'+(e.active?'Active':'Inactive')+'</span></td></tr>';}).join('');
-  }catch(err){console.error(err);}
-}
-async function exportCSV(){
-  try{
-    const snap=await db.collection('draws').get();
-    const rows=snap.docs.map(d=>d.data()).sort((a,b)=>(a.timestamp?.toMillis?.())||0-(b.timestamp?.toMillis?.())||0);
-    let csv='\uFEFFSN,ชื่อ,ตั๋วที่,รางวัล,ผล,เวลา\n';
-    rows.forEach(r=>{const t=r.timestamp?.toDate?fmt(r.timestamp.toDate()):'-';csv+='"'+r.sn+'","'+r.employeeName+'","'+r.ticketNo+'","'+r.prize+'","'+(r.won?'ได้รางวัล':'ไม่ได้รางวัล')+'","'+t+'"\n';});
-    const a=document.createElement('a');
-    a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
-    a.download='sgc-lucky-draw-'+new Date().toISOString().slice(0,10)+'.csv'; a.click();
-  }catch(err){alert('Export ไม่สำเร็จ: '+err.message);}
-}
-async function setupDatabase(){
-  if(!confirm('รันครั้งแรกเท่านั้น! ต้องการ Setup Database ใช่ไหม?')) return;
-  try{
-    const batch=db.batch();
-    EMPLOYEE_DATA.forEach(e=>batch.set(db.collection('employees').doc(e.sn),{sn:e.sn,name:e.name,tickets:e.tickets,active:true}));
-    PRIZE_DATA.forEach(p=>batch.set(db.collection('prizes').doc(p.id),{name:p.name,total:p.total,remaining:p.total}));
-    batch.set(db.collection('config').doc('admin'),{password:'admin1234'});
-    await batch.commit(); alert('✅ Setup สำเร็จ!'); await loadAdminData();
-  }catch(err){alert('❌ Setup ไม่สำเร็จ: '+err.message);}
-}
-function launchConfetti(){
-  const cols=['#FFD700','#FFB3C6','#FFC8A2','#B5EAD7','#C7CEEA','#FFDAC1'];
-  for(let i=0;i<100;i++){
-    setTimeout(()=>{
-      const el=document.createElement('div'); el.className='confetti-piece';
-      el.style.cssText='left:'+Math.random()*100+'vw;background:'+cols[~~(Math.random()*cols.length)]+';animation-duration:'+(2+Math.random()*2)+'s;width:'+(8+Math.random()*8)+'px;height:'+(8+Math.random()*8)+'px;';
-      document.body.appendChild(el); setTimeout(()=>el.remove(),4500);
-    },i*18);
-  }
-}
+async function deleteCollection(n){while(true){const s=await db.collection(n).limit(400).get();if(s.empty)break;const b=db.batch();s.docs.forEach(d=>b.delete(d.ref));await b.commit();if(s.size<400)break;}}
+function closeProgressAndReload(){document.getElementById('progressOverlay').classList.remove('active');showAdminScreen();}
+function launchConfetti(){const cols=['#FFD700','#FFB3C6','#FFC8A2','#B5EAD7','#C7CEEA','#FFDAC1'];for(let i=0;i<100;i++){setTimeout(()=>{const el=document.createElement('div');el.className='confetti-piece';el.style.cssText='left:'+Math.random()*100+'vw;background:'+cols[~~(Math.random()*cols.length)]+';animation-duration:'+(2+Math.random()*2)+'s;width:'+(8+Math.random()*8)+'px;height:'+(8+Math.random()*8)+'px;';document.body.appendChild(el);setTimeout(()=>el.remove(),4500);},i*18);}}
 </script>
 </body>
 </html>
